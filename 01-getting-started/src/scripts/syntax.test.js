@@ -1,4 +1,4 @@
-import {yearOfBirth, carAge, string1, string2, overSixteen, arrModification, undefinedVal, getUserName, findTheSpeed, arrayFunctions} from './syntax'
+import {myObj, forEach, doWhile, whileLoop, forInLoop, yearOfBirth, carAge, string1, string2, overSixteen, arrModification, undefinedVal, getUserName, findTheSpeed, arrayFunctions, forLoop} from './syntax'
 
 
 test('What is your year of Birth', () => {
@@ -33,4 +33,35 @@ test('Find the Speed', () => {
     expect(findTheSpeed(15, 5)).toBe(3)});
 
 test('Array Add to the Front', () => {
-    expect(arrayFunctions.unshiftFunction(0, 4)).toStrictEqual([0,4,1,2,3])});
+    expect(arrayFunctions.unshiftFunction(0, 4)).toStrictEqual(5)});
+    
+test('Array Add to the End', () => {
+    expect(arrayFunctions.pushFunction(15)).toStrictEqual(4)});
+
+test('Update values in array', () => {
+    expect(arrayFunctions.updateValues(15)).toStrictEqual([15,2,3])});
+
+test('For Loops', () => {
+    expect(forLoop(10)).toEqual([10,8,6,4,2])});
+
+test('For In Loops', () => {
+    const letters = {
+        a:3,
+        b:5,
+        c:6,
+        d:1
+    };
+    expect(forInLoop()).toEqual(["a", "b", "c", "d"])});
+
+test('While Loop', () => {
+    expect(whileLoop()).toStrictEqual([5,4,3,2,1,0])});
+
+test('Do While', () => {
+    expect(doWhile()).toStrictEqual([0,1,2,3,4])});
+
+test('For Each', () => {
+    expect(forEach()).toStrictEqual([2,4,20,32])});
+
+test('Look Up what the animal eats?', () => {
+    expect(myObj()).toEqual('Fish and cat food');
+    });
