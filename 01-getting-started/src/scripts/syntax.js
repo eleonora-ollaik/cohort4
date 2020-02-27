@@ -69,70 +69,107 @@
         // The return statement stops the execution of a function and returns a value from that function.
 // 4. arrays - are used to store multiple values in a single variable
         
-//     // add to the front
+    // add to the front
         let arrayFunctions = {
         unshiftFunction : (num1, num2) => {
             let array = [1,2,3];
             return array.unshift(num1,num2);
             
+        },
+
+    // add to the end
+        pushFunction : (num3) => {
+            let array = [1,2,3];
+            return array.push(num3);
+        },
+    
+    // update values
+        updateValues : (num4) => {
+            let array = [1,2,3];
+            array[0] = num4;
+            return array;
         }
-
     };
-//     // add to the end
-//         pushFunction : (num2) => {
-//             return array.push(num2);
-//         },
-//     // update values
-//         updateValues : (num3) => {
-//             array[0] = num3;
-//             return array;
-//         }
-//     };
-// // 5. loops - when you want to run the same code over and over again, each time with a different value
-//     // for - loops through a block of code a number of times
-//         let array1 = [];
-//         for (let i=10; i>0; i-=2) {
-//             array1.push(i);
-//         }; //[10,8,6,4,2]
-//     // for/in - loops through the properties of an object
-//         const letters = {
-//             a:3,
-//             b:5,
-//             c:6,
-//             d:1
-//         };
-//             for (item in letters) {
-//                 console.log(item)
-//             };
-        
-//     // while - loops through a bllock of code while a specified condition is true
-//         var arrRandom = [];
-//         var i=5;
-//         while (i>=0) {
-//             arrRandom.push(i);
-//             i--;
-//         }
-//     // do while - also loops through a block of code while a specified condition is true
-//         var myArray = [];
-//         var i = 0;
-//         do {
-//             myArray.push(i);
-//             i++;
-//         } while (i<5);
-//     // forEach (with array and function)
-//         const newArray = [1,2,10,16];
-//         const double = [];
-//         const newNewArr = newArray.forEach((num)=> {
-//             double.push(num*2);
-//         });
-//         console.log(double);
-        
-// // 6. Objects / Dictionaries
-//         // similar to arrays, except that instead of using indexes, they use properties to access the data
-//     // declare object
-//     var myObj = {
+// 5. loops - when you want to run the same code over and over again, each time with a different value
+    // for - loops through a block of code a number of times
+        let forLoop = (index) => {
+            let array1 = [];
+        for (let i=index; i>0; i-=2) {
+            array1.push(i);
+            
+        }
+        return array1;
+        }; //[10,8,6,4,2]
 
-//     }
+    // for/in - loops through the properties of an object
+        let forInLoop = () => {
+            let item;
+            let arr = []
+            const letters = {
+            a:3,
+            b:5,
+            c:6,
+            d:1
+        };
+            for (item in letters) {
+                arr.push(item);
+            }
+            return arr
+        };
+        
+    // while - loops through a bllock of code while a specified condition is true
+        let whileLoop = () => {
+            let arrRandom = [];
+        let i=5;
+        while (i>=0) {
+            arrRandom.push(i);
+            i--;
+        }
+        return arrRandom };
 
-//     // lookup key to retrieve value
-export {yearOfBirth, carAge, string1, string2, overSixteen, arrModification, undefinedVal, getUserName, findTheSpeed, arrayFunctions};
+    // do while - also loops through a block of code while a specified condition is true
+        let doWhile = () => {
+            let myArray = [];
+        let i = 0;
+        do {
+            myArray.push(i);
+            i++;
+        } 
+        while (i<5);
+        return myArray
+        };
+
+    // forEach (with array and function)
+        let forEach = () => {
+            const newArray = [1,2,10,16];
+        const double = [];
+        const newNewArr = newArray.forEach((num)=> {
+            double.push(num*2);
+        });
+        return double;
+    };
+        
+// 6. Objects / Dictionaries
+        // similar to arrays, except that instead of using indexes, they use properties to access the data
+    
+        // declare object
+        let myObj = () => {
+            let obj = [{
+            type: "cat",
+            name: "Dymok",
+            eats: "Fish and cat food"
+        },
+            {type: "dog",
+            name: "Graf",
+            eats: "anything that falls on the floor"
+            }
+        ]
+            
+
+    // lookup key to retrieve value
+         
+                return obj[0].eats;
+            };
+
+           
+export {myObj, forEach, doWhile, whileLoop, forInLoop, yearOfBirth, carAge, string1, string2, overSixteen, arrModification, undefinedVal, getUserName, findTheSpeed, arrayFunctions, forLoop};
