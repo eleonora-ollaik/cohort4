@@ -76,3 +76,29 @@ html {
         min-height: 400px;
     }
 }
+
+*{
+    align-self: center;
+    margin: 0px;
+    padding:0px;
+}
+.button{
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    margin: 2px;
+    cursor: pointer;
+}
+.textview{
+    width:217px;
+    margin:5px;
+    font-size:25px;
+    padding:5px;
+}
+
+.idCalc {
+    position: absolute;
+    top: 300%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%)
+}
