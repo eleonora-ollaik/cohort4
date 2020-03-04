@@ -89,8 +89,8 @@
             <span class="w3-xxlarge w3-text-white w3-wide">SIZE</span>
         </div>
     </div>
-<!-- 
-    <script text/javascript>
+
+    <!-- <script text/javascript>
     function changeText() {
         var idNumber = document.getElementById('idNumber').value;
         document.getElementById('idNumberSize').innerHTML = functions.size(idNumber.value);
@@ -105,6 +105,8 @@
     </div>
 
 
+    <!--                     Calculator         -->
+
     <div class="bgimg-2 w3-display-container w3-opacity-min">
         <div class="w3-display-middle">
             <span class="w3-xxlarge w3-text-white w3-wide">CALCULATOR</span>
@@ -112,8 +114,7 @@
     </div>
 
 
-    <!--                     Calculator         -->
-    <script>
+    <!-- <script>
         function insert(num){
             document.form.textview.value = document.form.textview.value + (num);
         }
@@ -129,29 +130,35 @@
             document.form.textview.value = "";
         }
         
+
+        function insertIncome(num){
+            document.form.income.value = document.form.textview.value + (num);
+        }
         
-    </script>
+    </script> -->
 
 
 <div class="w3-content w3-container w3-padding-64 w3-center" id="idCalc">
 
     <form name = "form">
-        <input class = "textview" name = "textview">
+        Number 1: <input id = "num1" class = "textview" name = "textview" type="text" placeholder="Enter number 1"> <br>
+        Number 2: <input id = "num2" class = "textview" name = "textview" type="text"placeholder="Enter number 2">
     <div style ></div>
     <table class = "w3-content w3-container w3-padding-8 w3-center">
         <tr>
-        <td><input class ="button" type = "button" value = 1 onclick="insert(1)"></td>
-        <td><input class ="button" type = "button" value = 2 onclick="insert(2)"></td>
-        <td><input class ="button" type = "button" value = 3 onclick="insert(3)"></td>
-        <td><input class ="button" type = "button" value = "+" onclick="insert('+')"></td> 
+        <td><input class ="button" name = "button" type = "button" id = "button" value = "+" ></td> 
+        <td><input class ="button" name = "button" type = "button" id = "button" value = "-" ></td> 
+        <td><input class ="button" name = "button" type = "button" id = "button" value = "*" ></td> 
+        <td><input class ="button" name = "button" type = "button" id = "button" value = "/" ></td>
+        <td><input class ="button" type = "button" id = "buttonC" value = "C" ></td>
         </tr>
-        <tr>
-        <td><input class ="button" type = "button" value = 4 onclick="insert(4)"></td>
-        <td><input class ="button" type = "button" value = 5 onclick="insert(5)"></td>
-        <td><input class ="button" type = "button" value = 6 onclick="insert(6)"></td>
-        <td><input class ="button" type = "button" value = "-" onclick='insert("-")'></td> 
-        </tr>
-        <tr>
+        
+        <!-- <td><input class ="button" type = "button" value = "C" onclick="clean()"></td> -->
+    
+       
+        <!-- <td><input class ="button" type = "button" value = "-" onclick='insert("-")'></td>  -->
+        
+        <!-- <tr>
         <td><input class ="button" type = "button" value = "7" onclick="insert(7)"></td>
         <td><input class ="button" type = "button" value = "8" onclick="insert(8)"></td>
         <td><input class ="button" type = "button" value = "9" onclick="insert(9)"></td>
@@ -163,14 +170,60 @@
         <td><input class ="button" type = "button" value = "." onclick="insert('.')"></td>
         <td><input class ="button" type = "button" value = "/" onclick="insert('/')"></td>
         </tr>
-        <tr>
-        <td><input class ="button"  type = "button" value = "=" onclick="equal('=')"></td>
-        </tr>
+        <tr> --> 
+        <!-- <td><input class ="button"  type = "button" value = "=" onclick="equal('=')"></td>
+        </tr> -->
     </table>
+
+    <div>
+        <strong>
+            <label id = "result">Result is:</label>
+            <input id = "answer" type = "text" class = "textview">
+        </strong>
+    </div>
 
 </div>
 
 
+                                <!-- Tax Calculator-->
+   <div class="bgimg-2 w3-display-container w3-opacity-min">
+        <div class="w3-display-middle">
+            <span class="w3-xxlarge w3-text-white w3-wide">Tax Calculator</span>
+        </div>
+    </div>
+
+    <div class="w3-content w3-container w3-padding-64 w3-center" id="taxCalc">
+
+        <form name = "form2">
+            <label for="income"> Please enter your annual income here</label><br>
+            <input class = "income" name = "income">
+            <input type ="submit" value= "Submit" onclick=insertIncome()><br>
+        <div style ></div>
+        </form>
+
+        <table class = "w3-content w3-container w3-padding-8 w3-center" class = tableTax>
+           <tr>
+               <td>Line 36</td>
+               <td>income</td>
+               <td>Your taxable income from line 26000 of your return</td>
+           </tr>
+        </table>
+
+
+
+
+
+        <!-- <script>
+            let incomeSize() => {
+                var exp = document.form.income.value;
+                if ((exp) <= 48535) {
+                    return "less then $48,535"
+                } if else (48535 < (exp) < 97069) {
+                    return
+                }
+            } -->
+
+        <!-- </script> -->
     <!-- Footer -->
     <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
         <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
@@ -187,6 +240,7 @@
 
 
     <script type="module" src="./scripts/main.js"></script>
+    <script type="module" src="./scripts/calculator.js"></script>
 
     <script>
         // Change style of navbar on scroll
