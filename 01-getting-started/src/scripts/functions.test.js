@@ -17,3 +17,14 @@ test('Does that add function work?', () => {
 test('Is even or not?', () => {
     expect(functions.isEven(5)).toBe(false);
 });
+
+
+// test ('Equal to', () => {
+//     expect(functions.equal(5)).toBe(5);
+//     expect(functions.equal(3)).toBe(3);
+// });
+
+// test ('Clean', () => {
+//     expect(functions.clean(5)).toBe("");
+//     expect(functions.clean(3)).toBe("");
+// });

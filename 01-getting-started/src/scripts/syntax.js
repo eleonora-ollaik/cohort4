@@ -33,7 +33,7 @@
         };
 
     // dictionary / objects
-        let getUserName = (name, age) => {
+        let getUserName = (name, age) => { 
             let user = {
             name: name,
             age: age

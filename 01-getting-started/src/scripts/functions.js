@@ -12,7 +12,7 @@ const functions = {
     },
 
     subtract: (num1, num2) => {
-        return num1 - num2;
+        return num1 - num2; 
     },
     
     isEven: (num) => {
@@ -20,10 +20,24 @@ const functions = {
             return true;
         } else {
             return false;
-        }
+        }},
+
+  
+
+    // equal: () => {
+    //     let exp = document.getElementsByClassName(textview).value;
+    //     if(exp){
+    //         document.getElementsByClassName(textview).value = eval(exp)
+    //     }
+    //     },
+
+    // clean: () =>{
+    //     document.getElementsByClassName(textview).value = "";
+    //     }
+        
     }
 
     
-};
+
 
 export default functions;
