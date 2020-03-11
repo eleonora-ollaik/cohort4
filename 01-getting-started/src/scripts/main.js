@@ -1,5 +1,7 @@
 import functions from './functions.js';
 import calculator from './calculator.js';
+import taxCalc from './tax-calculator.js';
+
 
 let num1Input = document.getElementById('num1');
 let num2Input = document.getElementById('num2');
@@ -7,6 +9,7 @@ let button = document.getElementsByClassName('button')
 let buttonC = document.getElementById('buttonC');
 let num1 =0;
 let num2 =0;
+
 
 // **********
 //
@@ -17,6 +20,7 @@ idNumber.addEventListener('change', (() => {
     idNumberSize.textContent = functions.size(idNumber.value);
 }));
 
+// calculator input values event listeners
 
 if (num1Input) {
     num1Input.addEventListener('input', updateNum1);
@@ -31,6 +35,8 @@ if (num2Input) {
         num2 = Number(event.target.value);
     }
 }
+
+// calculator operations
 
 const operation = (clickObj) => {
     let operator =clickObj.target.value;
@@ -55,11 +61,13 @@ const operation = (clickObj) => {
     }
 }
 
+// loop through operations
+
 for (let i = 0; i <button.length; i++) {
     button[i].addEventListener('click', operation, false);
 };
 
-// buttonC.addEventListener('click', calculator.erase);
+// clear calculator button
 
 if (buttonC) {
     buttonC.addEventListener('click', function () {
@@ -70,3 +78,19 @@ if (buttonC) {
         window.location.href = '#calculator';
     });
 }
+
+//Tax Calculator
+const onPressTax = document.getElementById("submit");
+let income = document.getElementById('income');
+let taxAmount = document.getElementById("incomeTax");
+
+onPressTax.addEventListener("click", function () {
+    taxAmount.value = taxCalc.federalTax(income.value);
+
+
+} );
+
+
+
+
+
