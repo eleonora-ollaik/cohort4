@@ -85,7 +85,7 @@ let income = document.getElementById('income');
 let taxAmount = document.getElementById("incomeTax");
 
 onPressTax.addEventListener("click", function () {
-    taxAmount.value = taxCalc.federalTax(income.value);
+    taxAmount.value = taxCalc.federalTax(incomeInput.value);
 
 
 } );
