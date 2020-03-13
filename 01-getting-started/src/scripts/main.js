@@ -1,6 +1,7 @@
 import functions from './functions.js';
 import calculator from './calculator.js';
 import taxCalc from './tax-calculator.js';
+import arrAndObj from '.arraysAndObjects.js';
 
 
 let num1Input = document.getElementById('num1');
@@ -9,6 +10,16 @@ let button = document.getElementsByClassName('button')
 let buttonC = document.getElementById('buttonC');
 let num1 =0;
 let num2 =0;
+
+// Arrays 
+
+let arr = [];
+let addToArr = document.getElementById('addButton');
+let showArr = document.getElementById("showButton");
+let clearArr = document.getElementById('clearButton');
+let array = document.getElementById('arrayInput');
+let numberArr = document.getElementById('arrayNumber');
+let arrResult = document.getElementById('arrayResult');
 
 
 // **********
@@ -89,6 +100,8 @@ onPressTax.addEventListener("click", function () {
 
 
 } );
+
+// Array event listener
 
 
 
