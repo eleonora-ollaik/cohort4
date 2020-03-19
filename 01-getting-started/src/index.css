@@ -113,12 +113,15 @@ label{
     margin-left: 20px;
 }
 
+
+
 .textview{
     left: 50%;
     width:217px;
     margin:5px;
     font-size:25px;
     padding:5px;
+    
     
 }
 
@@ -132,7 +135,9 @@ label{
 }
 
 .tableTax {
-    width: 100%
+    width: 100%;
+    left: 50%;
+
 }
 
 .arrays {
@@ -156,4 +161,18 @@ label{
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+}
+
+input {
+    text-align: center;
+}
+
+.textview2 {
+    float: center;
+    left: 50%;
+    width:217px;
+    margin:5px;
+    font-size:25px;
+    padding:5px;
+
 }

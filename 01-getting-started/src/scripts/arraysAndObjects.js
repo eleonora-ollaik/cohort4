@@ -1,8 +1,9 @@
 const arrAndObj = {
 
     addArr: (arr, num) => {
-        arr.push(Number(num));
+    arr.push(Number(num));
         return arr;
+        // console.log(arr1);
     },
 
     totalArr: (arr) => {
@@ -12,8 +13,26 @@ const arrAndObj = {
            
         }
         return total;
-    }
+    },
 
+    showArray: (displayArray) => {
+        displayArray = array.join(', ');
+        return displayArray;
+    },
+
+    caps: {
+        'ca' : "Ottawa",
+        'kg' : "Bishkek",
+        'us' : "Washington",
+    },
+
+    getCountryCapital (code) {
+        return arrAndObj.caps[code];
+    },
+
+    addCountryCapital(code, value) {
+        arrAndObj.caps[code] = value;
+    }
 }
 
 export default arrAndObj;

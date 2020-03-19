@@ -1,7 +1,7 @@
 import functions from './functions.js';
 import calculator from './calculator.js';
 import taxCalc from './tax-calculator.js';
-import arrAndObj from '.arraysAndObjects.js';
+import arrAndObj from './arraysAndObjects.js';
 
 
 let num1Input = document.getElementById('num1');
@@ -11,15 +11,7 @@ let buttonC = document.getElementById('buttonC');
 let num1 =0;
 let num2 =0;
 
-// Arrays 
 
-let arr = [];
-let addToArr = document.getElementById('addButton');
-let showArr = document.getElementById("showButton");
-let clearArr = document.getElementById('clearButton');
-let array = document.getElementById('arrayInput');
-let numberArr = document.getElementById('arrayNumber');
-let arrResult = document.getElementById('arrayResult');
 
 
 // **********
@@ -70,7 +62,7 @@ const operation = (clickObj) => {
             break;
             
     }
-}
+};
 
 // loop through operations
 
@@ -88,7 +80,7 @@ if (buttonC) {
         document.getElementById('answer').value = '';
         window.location.href = '#calculator';
     });
-}
+};
 
 //Tax Calculator
 const onPressTax = document.getElementById("submit");
@@ -101,9 +93,45 @@ onPressTax.addEventListener("click", function () {
 
 } );
 
+
+// Arrays 
+
+let arr = [];
+let array = document.getElementById('arrayInput');
+
 // Array event listener
 
+addButton.addEventListener('click', (() => {
 
+  arrAndObj.addArr(arr, array.value);
+  message.innerHTML = "Array added"
+  
+}));
 
+showButton.addEventListener('click', (() => {
+    message.innerHTML = arr;
+}));
 
+totalButton.addEventListener('click', (() => {
+    let total = arrAndObj.totalArr(arr);
+    message.innerHTML = total;
 
+}));
+
+clearButton.addEventListener('click', (() => {
+    arr = [];
+    message.innerHTML = 'Array is empty now!';
+    array.value = '';
+}));
+
+// Dictionaries event listeners
+
+dictEntry.addEventListener('click',  (() => {
+    let result = arrAndObj.addCountryCapital(countryInput.value, capitalInput.value);
+    console.log(arrAndObj.caps);
+}));
+
+codeLookup.addEventListener('click', (() => {
+    let result = arrAndObj.getCountryCapital(codeInput.value);
+    console.log(result);
+}));
