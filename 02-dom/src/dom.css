@@ -2,15 +2,18 @@ body {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     align-self: auto;
-    border: solid;
+    /* border: solid; */
     }
 
 
-#wrapper {
-    width: 100%;
+div {
+    margin: auto;
+    width: 50%;
     text-align: center;
-    margin-left:  550px;
-    margin-right: 550px;
+    padding: 10px;
+    border: 3px solid black;
+    /* margin-left:  550px;
+    margin-right: 550px; */
 }
 
 h1 {
