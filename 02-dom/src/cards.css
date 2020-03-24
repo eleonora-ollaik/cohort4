@@ -1,0 +1,14 @@
+body {
+    display: flex;
+}
+
+div {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+}
+
+.card{
+    border: 3px solid black;
+}
