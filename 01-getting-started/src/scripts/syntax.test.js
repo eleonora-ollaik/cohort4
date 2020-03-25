@@ -7,6 +7,8 @@ test('What is your year of Birth', () => {
 
 test('Can we fix the car?', () => {
     expect(carAge(8)).toBe("Will be ready by tomorrow");
+    expect(carAge(16)).toBe("Sorry, we can't fix your car");
+    expect(carAge(15)).toBe("Well, I guess we could try");
 });
 
 test('Is a string1?', () => {
@@ -18,7 +20,9 @@ test('Is a string2?', () => {
 });
 
 test('Are you over 16?', () => {
-    expect(overSixteen("yes")).toBe(true)});
+    expect(overSixteen("yes")).toBe(true);
+    expect(overSixteen("no")).toBe(false);
+});
 
 test('Array Modification', () => {
         expect(arrModification(15)).toStrictEqual([15, 5, 8])});

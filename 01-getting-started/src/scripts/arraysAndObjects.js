@@ -15,8 +15,8 @@ const arrAndObj = {
         return total;
     },
 
-    showArray: (displayArray) => {
-        displayArray = array.join(', ');
+    showArray: (array) => {
+        let displayArray = array.join(', ');
         return displayArray;
     },
 

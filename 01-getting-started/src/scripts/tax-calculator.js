@@ -17,7 +17,7 @@ const taxCalc = {
             let tax = ((income - 150473) * 0.29) + 31115;
             return Number(tax.toFixed(2));
 
-        } else  {
+        } else  if ((income) >= 214369) {
             let tax = ((income - 214368) * 0.33) + 49645;
             return Number(tax.toFixed(2));
 

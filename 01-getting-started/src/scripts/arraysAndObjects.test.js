@@ -11,6 +11,10 @@ test('Total Array', () => {
     expect(arrAndObj.totalArr([2, 3, 5])).toStrictEqual(10);
 });
 
+test('Show Arrays', () => {
+    expect(arrAndObj.showArray([2, 3, 5])).toStrictEqual("2, 3, 5");
+});
+
 test('Dictionary Function', () => {
     const cap = arrAndObj.getCountryCapital('ca');
     expect(cap).toBe("Ottawa");
