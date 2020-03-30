@@ -3,7 +3,9 @@ const functions = {
 	buildCard: (card) => {
 		
 		const div = document.createElement('div');
-		div.appendChild(document.createTextNode(card))
+		div.appendChild(document.createTextNode(card));
+
+		div.classList.add("card");
 		
 		const addBeforeBtn = document.createElement('button');
 		const addBeforeBtnText = document.createTextNode('Add Before');
