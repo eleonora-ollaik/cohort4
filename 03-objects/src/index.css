@@ -18,6 +18,9 @@ ion-icon {
     width: 627px;
 }
 
+.form-control {
+    width: 560px;
+}
 /* .row {
     display: block;
     
@@ -28,6 +31,7 @@ ion-icon {
 } */
 .row {
     flex-direction: row;
+    justify-content: space-evenly;
 }
 .col-sm {
     display: grid;
@@ -39,4 +43,13 @@ ion-icon {
   border-radius: 10px;
   color: rgb(72, 73, 72);
   font-size: 15px;
+  }
+
+  #button-addon2 {
+    width: 93px;
+  }
+
+  #addAccountBtn {
+      margin-left: 40%;
+      
   }
