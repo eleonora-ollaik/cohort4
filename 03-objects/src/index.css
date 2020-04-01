@@ -1,0 +1,42 @@
+body,
+html {
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    background: url(image.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 30px;
+}
+
+ion-icon {
+    font-size: 34px;
+  }
+
+.container {
+    width: 627px;
+}
+
+/* .row {
+    display: block;
+    
+} */
+
+/* #accName {
+    display: inline;
+} */
+.row {
+    flex-direction: row;
+}
+.col-sm {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    background-color: rgba(151, 224, 137, 0.8);
+  border: 1px solid rgb(240, 235, 235);
+  text-align: justify;
+  font-size: 30px;
+  border-radius: 10px;
+  color: rgb(72, 73, 72);
+  font-size: 15px;
+  }
