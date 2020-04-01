@@ -33,17 +33,7 @@ ion-icon {
     flex-direction: row;
     justify-content: space-evenly;
 }
-.col-sm {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    background-color: rgba(151, 224, 137, 0.8);
-  border: 1px solid rgb(240, 235, 235);
-  text-align: justify;
-  font-size: 30px;
-  border-radius: 10px;
-  color: rgb(72, 73, 72);
-  font-size: 15px;
-  }
+
 
   #button-addon2 {
     width: 93px;
