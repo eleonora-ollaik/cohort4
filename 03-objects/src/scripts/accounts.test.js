@@ -14,13 +14,43 @@ test ('Class test', () => {
 
 });
 
+
+const accContr = new AccountControl ();
+
+
 test ('AccountController test', () => {
-    const accContr = new AccountControl ();
     expect (accContr.accArr).toEqual([]);
 })
 
+
 test ('Adding account Test', () => {
-    const accContr = new AccountControl ();
+    
     accContr.addAccount('Cat Food', 15);
     expect (accContr.accArr.length).toBe(1)
+    expect (accContr.accArr[0].balance).toBe(15);
+    expect (accContr.accArr[0].name).toBe('Cat Food');
+    expect (accContr.accArr).toEqual([{ name: 'Cat Food', balance: 15}]);
+})
+
+
+test ('Total Balance', () => {
+    accContr.addAccount('Gas Money', 40);
+    expect (accContr.accArr).toEqual([{name: 'Cat Food', balance: 15}, {name: 'Gas Money', balance: 40}]);
+    expect (accContr.totalBalance()).toBe('$55');
+})
+
+
+test ('Highest Balance', () => {
+    expect (accContr.highestBalance()).toEqual('Gas Money: $40');
+})
+
+
+test ('Lowest Balance', () => {
+    expect (accContr.lowestBalance()).toEqual('Cat Food: $15');
+})
+
+test ('Delete Account', () => {
+    accContr.deleteAccount('Cat Food');
+    expect (accContr.accArr.length).toBe(1);
+    expect (accContr.accArr).toEqual([{name: 'Gas Money', balance: 40}]);
 })

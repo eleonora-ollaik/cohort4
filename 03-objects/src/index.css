@@ -43,3 +43,13 @@ ion-icon {
       margin-left: 40%;
       
   }
+
+  /* .btn.btn-outline-secondary {
+      margin-left: 89%;
+
+  } */
+
+  li {
+      display: flex;
+      flex-direction: row;
+  }

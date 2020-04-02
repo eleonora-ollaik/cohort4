@@ -1,5 +1,6 @@
 import {Account, AccountControl} from './accounts.js';
 
+let accountManager = new AccountControl();
 
 let addAccBtn = document.getElementById('addAccountBtn');
 
@@ -8,7 +9,11 @@ addAccBtn.addEventListener('click', () => {
     let startingBalance = document.getElementById('startBal').value;
     // console.log(accName);
     // console.log(startingBalance);
-    let accountManager = new AccountControl.addAccount(accName, startingBalance);
-    console.log(accountManager);
+
+accountManager.addAccount(accName, startingBalance);
+// alert(`Account '${accName}' with the balance of $${startingBalance} was created!`);
+accName ='';
+startingBalance='';
+    console.log(accountManager.accArr);
 })
 
