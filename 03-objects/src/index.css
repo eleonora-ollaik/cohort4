@@ -35,7 +35,8 @@ ion-icon {
 }
 
 
-  #button-addon2 {
+  #withdrowalBtn, 
+  #depositBtn{
     width: 93px;
   }
 
@@ -44,12 +45,11 @@ ion-icon {
       
   }
 
-  /* .btn.btn-outline-secondary {
+li{
+    margin-left: -55px;
+    width: 600px;
+}
+  .btn.btn-outline-secondary {
       margin-left: 89%;
-
-  } */
-
-  li {
-      display: flex;
-      flex-direction: row;
+      margin-top: -50px;
   }
