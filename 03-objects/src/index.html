@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Google fonts -->
     <link rel="stylesheet" href="https://fonts.google.com/specimen/Montserrat?selection.family=Montserrat:wght@200">
@@ -38,7 +38,7 @@
         <div>
             <h1 id = 'accountName'> Account Name </h1> <br>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Deposit Amount" aria-label="Deposit Amount" aria-describedby="button-addon2" id = 'depositAmount'>
+                <input type="number" class="form-control" placeholder="Deposit Amount" aria-label="Deposit Amount" aria-describedby="button-addon2" id = 'depositAmount'>
                 <div class="input-group-append">
                     <button type="button" class="btn btn-success" id="depositBtn">Deposit</button>
                 </div>
@@ -79,7 +79,7 @@
             <div>
 
                 <h1> List of Accounts</h1>
-                <ul>
+                <ul id = accountsList>
                 
                 </ul>
             </div>

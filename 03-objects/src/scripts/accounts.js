@@ -17,31 +17,13 @@ class Account {
     balance() {
         return this.balance;
     }
+
+    
 };
 
-class Card {
-
-    constructor (card) {
-    const div = document.createElement('div');
-        let li = document.createElement('li');
-        li.appendChild(document.createTextNode(card));
-        div.appendChild(li);
-
-        // let card = li.appendChild(document.createTextNode(`${accountName}: $${startingBalance}`));
-        // div.appendChild(li);
 
 
-        const delBtn = document.createElement('button');
-        const delBtnText = document.createTextNode('Delete');
-        delBtn.appendChild(delBtnText);
-        li.appendChild(delBtn);
-        document.querySelector('ul').appendChild(div);
 
-        li.classList.add("form-control");;
-        delBtn.setAttribute("class", "btn btn-outline-secondary");
-
-    }
-}
 
 
 // 130C
@@ -53,11 +35,9 @@ class AccountControl {
 
     addAccount(accountName, startingBalance) {
         this.accArr.push(new Account(accountName, startingBalance));
-        new Card(document.createTextNode(`${this.name}: $${this.balances}`));
-
-      
+        return this.accArr;
+        
     }
-
 
 
     totalBalance() {
@@ -104,7 +84,40 @@ class AccountControl {
     }
 
 }
+const functions = {
+
+    buildCard(accName, startBal) {
+		
+		// const div = document.createElement('div');
+        let li = document.createElement('li');
+        console.log(accName, startBal);
+        li.appendChild(document.createTextNode(accName));
+        
+        let pTag = document.createElement('P');
+        pTag.appendChild(document.createTextNode(startBal))
+        li.appendChild(pTag);
+
+        const delBtn = document.createElement('button');
+        const delBtnText = document.createTextNode('Delete');
+        delBtn.appendChild(delBtnText);
+        li.appendChild(delBtn);
+        li.classList.add("form-control");;
+        delBtn.setAttribute("class", "btn btn-outline-secondary");
+
+        let ul = document.getElementById('accountsList');
+        
+        // div.appendChild(li);
+        ul.appendChild(li);
+
+      
+        
+        // node.parentElement.insertBefore(li, node);
+        return div;
+    }
+    
 
 
+}
 
-export { Account, AccountControl };
+
+export { Account, AccountControl, functions };
