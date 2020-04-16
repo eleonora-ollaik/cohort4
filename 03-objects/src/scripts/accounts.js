@@ -1,7 +1,13 @@
+//
+// You must do the things you think you cannot do.
+// Eleanor Roosevelt
+
+
 class Account {
-    constructor(accountName, startingBalance) {
+    constructor(accountName, startingBalance, key) {
         this.name = accountName;
         this.balance = startingBalance;
+        this.key = key;
     }
 
     deposit(amount) {
@@ -29,8 +35,10 @@ class Account {
 // 130C
 
 class AccountControl {
-    constructor() {
-        this.accArr = [];
+    constructor () {
+        
+         this.accArr = [];
+         
     }
 
     addAccount(accountName, startingBalance) {
@@ -39,7 +47,26 @@ class AccountControl {
         
     }
 
+    getBalance(name) {
+        let index = this.accArr.findIndex(accFinder => accFinder.accName ===name);
+        return this.accArr[index].balance()
+    }
+    
+    // handleChange() {
+    //     this.buildCard(this.accName,this.balance)
+    //     let checkBox = this.checked;
+    //     let bal = this.div2
+    //     if (checkBox= true) {
+    //         console.log(bal)
+    //     }
+    // }
 
+    accountDeposit(name, amount) {
+        let index = this.accArr.findIndex(accFinder => accFinder.accountName === name);
+        this.accArr[index].deposit(amount);
+        return this.accArr[index].balance
+    }
+// let name be e.target.nodeName, amount = input field
     totalBalance() {
         let total = 0;
         for (let i = 0; i < this.accArr.length; i++) {
@@ -81,39 +108,53 @@ class AccountControl {
                 this.accArr.splice(i, 1)
             }
         }
+    } 
+
+    buildCard(accName, startBal) {
+		
+		// const div = document.createElement('div');
+        let mainDiv = document.createElement('div');
+        console.log(accName, startBal);
+        let checkBox = document.createElement('input')
+        checkBox.setAttribute('type', 'checkbox')
+        checkBox.setAttribute('id', 'checkbox')
+        // checkBox.setAttribute ('onchange', 'handleChange(this)')
+        mainDiv.appendChild(checkBox)
+        let div1 = document.createElement('div')
+        div1.appendChild(document.createTextNode(accName));
+        mainDiv.appendChild(div1);
+        mainDiv.setAttribute('class', 'row')
+        mainDiv.setAttribute('id', 'card');
+        
+        let div2 = document.createElement('div');
+        div2.setAttribute('id', `${accName}`) // how to set a dinamic id 
+        div2.appendChild(document.createTextNode(startBal))
+        mainDiv.appendChild(div2);
+
+        const delBtn = document.createElement('button');
+        const delBtnText = document.createTextNode('Delete');
+        delBtn.appendChild(delBtnText);
+        mainDiv.appendChild(delBtn);
+        div1.classList.add("divClass");;
+        div2.classList.add("divClass");;
+        // mainDiv.setAttribute('id', 'account');
+        delBtn.setAttribute("class", "btn btn-outline-secondary");
+
+        // let accList = document.getElementById('accountsList');
+        
+        // // div.appendChild(li);
+        // accList.appendChild(mainDiv);
+
+      
+        
+        // node.parentElement.insertBefore(li, node);
+        return mainDiv;
     }
 
 }
 const functions = {
 
-    buildCard(accName, startBal) {
-		
-		// const div = document.createElement('div');
-        let li = document.createElement('li');
-        console.log(accName, startBal);
-        li.appendChild(document.createTextNode(accName));
-        
-        let pTag = document.createElement('P');
-        pTag.appendChild(document.createTextNode(startBal))
-        li.appendChild(pTag);
-
-        const delBtn = document.createElement('button');
-        const delBtnText = document.createTextNode('Delete');
-        delBtn.appendChild(delBtnText);
-        li.appendChild(delBtn);
-        li.classList.add("form-control");;
-        delBtn.setAttribute("class", "btn btn-outline-secondary");
-
-        let ul = document.getElementById('accountsList');
-        
-        // div.appendChild(li);
-        ul.appendChild(li);
-
-      
-        
-        // node.parentElement.insertBefore(li, node);
-        return div;
-    }
+   
     
 
 

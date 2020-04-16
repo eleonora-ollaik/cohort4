@@ -49,7 +49,18 @@ li{
     margin-left: -55px;
     width: 600px;
 }
+
+p{
+    margin-left: 100px;
+    margin-top: -22px;
+}
   .btn.btn-outline-secondary {
+      height: 30px;
       margin-left: 89%;
-      margin-top: -50px;
+      margin-top: -40px;
+  }
+
+  .divClass {
+      width : 13rem;
+      height: 35px;
   }

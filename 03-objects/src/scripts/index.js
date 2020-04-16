@@ -16,7 +16,7 @@ document.body.addEventListener('click', e => {
 
     // console.log('You clicked');
     // console.log(e.target.textContent);
-    // console.log(e.target.nodeName);
+    console.log(e.target.id);
     // console.log(e.target);
 
     if (e.target.nodeName === 'BUTTON') {
@@ -26,23 +26,55 @@ document.body.addEventListener('click', e => {
             console.log(accountManager.accArr)
             // console.log(accName.value)
             accountManager.addAccount(accName.value, Number(startBal.value));
-            functions.buildCard(accName.value, Number(startBal.value));
+            let card = accountManager.buildCard(accName.value, Number(startBal.value));
+            let accList = document.getElementById('accountsList');
+            accList.appendChild(card);
             i++;
-        } else if (e.target.textContent === 'Deposit') {
-            console.log(depAmount.value);
-            accountManager.accArr[0].deposit(depAmount.value);
-            console.log(accountManager.accArr);
+
+        }}
+
+        else if (e.target.id === 'checkbox') {
+            accountManager.handleChange()
         }
+    });
 
-        // else if (e.target.textContent === 'Add After') {
-        //     functions.addAfter(e.target.parentElement, 'Card ' + counter++);
-        // }
+            //Getting the card
+    let checkbox = document.getElementById('checkbox');
+    
+    checkbox.addEventListener('change', function (e) {
+        console.log(checkbox.checked)
+        if (this.checked) {
+            card = this.getElementById(`${accName}`).value
+            console.log(card);
+        }
+    })
 
-        // else if (e.target.textContent === 'Remove') {
-        //     functions.removeFunction(e.target.parentElement);
-        // }
-    }
-})
+        // } else if (e.target === 'checkBox') {
+
+        //     card = getElementById('`${accName}`').value
+        //     console.log(card);
+        //         // getElementById('account').style.borderColor ='blue';
+        //     }
+        
+
+            // Depositing Money
+
+    //     } else if (e.target.textContent === 'Deposit') {
+    //         console.log(depAmount.value);
+    //         accountManager.accArr[0].deposit(depAmount.value);
+    //         console.log(accountManager.accArr);
+    //     }
+
+
+    //     // else if (e.target.textContent === 'Add After') {
+    //     //     functions.addAfter(e.target.parentElement, 'Card ' + counter++);
+    //     // }
+
+    //     // else if (e.target.textContent === 'Remove') {
+    //     //     functions.removeFunction(e.target.parentElement);
+    //     // }
+    // }),
+
 
 
 
@@ -64,16 +96,15 @@ document.body.addEventListener('click', e => {
 // })
 
 
-// Depositing Money
 
 
-depBtn.addEventListener('click', () => {
+
+// depBtn.addEventListener('click', () => {
     
-})
+// })
 // document.body.addEventListener('click', e => {
 //     if (e.target.nodeName === 'LI') {
 //         var string = e.target.textContent;
 //         var numbers = string.match(/\d+/g).map(Number);
 //         console.log(numbers)
-//         accountManager.accArr[i].deposit(depAmount)
-// }});
+//         accountManager.accArr[i].deposit(depAmount)}
