@@ -4,14 +4,14 @@
 
 
 class Account {
-    constructor(accountName, startingBalance, key) {
+    constructor(accountName, startingBalance) {
         this.name = accountName;
         this.balance = startingBalance;
-        this.key = key;
+
     }
 
     deposit(amount) {
-        this.balance += Number(amount);
+        this.balance = this.balance + Number(amount);
         return this.balance;
     }
 
@@ -24,7 +24,72 @@ class Account {
         return this.balance;
     }
 
-    
+    buildCard() {
+
+        let mainDiv = document.createElement('div');
+
+
+
+        let div1 = document.createElement('div')
+        div1.appendChild(document.createTextNode(this.name));
+        div1.setAttribute('id', 'idAccountName')
+        mainDiv.appendChild(div1);
+        mainDiv.setAttribute('class', 'row')
+        mainDiv.setAttribute('id', 'card');
+
+        let div2 = document.createElement('div');
+        div2.setAttribute('id', `${this.name}`)
+
+        div2.textContent = this.balance;
+        mainDiv.appendChild(div2);
+
+        const delBtn = document.createElement('button');
+        const delBtnText = document.createTextNode('Delete');
+        delBtn.appendChild(delBtnText);
+        mainDiv.appendChild(delBtn);
+        div1.classList.add("divClass");;
+        div2.classList.add("divClass");;
+        // mainDiv.setAttribute('id', 'account');
+        delBtn.setAttribute("class", "btn btn-outline-secondary");
+
+        const depositDiv = document.createElement('div');
+        const depAmount = document.createElement('input');
+        depAmount.setAttribute('id', 'idDepAmount')
+        const depBtn = document.createElement('btn');
+        depBtn.textContent = 'Deposit'
+        depBtn.setAttribute('id', 'iddepBtn')
+
+        depositDiv.appendChild(depAmount);
+        depositDiv.appendChild(depBtn);
+
+        mainDiv.appendChild(depositDiv);
+
+        const withdrDiv = document.createElement('div');
+        const withdrAmount = document.createElement('input');
+        const withdrBtn = document.createElement('btn');
+        withdrBtn.textContent = 'Withdraw'
+
+        withdrDiv.appendChild(withdrAmount);
+        withdrDiv.appendChild(withdrBtn);
+
+        mainDiv.appendChild(withdrDiv);
+
+
+
+        depBtn.addEventListener('click', () => {
+            this.deposit(depAmount.value);
+            depAmount.value = '';
+            div2.textContent = this.balance
+
+
+
+        })
+
+
+        return mainDiv;
+
+    }
+
 };
 
 
@@ -35,38 +100,40 @@ class Account {
 // 130C
 
 class AccountControl {
-    constructor () {
-        
-         this.accArr = [];
-         
+    constructor() {
+
+        this.accArr = [];
+
     }
 
     addAccount(accountName, startingBalance) {
         this.accArr.push(new Account(accountName, startingBalance));
         return this.accArr;
-        
+
     }
 
-    getBalance(name) {
-        let index = this.accArr.findIndex(accFinder => accFinder.accName ===name);
-        return this.accArr[index].balance()
-    }
-    
-    // handleChange() {
-    //     this.buildCard(this.accName,this.balance)
-    //     let checkBox = this.checked;
-    //     let bal = this.div2
-    //     if (checkBox= true) {
-    //         console.log(bal)
-    //     }
-    // }
+    getBal(accountName) {
+        //   console.log(accountName)
+        for (let i = 0; i < this.accArr.length; i++) {
+            if (accountName == this.accArr[i].name) {
+                console.log(i);
+                return this.accArr[i].balance;
 
-    accountDeposit(name, amount) {
-        let index = this.accArr.findIndex(accFinder => accFinder.accountName === name);
-        this.accArr[index].deposit(amount);
-        return this.accArr[index].balance
+            }
+        }
+
     }
-// let name be e.target.nodeName, amount = input field
+
+    deposit(accountName, amount) {
+        for (let i = 0; i < this.accArr.length; i++) {
+            if (accountName == this.accArr[i].name) {
+                let result = this.accArr[i].deposit(amount);
+                return result;
+
+            }
+        }
+    }
+
     totalBalance() {
         let total = 0;
         for (let i = 0; i < this.accArr.length; i++) {
@@ -108,57 +175,13 @@ class AccountControl {
                 this.accArr.splice(i, 1)
             }
         }
-    } 
-
-    buildCard(accName, startBal) {
-		
-		// const div = document.createElement('div');
-        let mainDiv = document.createElement('div');
-        console.log(accName, startBal);
-        let checkBox = document.createElement('input')
-        checkBox.setAttribute('type', 'checkbox')
-        checkBox.setAttribute('id', 'checkbox')
-        // checkBox.setAttribute ('onchange', 'handleChange(this)')
-        mainDiv.appendChild(checkBox)
-        let div1 = document.createElement('div')
-        div1.appendChild(document.createTextNode(accName));
-        mainDiv.appendChild(div1);
-        mainDiv.setAttribute('class', 'row')
-        mainDiv.setAttribute('id', 'card');
-        
-        let div2 = document.createElement('div');
-        div2.setAttribute('id', `${accName}`) // how to set a dinamic id 
-        div2.appendChild(document.createTextNode(startBal))
-        mainDiv.appendChild(div2);
-
-        const delBtn = document.createElement('button');
-        const delBtnText = document.createTextNode('Delete');
-        delBtn.appendChild(delBtnText);
-        mainDiv.appendChild(delBtn);
-        div1.classList.add("divClass");;
-        div2.classList.add("divClass");;
-        // mainDiv.setAttribute('id', 'account');
-        delBtn.setAttribute("class", "btn btn-outline-secondary");
-
-        // let accList = document.getElementById('accountsList');
-        
-        // // div.appendChild(li);
-        // accList.appendChild(mainDiv);
-
-      
-        
-        // node.parentElement.insertBefore(li, node);
-        return mainDiv;
     }
 
-}
-const functions = {
 
-   
-    
+
 
 
 }
 
 
-export { Account, AccountControl, functions };
+export { Account, AccountControl };

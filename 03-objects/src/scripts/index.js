@@ -1,4 +1,4 @@
-import {Account, AccountControl, functions} from './accounts.js';
+import {Account, AccountControl} from './accounts.js';
 
 let accountManager = new AccountControl();
 let i = 0;
@@ -16,8 +16,10 @@ document.body.addEventListener('click', e => {
 
     // console.log('You clicked');
     // console.log(e.target.textContent);
-    console.log(e.target.id);
+    // console.log(e.target.id);
     // console.log(e.target);
+
+    // console.log(accountManager.accArr);
 
     if (e.target.nodeName === 'BUTTON') {
         // console.log(e.target.textContent);
@@ -26,38 +28,34 @@ document.body.addEventListener('click', e => {
             console.log(accountManager.accArr)
             // console.log(accName.value)
             accountManager.addAccount(accName.value, Number(startBal.value));
-            let card = accountManager.buildCard(accName.value, Number(startBal.value));
+            let newAcc = new Account(accName.value, Number(startBal.value));
             let accList = document.getElementById('accountsList');
-            accList.appendChild(card);
+            accList.insertAdjacentElement('afterend', newAcc.buildCard());
             i++;
 
         }}
 
-        else if (e.target.id === 'checkbox') {
-            accountManager.handleChange()
+        else if (e.target.textContent === 'Deposit') {
+            let result = accountManager.deposit(accountName, depAmount.value);
+            return result;
         }
     });
 
-            //Getting the card
-    let checkbox = document.getElementById('checkbox');
-    
-    checkbox.addEventListener('change', function (e) {
-        console.log(checkbox.checked)
-        if (this.checked) {
-            card = this.getElementById(`${accName}`).value
-            console.log(card);
-        }
-    })
-
-        // } else if (e.target === 'checkBox') {
-
-        //     card = getElementById('`${accName}`').value
-        //     console.log(card);
-        //         // getElementById('account').style.borderColor ='blue';
-        //     }
-        
 
             // Depositing Money
+
+
+// document.getElementById("iddepBtn").addEventListener("click", () => {
+//     for (let i = 0; i<accountManager.accArr.length; i++) {
+//         if (document.getElementById("idAccountName").value === accountManager.accArr[i].accName) {
+//             let amount = Number(document.getElementById("idDepAmount").value);
+//             accountManager.accArr[i].deposit(amount);
+           
+//         }
+//     }
+// })
+
+
 
     //     } else if (e.target.textContent === 'Deposit') {
     //         console.log(depAmount.value);
@@ -66,45 +64,5 @@ document.body.addEventListener('click', e => {
     //     }
 
 
-    //     // else if (e.target.textContent === 'Add After') {
-    //     //     functions.addAfter(e.target.parentElement, 'Card ' + counter++);
-    //     // }
-
-    //     // else if (e.target.textContent === 'Remove') {
-    //     //     functions.removeFunction(e.target.parentElement);
-    //     // }
     // }),
 
-
-
-
-
-
-
-
-// addAccBtn.addEventListener('click', () => {
-//     let accName = document.getElementById('accName').value;
-//     let startingBalance = document.getElementById('startBal').value;
-//     // console.log(accName);
-//     // console.log(startingBalance);
-
-// accountManager.addAccount(accName, startingBalance);
-// accountManager.buildCard();
-// // accName.value ='';
-// // startingBalance.value='';
-//     console.log(accountManager.accArr);
-// })
-
-
-
-
-
-// depBtn.addEventListener('click', () => {
-    
-// })
-// document.body.addEventListener('click', e => {
-//     if (e.target.nodeName === 'LI') {
-//         var string = e.target.textContent;
-//         var numbers = string.match(/\d+/g).map(Number);
-//         console.log(numbers)
-//         accountManager.accArr[i].deposit(depAmount)}
