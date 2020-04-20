@@ -1,45 +1,88 @@
-import {Account, AccountControl} from './accounts.js';
+import { Card, AccountControl } from './accounts.js';
 
 let accountManager = new AccountControl();
-let i = 0;
 
 
-
-let addAccBtn = document.getElementById('addAccountBtn');
-let depAmount = document.getElementById('depositAmount');
-let depBtn = document.getElementById('depositBtn');
-
-//Creating new account
+//Adding new account
 
 
 document.body.addEventListener('click', e => {
 
-    // console.log('You clicked');
-    // console.log(e.target.textContent);
-    // console.log(e.target.id);
-    // console.log(e.target);
+    const el = e.target;
+    const key = el.getAttribute('key');
+    const checkbox = document.getElementById('checkbox');
+    // console.log(key);
+    
 
-    // console.log(accountManager.accArr);
+    if (el.nodeName === 'BUTTON') {
 
-    if (e.target.nodeName === 'BUTTON') {
-        // console.log(e.target.textContent);
-        if (e.target.textContent === 'Add Account') {
-            let i = 0;
-            console.log(accountManager.accArr)
-            // console.log(accName.value)
+        if (el.textContent === 'Add Account') {
             accountManager.addAccount(accName.value, Number(startBal.value));
-            let newAcc = new Account(accName.value, Number(startBal.value));
-            let accList = document.getElementById('accountsList');
-            accList.insertAdjacentElement('afterend', newAcc.buildCard());
-            i++;
+             console.log(accountManager.accArr);
 
-        }}
-
-        else if (e.target.textContent === 'Deposit') {
-            let result = accountManager.deposit(accountName, depAmount.value);
-            return result;
         }
-    });
+
+        else if (el ==='checkbox') {
+            if (checkbox.checked = true) {
+            let result = accountManager.getAccount(checkbox);
+            console.log(result);
+            }
+        }
+        else if (el.textContent === 'Deposit') {
+                    let result = accountManager.deposit(key, depAmount.value);
+                    return result;
+                }
+
+    }
+
+});
+
+
+
+
+
+
+
+    // let addAccBtn = document.getElementById('addAccountBtn');
+    // let depAmount = document.getElementById('depositAmount');
+    // let depBtn = document.getElementById('depositBtn');
+
+    // //Creating new account
+
+
+    // document.body.addEventListener('click', e => {
+
+    //     const el = e.target;
+    //     const key = el.getAttribute('key');
+    //     // console.log(key);
+
+    //     // console.log('You clicked');
+    //     // console.log(e.target.textContent);
+    //     // console.log(e.target.id);
+    //     // console.log(e.target);
+
+    //     // console.log(accountManager.accArr);
+
+    //     if (el.nodeName === 'BUTTON') {
+    //         // console.log(e.target.textContent);
+    //         if (el.textContent === 'Add Account') {
+    //             let i = 0;
+    //             console.log(accountManager.accArr)
+    //             // console.log(accName.value)
+    //             accountManager.addAccount(accName.value, Number(startBal.value));
+    //             let newAcc = new Card(accountManager.nextKey(), accName.value, Number(startBal.value));
+    //             let accList = document.getElementById('accountsList');
+    //             accList.insertAdjacentElement('afterend', newAcc.buildCard());
+    //             i++;
+
+    //         }
+    //     }
+
+    //     else if (el.textContent === 'Deposit') {
+    //         let result = accountManager.deposit(key, depAmount.value);
+    //         return result;
+    //     }
+    // });
 
 
             // Depositing Money
@@ -50,7 +93,7 @@ document.body.addEventListener('click', e => {
 //         if (document.getElementById("idAccountName").value === accountManager.accArr[i].accName) {
 //             let amount = Number(document.getElementById("idDepAmount").value);
 //             accountManager.accArr[i].deposit(amount);
-           
+
 //         }
 //     }
 // })

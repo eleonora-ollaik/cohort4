@@ -1,85 +1,91 @@
-import { Account, AccountControl } from './accounts.js';
+import { Account, Card, AccountControl } from './accounts.js';
 
 
 test('Class test', () => {
-    const acc1 = new Account('acc1', 25);
+    const acc1 = new Account('k', 'acc1', 25);
 
-    // console.log(acc1.deposit(10));
-    // console.log(acc1.withdraw(30));
-    // console.log(acc1.balance);
-
+    expect(acc1.key).toBe('k');
     expect(acc1.deposit(10)).toEqual(35);
     expect(acc1.withdraw(30)).toEqual(5);
     expect(acc1.balance).toEqual(5);
 
 });
 
+test ('Card class', () => {
 
+    const acc2 = new Card('k', 'acc2', 30);
 
+      //Creating card
+      
+      expect(acc2.buildCard()).toBeTruthy();
+
+})
 
 test('AccountController test', () => {
-
-
+    
     const accContr = new AccountControl();
    
     expect(accContr.accArr).toEqual([]);
-
 
     //Adding account Test
 
     accContr.addAccount('Cat Food', 15);
 
-    expect(accContr.accArr.length).toBe(1)
+    expect(accContr.accArr.length).toBe(1);
+    expect(accContr.accArr[0].name).toBe('Cat Food');
 
     accContr.addAccount('Dog Food', 15);
     expect(accContr.accArr.length).toBe(2)
 
-    // Getting Balance
+    // Getting the account
+    let acc = accContr.getAccount('k1');
+    expect(acc.name).toBe('Cat Food');
 
-    let bal =  accContr.getBal('Cat Food');
-    expect(bal).toBe(15);
+    acc = accContr.getAccount('k2');
+    expect(acc.name).toBe('Dog Food');
+
+    acc = accContr.getAccount('k3');
+    expect(acc).toBeUndefined();
 
     // Depositing into selected account
 
-    accContr.deposit('Cat Food', 10);
-     bal =  accContr.getBal('Cat Food');
-    expect(bal).toBe(25);
+    let deposit1 = accContr.deposit('k1', 10);
+    expect(deposit1).toBe(25);
 
-    accContr.deposit('Dog Food', 15);
-    bal = accContr.getBal('Dog Food');
-    expect(bal).toBe(30);
+    let deposit2 = accContr.deposit('k2', 15);
+    expect(deposit2).toBe(30);
+
+    //Withdraw from selected account
+
+    let withdraw1 = accContr.withdraw('k1', 10);
+    expect(withdraw1).toBe(15);
 
     expect(accContr.accArr.length).toBe(2)
-    expect(accContr.accArr[0].balance).toBe(25);
+    expect(accContr.accArr[0].balance).toBe(15);
     expect(accContr.accArr[0].name).toBe('Cat Food');
-    expect(accContr.accArr).toEqual([{ name: 'Cat Food', balance: 25 }, {name: 'Dog Food', balance: 30}]);
+    expect(accContr.accArr[0].key).toBe('k1');
 
-    // //Creating card
-    // let card = accContr.buildCard('Cat Food, 15');
-    // expect(card).toBeTruthy()
-
+    expect(accContr.accArr[1].balance).toBe(30);
+    expect(accContr.accArr[1].name).toBe('Dog Food');
+    expect(accContr.accArr[1].key).toBe('k2');
 
     // Total Balance
     accContr.addAccount('Gas Money', 40);
-    expect(accContr.accArr).toEqual([{ name: 'Cat Food', balance: 25 },{name: 'Dog Food', balance: 30}, { name: 'Gas Money', balance: 40 }]);
-    expect(accContr.totalBalance()).toBe('$95');
-
-
+    expect(accContr.accArr[2].balance).toBe(40);
+    expect(accContr.accArr[2].name).toBe('Gas Money');
+    expect(accContr.accArr[2].key).toBe('k3');
+    expect(accContr.totalBalance()).toBe('$85');
 
     //Highest Balance
     expect(accContr.highestBalance()).toEqual('Gas Money: $40');
 
-
-
     //Lowest Balance
-    expect(accContr.lowestBalance()).toEqual('Cat Food: $25');
-
+    expect(accContr.lowestBalance()).toEqual('Cat Food: $15');
 
     //Delete Account
     accContr.deleteAccount('Cat Food');
     expect(accContr.accArr.length).toBe(2);
-    expect(accContr.accArr).toEqual([{name: 'Dog Food', balance: 30}, { name: 'Gas Money', balance: 40 }]);
-    console.log(accContr.accArr)
-
-
+    expect(accContr.accArr[0].balance).toBe(30);
+    expect(accContr.accArr[0].name).toBe('Dog Food');
+    expect(accContr.accArr[0].key).toBe('k2');
 })

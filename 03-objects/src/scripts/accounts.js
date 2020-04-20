@@ -4,7 +4,8 @@
 
 
 class Account {
-    constructor(accountName, startingBalance) {
+    constructor(key, accountName, startingBalance) {
+        this.key = key;
         this.name = accountName;
         this.balance = startingBalance;
 
@@ -24,31 +25,42 @@ class Account {
         return this.balance;
     }
 
+};
+
+
+
+class Card extends Account {
+
     buildCard() {
 
-        let mainDiv = document.createElement('div');
+        let accList = document.getElementById('accountsList');
+        let card = document.createElement('div');
 
+        let checkbox = document.createElement('input');
+        checkbox.setAttribute('type', 'checkbox');
+        checkbox.setAttribute('id', 'checkbox');
+        checkbox.setAttribute('key', this.key);
+        card.appendChild(checkbox);
 
+        let accName = document.createElement('div')
+        accName.appendChild(document.createTextNode(this.name));
+        accName.setAttribute('id', 'idAccountName')
+        card.appendChild(accName);
+        card.setAttribute('class', 'row')
+        // card.setAttribute('id', 'card');
 
-        let div1 = document.createElement('div')
-        div1.appendChild(document.createTextNode(this.name));
-        div1.setAttribute('id', 'idAccountName')
-        mainDiv.appendChild(div1);
-        mainDiv.setAttribute('class', 'row')
-        mainDiv.setAttribute('id', 'card');
+        let bal = document.createElement('div');
+        card.setAttribute('key', this.key);
 
-        let div2 = document.createElement('div');
-        div2.setAttribute('id', `${this.name}`)
-
-        div2.textContent = this.balance;
-        mainDiv.appendChild(div2);
+        bal.textContent = this.balance;
+        card.appendChild(bal);
 
         const delBtn = document.createElement('button');
         const delBtnText = document.createTextNode('Delete');
         delBtn.appendChild(delBtnText);
-        mainDiv.appendChild(delBtn);
-        div1.classList.add("divClass");;
-        div2.classList.add("divClass");;
+        card.appendChild(delBtn);
+        accName.classList.add("divClass");;
+        bal.classList.add("divClass");;
         // mainDiv.setAttribute('id', 'account');
         delBtn.setAttribute("class", "btn btn-outline-secondary");
 
@@ -62,7 +74,7 @@ class Account {
         depositDiv.appendChild(depAmount);
         depositDiv.appendChild(depBtn);
 
-        mainDiv.appendChild(depositDiv);
+        card.appendChild(depositDiv);
 
         const withdrDiv = document.createElement('div');
         const withdrAmount = document.createElement('input');
@@ -72,29 +84,24 @@ class Account {
         withdrDiv.appendChild(withdrAmount);
         withdrDiv.appendChild(withdrBtn);
 
-        mainDiv.appendChild(withdrDiv);
+        card.appendChild(withdrDiv);
 
 
 
         depBtn.addEventListener('click', () => {
             this.deposit(depAmount.value);
             depAmount.value = '';
-            div2.textContent = this.balance
+            bal.textContent = this.balance
 
 
 
         })
 
 
-        return mainDiv;
+        accList.appendChild(card);
 
     }
-
-};
-
-
-
-
+}
 
 
 // 130C
@@ -103,35 +110,46 @@ class AccountControl {
     constructor() {
 
         this.accArr = [];
+        this.counter = 1;
 
+    }
+
+    nextKey() {
+        return `k${this.counter++}`;
     }
 
     addAccount(accountName, startingBalance) {
-        this.accArr.push(new Account(accountName, startingBalance));
-        return this.accArr;
+        const key = this.nextKey();
+        let account = new Card(key, accountName, startingBalance)
+        let card = account.buildCard()
+        this.accArr.push(account);
+        return this.accArr, card;
+       
 
     }
 
-    getBal(accountName) {
-        //   console.log(accountName)
+    getAccount(key) {
         for (let i = 0; i < this.accArr.length; i++) {
-            if (accountName == this.accArr[i].name) {
-                console.log(i);
-                return this.accArr[i].balance;
-
-            }
-        }
-
-    }
-
-    deposit(accountName, amount) {
-        for (let i = 0; i < this.accArr.length; i++) {
-            if (accountName == this.accArr[i].name) {
-                let result = this.accArr[i].deposit(amount);
+            if (key == this.accArr[i].key) {
+                let result = this.accArr[i];
                 return result;
-
             }
         }
+
+    }
+
+    deposit(key, amount) {
+        let account = this.getAccount(key);
+        let balance = account.deposit(amount);
+        return balance;
+
+    }
+
+    withdraw(key, amount) {
+        let account = this.getAccount(key);
+        let balance = account.withdraw(amount);
+        return balance;
+
     }
 
     totalBalance() {
@@ -184,4 +202,4 @@ class AccountControl {
 }
 
 
-export { Account, AccountControl };
+export { Account, Card, AccountControl };
