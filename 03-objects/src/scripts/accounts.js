@@ -31,23 +31,31 @@ class Account {
 
 class Card extends Account {
 
+
+
+
     buildCard() {
 
-        let accList = document.getElementById('accountsList');
+
         let card = document.createElement('div');
+        // console.log(accList);
 
         let checkbox = document.createElement('input');
         checkbox.setAttribute('type', 'checkbox');
         checkbox.setAttribute('id', 'checkbox');
         checkbox.setAttribute('key', this.key);
         card.appendChild(checkbox);
+        if  (checkbox.checked = true){
+            console.log(checkbox.key);
+            
+        };
 
-        let accName = document.createElement('div')
+        let accName = document.createElement('div');
         accName.appendChild(document.createTextNode(this.name));
-        accName.setAttribute('id', 'idAccountName')
+        accName.setAttribute('id', 'idAccountName');
         card.appendChild(accName);
-        card.setAttribute('class', 'row')
-        // card.setAttribute('id', 'card');
+        card.setAttribute('class', 'row');
+        card.setAttribute('id', 'card');
 
         let bal = document.createElement('div');
         card.setAttribute('key', this.key);
@@ -59,17 +67,17 @@ class Card extends Account {
         const delBtnText = document.createTextNode('Delete');
         delBtn.appendChild(delBtnText);
         card.appendChild(delBtn);
-        accName.classList.add("divClass");;
-        bal.classList.add("divClass");;
+        accName.classList.add("divClass");
+        bal.classList.add("divClass");
         // mainDiv.setAttribute('id', 'account');
         delBtn.setAttribute("class", "btn btn-outline-secondary");
 
         const depositDiv = document.createElement('div');
         const depAmount = document.createElement('input');
-        depAmount.setAttribute('id', 'idDepAmount')
+        depAmount.setAttribute('id', 'idDepAmount');
         const depBtn = document.createElement('btn');
-        depBtn.textContent = 'Deposit'
-        depBtn.setAttribute('id', 'iddepBtn')
+        depBtn.textContent = 'Deposit';
+        depBtn.setAttribute('id', 'iddepBtn');
 
         depositDiv.appendChild(depAmount);
         depositDiv.appendChild(depBtn);
@@ -91,14 +99,13 @@ class Card extends Account {
         depBtn.addEventListener('click', () => {
             this.deposit(depAmount.value);
             depAmount.value = '';
-            bal.textContent = this.balance
+            bal.textContent = this.balance;
 
 
 
         })
+        return card;
 
-
-        accList.appendChild(card);
 
     }
 }
@@ -123,8 +130,8 @@ class AccountControl {
         let account = new Card(key, accountName, startingBalance)
         let card = account.buildCard()
         this.accArr.push(account);
-        return this.accArr, card;
-       
+        return [this.accArr, card];
+
 
     }
 

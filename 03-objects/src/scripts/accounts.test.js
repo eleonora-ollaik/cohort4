@@ -29,13 +29,18 @@ test('AccountController test', () => {
 
     //Adding account Test
 
-    accContr.addAccount('Cat Food', 15);
+    const [acct, card] = accContr.addAccount('Cat Food', 15);
+    // const xx = accContr.addAccount('Cat Food', 15);
+    // console.log(xx);
+    console.log(acct, card)
+    
 
     expect(accContr.accArr.length).toBe(1);
     expect(accContr.accArr[0].name).toBe('Cat Food');
 
+
     accContr.addAccount('Dog Food', 15);
-    expect(accContr.accArr.length).toBe(2)
+    expect(accContr.accArr.length).toBe(2);
 
     // Getting the account
     let acc = accContr.getAccount('k1');
@@ -60,7 +65,7 @@ test('AccountController test', () => {
     let withdraw1 = accContr.withdraw('k1', 10);
     expect(withdraw1).toBe(15);
 
-    expect(accContr.accArr.length).toBe(2)
+    expect(accContr.accArr.length).toBe(2);
     expect(accContr.accArr[0].balance).toBe(15);
     expect(accContr.accArr[0].name).toBe('Cat Food');
     expect(accContr.accArr[0].key).toBe('k1');

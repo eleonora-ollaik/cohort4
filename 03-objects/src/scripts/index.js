@@ -1,4 +1,5 @@
-import { Card, AccountControl } from './accounts.js';
+import {  Card} from './accounts.js';
+import{AccountControl } from './accounts.js';
 
 let accountManager = new AccountControl();
 
@@ -10,32 +11,44 @@ document.body.addEventListener('click', e => {
 
     const el = e.target;
     const key = el.getAttribute('key');
-    const checkbox = document.getElementById('checkbox');
-    // console.log(key);
+    const checkboxes = document.querySelectorAll('input#checkbox');
+    let accList = document.getElementById("idAccountsList");
+
+    // console.log(checkboxes);
     
 
     if (el.nodeName === 'BUTTON') {
 
         if (el.textContent === 'Add Account') {
-            accountManager.addAccount(accName.value, Number(startBal.value));
-             console.log(accountManager.accArr);
+            const [acct, card] = accountManager.addAccount(accName.value, Number(startBal.value));
+                    accList.appendChild(card);
+                    console.log(acct);
+
+                    return acct;
+
+
 
         }
-
-        else if (el ==='checkbox') {
-            if (checkbox.checked = true) {
-            let result = accountManager.getAccount(checkbox);
-            console.log(result);
+        // for (let i = 0; i < checkboxes.length; i++) {
+        //     checkboxes[i].addEventListener('click', console.log(key))
+        // }
+         if (el ==='checkbox') {
+            for (let i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked = true) {
+                checkboxes[i].addEventListener('click', console.log(key))
             }
-        }
-        else if (el.textContent === 'Deposit') {
-                    let result = accountManager.deposit(key, depAmount.value);
-                    return result;
-                }
+            // let result = accountManager.getAccount(checkboxes[i].key);
+            // console.log(result); 
+            // }
+        }}
+    //     else if (el.textContent === 'Deposit') {
+    //                 let result = accountManager.deposit(key, depAmount.value);
+    //                 return result;
+    //             }
 
-    }
+    // }
 
-});
+};
 
 
 
@@ -108,4 +121,4 @@ document.body.addEventListener('click', e => {
 
 
     // }),
-
+});
