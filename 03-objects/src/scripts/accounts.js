@@ -61,7 +61,7 @@ class Card extends Account {
 
         let bal = document.createElement('div');
         card.setAttribute('key', this.key);
-
+        bal.setAttribute('class', 'idCardBalance');
         bal.textContent = this.balance;
         card.appendChild(bal);
 
@@ -71,41 +71,8 @@ class Card extends Account {
         card.appendChild(delBtn);
         accName.classList.add("divClass");
         bal.classList.add("divClass");
-        // mainDiv.setAttribute('id', 'account');
         delBtn.setAttribute("class", "btn btn-outline-secondary");
-
-        // const depositDiv = document.createElement('div');
-        // const depAmount = document.createElement('input');
-        // depAmount.setAttribute('id', 'idDepAmount');
-        // const depBtn = document.createElement('btn');
-        // depBtn.textContent = 'Deposit';
-        // depBtn.setAttribute('id', 'iddepBtn');
-
-        // depositDiv.appendChild(depAmount);
-        // depositDiv.appendChild(depBtn);
-
-        // card.appendChild(depositDiv);
-
-        // const withdrDiv = document.createElement('div');
-        // const withdrAmount = document.createElement('input');
-        // const withdrBtn = document.createElement('btn');
-        // withdrBtn.textContent = 'Withdraw'
-
-        // withdrDiv.appendChild(withdrAmount);
-        // withdrDiv.appendChild(withdrBtn);
-
-        // card.appendChild(withdrDiv);
-
-
-
-        // depBtn.addEventListener('click', () => {
-        //     this.deposit(depAmount.value);
-        //     depAmount.value = '';
-        //     bal.textContent = this.balance;
-
-
-
-        // })
+        delBtn.setAttribute('todo', 'delete')
         return card;
 
 
