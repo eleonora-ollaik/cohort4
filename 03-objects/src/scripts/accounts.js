@@ -44,11 +44,13 @@ class Card extends Account {
         checkbox.setAttribute('type', 'checkbox');
         checkbox.setAttribute('id', 'checkbox');
         checkbox.setAttribute('key', this.key);
+        checkbox.setAttribute('name', this.name);
+        checkbox.setAttribute('value', this.balance);
         card.appendChild(checkbox);
-        if  (checkbox.checked = true){
-            console.log(checkbox.key);
+        // if  (checkbox.checked = true){
+        //     console.log('checked');
             
-        };
+        // };
 
         let accName = document.createElement('div');
         accName.appendChild(document.createTextNode(this.name));
@@ -72,38 +74,38 @@ class Card extends Account {
         // mainDiv.setAttribute('id', 'account');
         delBtn.setAttribute("class", "btn btn-outline-secondary");
 
-        const depositDiv = document.createElement('div');
-        const depAmount = document.createElement('input');
-        depAmount.setAttribute('id', 'idDepAmount');
-        const depBtn = document.createElement('btn');
-        depBtn.textContent = 'Deposit';
-        depBtn.setAttribute('id', 'iddepBtn');
+        // const depositDiv = document.createElement('div');
+        // const depAmount = document.createElement('input');
+        // depAmount.setAttribute('id', 'idDepAmount');
+        // const depBtn = document.createElement('btn');
+        // depBtn.textContent = 'Deposit';
+        // depBtn.setAttribute('id', 'iddepBtn');
 
-        depositDiv.appendChild(depAmount);
-        depositDiv.appendChild(depBtn);
+        // depositDiv.appendChild(depAmount);
+        // depositDiv.appendChild(depBtn);
 
-        card.appendChild(depositDiv);
+        // card.appendChild(depositDiv);
 
-        const withdrDiv = document.createElement('div');
-        const withdrAmount = document.createElement('input');
-        const withdrBtn = document.createElement('btn');
-        withdrBtn.textContent = 'Withdraw'
+        // const withdrDiv = document.createElement('div');
+        // const withdrAmount = document.createElement('input');
+        // const withdrBtn = document.createElement('btn');
+        // withdrBtn.textContent = 'Withdraw'
 
-        withdrDiv.appendChild(withdrAmount);
-        withdrDiv.appendChild(withdrBtn);
+        // withdrDiv.appendChild(withdrAmount);
+        // withdrDiv.appendChild(withdrBtn);
 
-        card.appendChild(withdrDiv);
-
-
-
-        depBtn.addEventListener('click', () => {
-            this.deposit(depAmount.value);
-            depAmount.value = '';
-            bal.textContent = this.balance;
+        // card.appendChild(withdrDiv);
 
 
 
-        })
+        // depBtn.addEventListener('click', () => {
+        //     this.deposit(depAmount.value);
+        //     depAmount.value = '';
+        //     bal.textContent = this.balance;
+
+
+
+        // })
         return card;
 
 
@@ -132,7 +134,7 @@ class AccountControl {
         this.accArr.push(account);
         return [this.accArr, card];
 
-
+ 
     }
 
     getAccount(key) {

@@ -1,5 +1,5 @@
-import {  Card} from './accounts.js';
-import{AccountControl } from './accounts.js';
+import { Card } from './accounts.js';
+import { AccountControl } from './accounts.js';
 
 let accountManager = new AccountControl();
 
@@ -11,44 +11,54 @@ document.body.addEventListener('click', e => {
 
     const el = e.target;
     const key = el.getAttribute('key');
-    const checkboxes = document.querySelectorAll('input#checkbox');
     let accList = document.getElementById("idAccountsList");
+    const value = el.getAttribute('value');
+    const name = el.getAttribute('name');
+    const depAmount = document.getElementById('depositAmount').value;
+    const depBtn = document.getElementById('depositBtn');
 
     // console.log(checkboxes);
-    
+    // console.log(name);
+
+    if (depBtn && key) {
+        
+        // depBtn.addEventListener('click', () => {
+            let deposit = accountManager.deposit(key, depAmount);
+            console.log(deposit);
+            return deposit;
+        
+    };
+
 
     if (el.nodeName === 'BUTTON') {
 
         if (el.textContent === 'Add Account') {
             const [acct, card] = accountManager.addAccount(accName.value, Number(startBal.value));
-                    accList.appendChild(card);
-                    console.log(acct);
-
-                    return acct;
-
-
-
+            accList.appendChild(card);
+            console.log(acct);
+            return acct;
         }
+
+
         // for (let i = 0; i < checkboxes.length; i++) {
         //     checkboxes[i].addEventListener('click', console.log(key))
         // }
-         if (el ==='checkbox') {
-            for (let i = 0; i < checkboxes.length; i++) {
-            if (checkboxes[i].checked = true) {
-                checkboxes[i].addEventListener('click', console.log(key))
-            }
-            // let result = accountManager.getAccount(checkboxes[i].key);
-            // console.log(result); 
+        if (el.id === 'checkbox') {
+
+            // for (let i = 0; i < checkboxes.length; i++) {
+            //     // if (checkboxes[i].checked) {
+            //         checkboxes[i].addEventListener('click', console.log('checked'))
+            //     // }
             // }
-        }}
-    //     else if (el.textContent === 'Deposit') {
-    //                 let result = accountManager.deposit(key, depAmount.value);
-    //                 return result;
-    //             }
+        }
+        //     else if (el.textContent === 'Deposit') {
+        //                 let result = accountManager.deposit(key, depAmount.value);
+        //                 return result;
+        //             }
 
-    // }
+        // }
 
-};
+    };
 
 
 
@@ -98,18 +108,18 @@ document.body.addEventListener('click', e => {
     // });
 
 
-            // Depositing Money
+    // Depositing Money
 
 
-// document.getElementById("iddepBtn").addEventListener("click", () => {
-//     for (let i = 0; i<accountManager.accArr.length; i++) {
-//         if (document.getElementById("idAccountName").value === accountManager.accArr[i].accName) {
-//             let amount = Number(document.getElementById("idDepAmount").value);
-//             accountManager.accArr[i].deposit(amount);
+    // document.getElementById("iddepBtn").addEventListener("click", () => {
+    //     for (let i = 0; i<accountManager.accArr.length; i++) {
+    //         if (document.getElementById("idAccountName").value === accountManager.accArr[i].accName) {
+    //             let amount = Number(document.getElementById("idDepAmount").value);
+    //             accountManager.accArr[i].deposit(amount);
 
-//         }
-//     }
-// })
+    //         }
+    //     }
+    // })
 
 
 
