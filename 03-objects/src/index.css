@@ -55,12 +55,36 @@ p{
     margin-top: -22px;
 }
   .btn.btn-outline-secondary {
-      height: 30px;
+      height: 35px;
       margin-left: 89%;
-      margin-top: -40px;
+      margin-top: -35px;
+      width: 93px;
   }
 
   .divClass {
       width : 13rem;
       height: 35px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      margin-left: -200px;
+      text-align: center;
+      padding: 3px 0px 3px 3px;
+
   }
+
+  #card {
+    transition: (all 0.30s ease-in-out);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    outline: none;
+    
+    
+    
+}
+#card:focus {
+    box-shadow:(0 0 5px rgba(81, 203, 238, 1));
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+  
+.card-body.text-success {
+    text-align: center;
+}

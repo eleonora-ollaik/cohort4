@@ -88,7 +88,7 @@ test('AccountController test', () => {
     expect(accContr.lowestBalance()).toEqual('Cat Food: $15');
 
     //Delete Account
-    accContr.deleteAccount('Cat Food');
+    accContr.deleteAccount('k1');
     expect(accContr.accArr.length).toBe(2);
     expect(accContr.accArr[0].balance).toBe(30);
     expect(accContr.accArr[0].name).toBe('Dog Food');

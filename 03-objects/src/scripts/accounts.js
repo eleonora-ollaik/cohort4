@@ -47,21 +47,20 @@ class Card extends Account {
         checkbox.setAttribute('name', this.name);
         checkbox.setAttribute('value', this.balance);
         card.appendChild(checkbox);
-        // if  (checkbox.checked = true){
-        //     console.log('checked');
-            
-        // };
+      
 
-        let accName = document.createElement('div');
+        let accName = document.createElement('span');
         accName.appendChild(document.createTextNode(this.name));
         accName.setAttribute('id', 'idAccountName');
+        accName.setAttribute('key', this.key);
         card.appendChild(accName);
         card.setAttribute('class', 'row');
         card.setAttribute('id', 'card');
+        card.setAttribute('key', this.key)
 
-        let bal = document.createElement('div');
-        card.setAttribute('key', this.key);
-        bal.setAttribute('class', 'idCardBalance');
+        let bal = document.createElement('span');
+        bal.setAttribute('id', 'idCardBalance');
+        bal.setAttribute('key', this.key);
         bal.textContent = this.balance;
         card.appendChild(bal);
 
@@ -73,6 +72,8 @@ class Card extends Account {
         bal.classList.add("divClass");
         delBtn.setAttribute("class", "btn btn-outline-secondary");
         delBtn.setAttribute('todo', 'delete')
+        delBtn.setAttribute('key', this.key);
+        
         return card;
 
 
@@ -147,6 +148,7 @@ class AccountControl {
             }
         }
         return `${highName}: $${highBal}`;
+        
     }
 
     lowestBalance() {
@@ -163,9 +165,9 @@ class AccountControl {
         return `${lowName}: $${lowestBal}`;
     }
 
-    deleteAccount(accountName) {
+    deleteAccount(key) {
         for (let i = 0; i < this.accArr.length; i++) {
-            if (accountName === this.accArr[i].name) {
+            if (key === this.accArr[i].key) {
                 this.accArr.splice(i, 1)
             }
         }
