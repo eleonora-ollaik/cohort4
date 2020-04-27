@@ -33,6 +33,8 @@ document.body.addEventListener('click', e => {
     if (todo === 'addAcc') {
         const [acct, card] = accountManager.addAccount(accName.value, Number(startBal.value));
         accList.appendChild(card);
+        let br = document.createElement('br');
+        accList.appendChild(br);
         updateAccounts();
         return acct;
     }
