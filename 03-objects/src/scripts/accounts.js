@@ -3,6 +3,8 @@
 // Eleanor Roosevelt
 
 
+// Creating a new account and manipulating balance:
+
 class Account {
     constructor(key, accountName, startingBalance) {
         this.key = key;
@@ -28,60 +30,45 @@ class Account {
 };
 
 
+// Creating a Card for a new Account:
 
 class Card extends Account {
 
-
-
-
     buildCard() {
-
-
         let card = document.createElement('div');
-        // console.log(accList);
-
-        let checkbox = document.createElement('input');
-        checkbox.setAttribute('type', 'checkbox');
-        checkbox.setAttribute('id', 'checkbox');
-        checkbox.setAttribute('key', this.key);
-        checkbox.setAttribute('name', this.name);
-        checkbox.setAttribute('value', this.balance);
-        card.appendChild(checkbox);
-      
 
         let accName = document.createElement('span');
         accName.appendChild(document.createTextNode(this.name));
         accName.setAttribute('id', 'idAccountName');
         accName.setAttribute('key', this.key);
+        accName.classList.add("divClass");
         card.appendChild(accName);
+
         card.setAttribute('class', 'row');
         card.setAttribute('id', 'card');
-        card.setAttribute('key', this.key)
+        card.setAttribute('key', this.key);
 
         let bal = document.createElement('span');
-        bal.setAttribute('id', 'idCardBalance');
+        bal.setAttribute('id', `${this.key}`);
         bal.setAttribute('key', this.key);
         bal.textContent = this.balance;
+        bal.classList.add("divClass");
         card.appendChild(bal);
 
         const delBtn = document.createElement('button');
         const delBtnText = document.createTextNode('Delete');
         delBtn.appendChild(delBtnText);
-        card.appendChild(delBtn);
-        accName.classList.add("divClass");
-        bal.classList.add("divClass");
         delBtn.setAttribute("class", "btn btn-outline-secondary");
-        delBtn.setAttribute('todo', 'delete')
+        delBtn.setAttribute('todo', 'delete');
         delBtn.setAttribute('key', this.key);
-        
+        card.appendChild(delBtn);
+
         return card;
-
-
     }
 }
 
 
-// 130C
+// Creating an Account Controller Class to manipulate multiple accounts
 
 class AccountControl {
     constructor() {
@@ -91,19 +78,24 @@ class AccountControl {
 
     }
 
+
+    // Setting up a dynamic key for each object in the array
+
     nextKey() {
         return `k${this.counter++}`;
     }
 
+    // Adding a new account as well as creating a new card for it
+
     addAccount(accountName, startingBalance) {
         const key = this.nextKey();
-        let account = new Card(key, accountName, startingBalance)
-        let card = account.buildCard()
+        let account = new Card(key, accountName, startingBalance);
+        let card = account.buildCard();
         this.accArr.push(account);
         return [this.accArr, card];
-
- 
     }
+
+    // Getting account data by key
 
     getAccount(key) {
         for (let i = 0; i < this.accArr.length; i++) {
@@ -115,12 +107,16 @@ class AccountControl {
 
     }
 
+    // Depositing to specific account in the array knowing it's key number
+
     deposit(key, amount) {
         let account = this.getAccount(key);
         let balance = account.deposit(amount);
         return balance;
 
     }
+
+    // --//-- Withdrawal
 
     withdraw(key, amount) {
         let account = this.getAccount(key);
@@ -129,13 +125,21 @@ class AccountControl {
 
     }
 
+    // Getting a total balance of all the accounts
+
     totalBalance() {
         let total = 0;
         for (let i = 0; i < this.accArr.length; i++) {
             total += Number(this.accArr[i].balance);
         }
-        return `$${total}`;
+        if (total > 0) {
+            return `$${total}`;
+        } else {
+            return 'No accounts added';
+        }
     }
+
+    // Getting a largest account balance from the array
 
     highestBalance() {
         let highBal = 0;
@@ -146,10 +150,14 @@ class AccountControl {
                 highBal = Number(this.accArr[i].balance);
                 highName = currentName;
             }
+        } if (highBal > 0) {
+            return `${highName}: $${highBal}`;
+        } else {
+            return 'No accounts added';
         }
-        return `${highName}: $${highBal}`;
-        
     }
+
+    // Getting a smallest account balance from the array
 
     lowestBalance() {
         let lowestBal = Number.POSITIVE_INFINITY;
@@ -161,22 +169,23 @@ class AccountControl {
                 lowestBal = low;
                 lowName = currentName;
             }
+        } if (lowestBal > 0) {
+            return `${lowName}: $${lowestBal}`;
+        } else {
+            return 'No accounts added';
         }
-        return `${lowName}: $${lowestBal}`;
+
     }
+
+    //Deleting specific account from the array
 
     deleteAccount(key) {
         for (let i = 0; i < this.accArr.length; i++) {
             if (key === this.accArr[i].key) {
-                this.accArr.splice(i, 1)
+                this.accArr.splice(i, 1);
             }
         }
     }
-
-
-
-
-
 }
 
 

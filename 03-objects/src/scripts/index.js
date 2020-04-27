@@ -16,92 +16,69 @@ document.body.addEventListener('click', e => {
     const el = e.target;
     const key = el.getAttribute('key');
     let accList = document.getElementById("idAccountsList");
-    const value = el.getAttribute('value');
-    const name = el.getAttribute('name');
     let depAmount = document.getElementById('depositAmount').value;
     let withdrAmount = document.getElementById('withdrawalAmount').value;
-    const depBtn = document.getElementById('depositBtn');
-    const cardBalance = document.getElementById('idCardBalance');
     const todo = el.getAttribute('todo')
     const account1 = document.getElementById('accountName');
-    // console.log('todo', todo);
-    // console.log(el.id);
+
+//Selecting active account
 
     if (key) {
-        console.log('I should set my accName');
         let accN = accountManager.getAccount(key);
-        console.log(accN.name);
         account1.textContent = accN.name;
         selectedKey = accN.key;
-
     }
 
-    if (todo === 'deposit') {
-        console.log('I want to deposit');
-        console.log('selected key', selectedKey)
-        let result = accountManager.deposit(selectedKey, depAmount);
-        console.log(result);
-        console.log(accountManager.accArr);
-        console.log(cardBalance.textContent);
-        let cardBal = accountManager.getAccount(selectedKey);
-        cardBalance.textContent = cardBal ;
-        depositAmount.value = '';
-        updateAccounts();
-    }
-
-    if (todo === 'withdraw') {
-        console.log('I want to withdraw');
-        console.log('selected key', selectedKey)
-        let result = accountManager.withdraw(selectedKey, withdrAmount);
-        console.log(result);
-        console.log(accountManager.accArr);
-        console.log(cardBalance);
-        cardBalance.textContent = result;
-        withdrawalAmount.value = '';
-        updateAccounts();
-    }
+// Adding a new account
     if (todo === 'addAcc') {
         const [acct, card] = accountManager.addAccount(accName.value, Number(startBal.value));
         accList.appendChild(card);
-        console.log(acct);
         updateAccounts();
         return acct;
-
     }
 
+// Depositing into selected account
+    if (todo === 'deposit') {
+        let result = accountManager.deposit(selectedKey, depAmount);
+        depositAmount.value = '';
+        let card = document.getElementById(`${selectedKey}`)
+        card.textContent = result;
+        updateAccounts();
+    }
+
+// Withdrawing from selected account
+    if (todo === 'withdraw') {
+        let result = accountManager.withdraw(selectedKey, withdrAmount);
+        withdrawalAmount.value = '';
+        let card = document.getElementById(`${selectedKey}`)
+        card.textContent = result;
+        updateAccounts();
+    }
+
+//Deleting selected account along with the card
     else if (todo === 'delete') {
         accountManager.deleteAccount(selectedKey);
-        
         let card = el.parentElement;
         let accountList = card.parentElement;
         accountList.removeChild(card);
-        updateAccounts()
+        updateAccounts();
 
     }
-
-   
 })
 
-function updateAccounts ()  {
+// Function updating largest, smallest accounts and total funds in the Piggy Bank
+function updateAccounts() {
 
     let biggest = accountManager.highestBalance();
-    bigName.innerHTML = biggest;
+    bigName.textContent = biggest;
 
     let smallest = accountManager.lowestBalance();
-    smallName.innerHTML = smallest;
+    smallName.textContent = smallest;
 
     let total = accountManager.totalBalance();
-    totalFunds.innerHTML = total;
+    totalFunds.textContent = total;
     accName.value = '';
     startBal.value = '';
-    
+
 }
 
-function updateBalance (selectedKey) {
-    for (let i = 0; i < this.accArr.length; i++) {
-        if (selectedKey == this.accArr[i].key) {
-            let result = this.accArr[i];
-            return result;
-        }
-    }
-}

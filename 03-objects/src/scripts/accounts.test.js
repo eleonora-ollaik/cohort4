@@ -1,5 +1,6 @@
 import { Account, Card, AccountControl } from './accounts.js';
 
+// Testing Account Class: adding an account and manipulating balance
 
 test('Class test', () => {
     const acc1 = new Account('k', 'acc1', 25);
@@ -11,29 +12,35 @@ test('Class test', () => {
 
 });
 
-test ('Card class', () => {
+
+
+// Testing a Card class
+
+test('Card class', () => {
 
     const acc2 = new Card('k', 'acc2', 30);
 
-      //Creating card
-      
-      expect(acc2.buildCard()).toBeTruthy();
+//Creating card
 
-})
+    expect(acc2.buildCard()).toBeTruthy();
+
+});
+
+
+
+// Testing an Account Controller class
 
 test('AccountController test', () => {
-    
+
     const accContr = new AccountControl();
-   
+
     expect(accContr.accArr).toEqual([]);
 
-    //Adding account Test
+//Testing 'Add account' function
 
     const [acct, card] = accContr.addAccount('Cat Food', 15);
-    // const xx = accContr.addAccount('Cat Food', 15);
-    // console.log(xx);
     console.log(acct, card)
-    
+
 
     expect(accContr.accArr.length).toBe(1);
     expect(accContr.accArr[0].name).toBe('Cat Food');
@@ -42,9 +49,10 @@ test('AccountController test', () => {
     accContr.addAccount('Dog Food', 15);
     expect(accContr.accArr.length).toBe(2);
 
-    // Getting the account
+// Getting the account
     let acc = accContr.getAccount('k1');
     expect(acc.name).toBe('Cat Food');
+    expect(acc.balance).toBe(15);
 
     acc = accContr.getAccount('k2');
     expect(acc.name).toBe('Dog Food');
@@ -52,7 +60,7 @@ test('AccountController test', () => {
     acc = accContr.getAccount('k3');
     expect(acc).toBeUndefined();
 
-    // Depositing into selected account
+// Depositing into selected account
 
     let deposit1 = accContr.deposit('k1', 10);
     expect(deposit1).toBe(25);
@@ -60,7 +68,7 @@ test('AccountController test', () => {
     let deposit2 = accContr.deposit('k2', 15);
     expect(deposit2).toBe(30);
 
-    //Withdraw from selected account
+//Withdraw from selected account
 
     let withdraw1 = accContr.withdraw('k1', 10);
     expect(withdraw1).toBe(15);
@@ -74,20 +82,20 @@ test('AccountController test', () => {
     expect(accContr.accArr[1].name).toBe('Dog Food');
     expect(accContr.accArr[1].key).toBe('k2');
 
-    // Total Balance
+// Getting Total Balance
     accContr.addAccount('Gas Money', 40);
     expect(accContr.accArr[2].balance).toBe(40);
     expect(accContr.accArr[2].name).toBe('Gas Money');
     expect(accContr.accArr[2].key).toBe('k3');
     expect(accContr.totalBalance()).toBe('$85');
 
-    //Highest Balance
+//Getting Highest Balance
     expect(accContr.highestBalance()).toEqual('Gas Money: $40');
 
-    //Lowest Balance
+//Getting Lowest Balance
     expect(accContr.lowestBalance()).toEqual('Cat Food: $15');
 
-    //Delete Account
+//Deleting Account
     accContr.deleteAccount('k1');
     expect(accContr.accArr.length).toBe(2);
     expect(accContr.accArr[0].balance).toBe(30);
