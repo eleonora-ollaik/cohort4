@@ -1,6 +1,7 @@
-
+global.fetch = require('node-fetch')
 
 const functions = {
+    
 
     url: 'https://jsonplaceholder.typicode.com/users',
 

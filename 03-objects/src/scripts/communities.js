@@ -1,3 +1,5 @@
+import functions from './fetch.js';
+
 class City {
     constructor(key, name, latitude, longtitude, population) {
         this.key = key;
@@ -8,40 +10,57 @@ class City {
     }
 
     show() {
-        return `${this.name} has a latitude of ${this.latitude} and a longtitude of ${this.longtitude} and a population of ${this.population}`
+        try {
+            return `${this.name} has a latitude of ${this.latitude} and a longtitude of ${this.longtitude} and a population of ${this.population}`
+        } catch (error) {
+            throw (error);
+        }
     }
 
     movedIn(num) {
-        this.population += Number(num);
-        return this.population;
+        try {
+            this.population += Number(num);
+            return this.population;
+        } catch (error) {
+            throw (error);
+        }
     }
 
     movedOut(num) {
-        this.population -= Number(num);
-        return this.population;
+        try {
+            this.population -= Number(num);
+            return this.population;
+        } catch (error) {
+            throw (error);
+        }
     }
 
     howBig() {
-        switch (true) {
-            case (this.population > 100000):
-                return 'City';
-            case (this.population > 20000):
-                return 'Large Town';
-            case (this.population > 1000):
-                return 'Town';
-            case (this.population > 100):
-                return 'Village';
-            case (this.population < 100):
-                return 'Hamlet';
+        try {
+            switch (true) {
+                case (this.population > 100000):
+                    return 'City';
+                case (this.population > 20000):
+                    return 'Large Town';
+                case (this.population > 1000):
+                    return 'Town';
+                case (this.population > 100):
+                    return 'Village';
+                case (this.population < 100):
+                    return 'Hamlet';
+            }
+            return 'No population at the moment';
+        } catch (error) {
+            throw (error);
         }
-        return 'No population at the moment';
     }
 }
 
 class Community {
     constructor() {
-        this.list = []
-        this.counter = 1;
+        this.url = 'http://127.0.0.1:5000/';
+        this.list = [];
+        this.counter = 4;
     }
 
     // Setting up a dynamic key for each City
@@ -50,19 +69,41 @@ class Community {
         return `k${this.counter++}`;
     }
 
-    createCity(name, latitude, longtitude, population) {
-        const key = this.nextKey();
-        let city = new City(key, name, latitude, longtitude, population);
-        this.list.push(city);
+    async createCity(name, latitude, longtitude, population) {
+        try {
+            // let data = await functions.postData(this.url + 'all')
+            let key = this.counter++
+            let city = new City(key, name, latitude, longtitude, population);
+            this.list.push(city);
+            console.log(city);
+            console.log(this.list);
+            console.log(typeof (city.key));
+
+
+
+            let data = await functions.postData(this.url + 'add', city);
+            console.log(data);
+            if (data.status === 200) {
+                return data;
+            } return 'error';
+        } catch (error) {
+            throw (error);
+        }
     }
 
-    whichSphere(city) {
-        if (city.latitude > 0) {
-            return 'Northern Hemisphere';
-        } else {
-            return 'Southern Hemisphere';
-        }
 
+    whichSphere(city) {
+        try {
+            if (city.latitude > 0) {
+                return 'Northern Hemisphere';
+            } else if (city.latitude < 0) {
+                return 'Southern Hemisphere';
+            } else if (city.latitude === 0) {
+                return 'Equator';
+            }
+        } catch (error) {
+            throw (error);
+        }
     }
 
     getMostNorthern() {

@@ -1,5 +1,10 @@
 import {City, Community} from './communities.js'
 
+global.fetch = require('node-fetch');
+const url = 'http://127.0.0.1:5000/';
+
+
+
 // Testing City class
 
 test ('City class', () => {
@@ -31,7 +36,8 @@ test ('City class', () => {
 
 // Testing the Community Class
 
-test ('Community class', () => {
+
+test ('Community class', async () => {
 
     const newCom = new Community;
 
@@ -39,10 +45,12 @@ test ('Community class', () => {
 
     expect(newCom.list).toStrictEqual([]);
 
-    newCom.createCity('Yeysk', 46.7129, 38.2741, 84259);
-    expect(newCom.list.length).toBe(1);
-    expect(newCom.list[0].key).toBe('k1');
+    let data = await newCom.createCity('Yeysk', 46.7129, 38.2741, 84259);
+    // expect(newCom.list.length).toBe(1);
+    
+    expect(newCom.list[0].key).toBe(4);
     expect(newCom.list[0].name).toBe('Yeysk');
+    expect(data.status).toBe(200);
 
 // Testing which sphere the city is in
 
@@ -59,7 +67,7 @@ test ('Community class', () => {
     expect(newCom.getMostSouthern()).toBe('Santiago');
 
 // Testing getTotalPopulation method
-
+ 
     expect(newCom.getPopulation()).toBe(8822993);
 
 // Removing a city - test

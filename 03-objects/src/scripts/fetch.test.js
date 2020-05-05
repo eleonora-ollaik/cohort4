@@ -199,6 +199,9 @@ test ('does Fetch work?', async () => {
     data = await functions.postData(url + 'delete', {key:1});
     expect(data.status).toEqual(200);
 
+    data = await functions.postData(url + 'delete', {key:2});
+    expect(data.status).toEqual(200);
+
     data = await functions.postData(url + 'read', {key:1});
     expect(data.status).toEqual(400);    
 })
