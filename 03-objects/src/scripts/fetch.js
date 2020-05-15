@@ -1,4 +1,3 @@
-global.fetch = require('node-fetch')
 
 const functions = {
     

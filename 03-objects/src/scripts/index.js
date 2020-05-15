@@ -1,6 +1,7 @@
 import { Card } from './accounts.js';
 import { AccountControl } from './accounts.js';
 
+
 let accountManager = new AccountControl();
 let selectedKey;
 const bigName = document.getElementById('largest');

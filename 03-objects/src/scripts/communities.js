@@ -55,101 +55,329 @@ class City {
         }
     }
 }
+// let k = 100;
 
-class Community {
+class Community { 
     constructor() {
         this.url = 'http://127.0.0.1:5000/';
         this.list = [];
-        this.counter = 4;
+        this.counter = this.list.length;
     }
-
-    // Setting up a dynamic key for each City
 
     nextKey() {
-        return `k${this.counter++}`;
+        let counter = this.list.length + 1;
+        console.log(counter);
+        
+        return counter;
     }
 
+    // async createCity(name, latitude, longtitude, population) {
+    //     try {
+    //         let k;
+    //         let data = await functions.postData(this.url + 'all');
+    //         if (data.length === 0) { k = 0 } else {
+    //             k = data.sort((a, b) => { return b.key - a.key });
+    //             k = k[0].key;
+    //         }
+    //         let city = new City(k + 1, name, latitude, longtitude, population);
+    //         this.list.push(city);
+    //         // console.log(city);
+    //         // console.log(this.list);
+    //         // console.log(typeof (city.key));
+
+
+
+    //         data = await functions.postData(this.url + 'add', city);
+    //         // console.log(data);
+    //         if (data.status === 200) {
+    //             return data;
+    //         } return 'error';
+    //     } catch (error) {
+    //         throw (error);
+    //     }
+    // }
     async createCity(name, latitude, longtitude, population) {
+        let key = this.nextKey()
+        let city = new City(key, name, latitude, longtitude, population);
+        this.list.push(city);
+        // k++;
+        // console.log(this.list);
+        console.log(this.url, city);
+        
+
+        let data = await functions.postData(this.url + 'add', city);
+        console.log(data);
+        
+        // console.log(data);
+
+
+    }
+
+
+
+    // async getCommunity() {
+    //     let newData = await functions.postData(this.url + 'all')
+    //     console.log(newData);
+
+    //     this.list = newData.map(city => new City(city.key, city.name, city.longitude, city.latitude, city.population))
+    //     console.log(this.list);
+    //     this.counter = (this.list.length) + 1;
+    //     console.log(this.counter);
+    //     return this;
+    // }
+
+
+
+    async getCommunity() {
         try {
-            // let data = await functions.postData(this.url + 'all')
-            let key = this.counter++
-            let city = new City(key, name, latitude, longtitude, population);
-            this.list.push(city);
-            console.log(city);
-            console.log(this.list);
-            console.log(typeof (city.key));
-
-
-
-            let data = await functions.postData(this.url + 'add', city);
-            console.log(data);
-            if (data.status === 200) {
-                return data;
-            } return 'error';
-        } catch (error) {
+            let data = await functions.postData(this.url + 'all');
+            if (data.length > 0) {
+                // console.log(data.status);
+                this.list = [];
+                this.list = await JSON.parse(JSON.stringify(data));
+                return this.list;
+            }
+            return 'error';
+        }
+        catch (error) {
             throw (error);
         }
     }
 
 
-    whichSphere(city) {
-        try {
-            if (city.latitude > 0) {
-                return 'Northern Hemisphere';
-            } else if (city.latitude < 0) {
-                return 'Southern Hemisphere';
-            } else if (city.latitude === 0) {
-                return 'Equator';
+
+    getLocal(key) {
+        for (let i = 0; i < this.list.length; i++) {
+            if (key == this.list[i].key) {
+                let result = this.list[i];
+                return result;
             }
+        }
+
+    }
+
+    deposit (key, num) {
+        let city = this.getLocal(key);
+        return city.movedIn(num);
+    }
+
+    whichSphere(key) {
+        try {
+            for (let i = 0; i < this.list.length; i++) {
+                if (key == this.list[i].key) {
+                    let result = this.list[i].latitude;
+                    // console.log(result);
+
+                    // return result;
+                    if (result > 0) {
+                        return 'Northern Hemisphere';
+                    } else if (result < 0) {
+                        return 'Southern Hemisphere';
+                    } else if (result === 0) {
+                        return 'Equator';
+                    }
+                }
+            }
+
         } catch (error) {
             throw (error);
         }
     }
 
     getMostNorthern() {
-        let mostNorthern = 0;
-        let mostNorthernName
-        for (let i = 0; i < this.list.length; i++) {
-            if (this.list[i].latitude > mostNorthern) {
-                let currentName = this.list[i].name;
-                mostNorthern = Number(this.list[i].latitude);
-                mostNorthernName = currentName;
+        try {
+            let mostNorthern = 0;
+            let mostNorthernName;
+            // let data = await functions.postData(this.url + 'all');
+            for (let i = 0; i < this.list.length; i++) {
+                if (this.list[i].latitude > mostNorthern) {
+                    let currentName = this.list[i].name;
+                    mostNorthern = Number(this.list[i].latitude);
+                    mostNorthernName = currentName
+                }
+            } if (mostNorthern > 0) {
+                return `${mostNorthernName} is the most Northern city with latitude of ${mostNorthern}`;
+            } else {
+                return 'Seems like all the cities you added are in Southern Hemisphere';
             }
-        } if (mostNorthern > 0) {
-            return `${mostNorthernName} is the most Northern city with latitude of ${mostNorthern}`;
-        } else {
-            return 'Seems like all the cities you added are in Southern Hemisphere'
+        } catch (error) {
+            throw (error);
         }
     }
 
+
     getMostSouthern() {
-        let mostSouthern = this.list[0];
-        this.list.forEach(value => {
-            if (value.latitude < mostSouthern.latitude) {
-                mostSouthern = value;
-            }
-        })
-        return mostSouthern.name;
+        try {
+            // let data = await functions.postData(this.url + 'all');
+            let mostSouthern = this.list[0];
+            this.list.forEach(value => {
+                if (value.latitude < mostSouthern.latitude) {
+                    mostSouthern = value;
+                }
+            })
+            return `${mostSouthern.name} is the most Southern city with latitude of ${mostSouthern.latitude}`;
+        } catch (error) {
+            throw (error);
+        }
     }
 
     getPopulation() {
-        let total = 0;
-        this.list.forEach(value => {
-            total += value.population;
+        try {
+            // let data = await functions.postData(this.url + 'all');
+            let total = 0;
+            this.list.forEach(value => {
+                total += value.population;
 
-        })
-        return total;
-    }
-
-    deleteCity(key) {
-
-        for (let i = 0; i < this.list.length; i++) {
-            if (key === this.list[i].key) {
-                this.list.splice(i, 1);
-            }
+            })
+            return total;
+        } catch (error) {
+            throw (error);
         }
-
     }
+
+    async deleteCity(key) {
+        try {
+
+            for (let i = 0; i < this.list.length; i++) {
+                if (key === this.list[i].key) {
+                    this.list.splice(i, 1);
+                    console.log(this.list);
+
+                }
+
+            }
+            // let data = await functions.postData(this.url + 'all');
+            // for (let i = 0; i < data.length; i++) {
+            //     if (key == data[i].key) {
+            //         let result = data[i];
+            await functions.postData(this.url + 'delete', { key });
+            // }
+            // }
+
+            // let data = await functions.postData(this.url + 'all');
+            // if (data.length > 0) {
+            //     let myCity = data.find(c => c.key === key);
+            //     console.log(myCity)
+            //     let k = { key: myCity};
+            //     data = await functions.postData(this.url + 'delete', k);
+            //     return data;
+            // }
+        } catch (error) {
+            throw (error);
+        }
+    }
+
+    //     async deleteFromServer(key) {
+    //         try {
+    //             let data = await functions.postData(this.url + 'all');
+
+    //             let cityToRemove = data.forEach(value => {
+    //                 if (value.key === key) {
+    //                     console.log(cityToRemove);
+    //                 }
+    //                 data = await functions.postData(this.url + 'delete', { key: value.key });
+
+    //                 return data;
+    //             })
+    //         } catch (error) {
+    //             throw (error);
+    //         }
+    //     }
+
+buildCard(name, latitude, longtitude, population) {
+
+let div1 = document.createElement('div')
+div1.setAttribute('class', 'row');
+div1.setAttribute('id', this.key)
+let div2 = document.createElement('div');
+div2.setAttribute('class', 'col-sm-6');
+let card = document.createElement('div');
+card.setAttribute('class', 'card');
+let cardBody = document.createElement('div');
+cardBody.setAttribute('class', 'card-body');
+let cityName = document.createElement('h5');
+cityName.setAttribute('class','card-title');
+cityName.appendChild(document.createTextNode(name));
+
+let lat = document.createElement('p');
+lat.setAttribute('class', 'card-text');
+lat.textContent  = 'Latitude: ' + latitude;
+
+let long = document.createElement('p'); 
+long.setAttribute('class', 'card-text');
+long.textContent  = 'Longtitude: ' + longtitude;
+
+let pop = document.createElement('p');
+pop.setAttribute('class', 'card-text');
+pop.setAttribute('id', 'idPop');
+pop.textContent  = 'Population: ' + population;
+
+
+let div3 = document.createElement('div');
+div3.setAttribute('class', 'input-group');
+let popNum = document.createElement('input');
+popNum.setAttribute('class', 'form-control');
+popNum.setAttribute('id', 'popNum');
+let div4 = document.createElement('div');
+div4.setAttribute('class', 'input-group-append');
+
+let addBtn = document.createElement('button');
+addBtn.setAttribute('class', 'btn btn-outline-secondary');
+addBtn.appendChild(document.createTextNode('Move In'));
+addBtn.setAttribute('todo', 'addPop');
+
+let reduceBtn = document.createElement('button');
+reduceBtn.setAttribute('class', 'btn btn-outline-secondary');
+reduceBtn.appendChild(document.createTextNode('Move Out'));
+reduceBtn.setAttribute('todo', 'reducePop');
+
+
+let br = document.createElement('br');
+
+let deleteBtn = document.createElement('button');
+deleteBtn.setAttribute('class', 'btn btn-primary');
+deleteBtn.appendChild(document.createTextNode('Delete'));
+deleteBtn.setAttribute('todo', 'delete');
+
+
+div1.appendChild(div2);
+div2.appendChild(card);
+card.appendChild(cardBody);
+cardBody.appendChild(cityName);
+cardBody.appendChild(lat);
+cardBody.appendChild(long);
+cardBody.appendChild(pop);
+cardBody.appendChild(div3);
+cardBody.appendChild(br);
+cardBody.appendChild(deleteBtn);
+div3.appendChild(popNum);
+div3.appendChild(div4);
+div4.appendChild(addBtn);
+div4.appendChild(reduceBtn);
+
+return div1;
+
+
 }
+
+
+}
+
+
+
+
+// async deletECity(city) {
+//     try {
+//         let data = await functions.postData(this.url + 'all');
+//         if (data.length > 0) {
+//             let myCity = data.find(c => c.name === city);
+//             let k = { key: myCity.key };
+//             data = await functions.postData(this.url + 'delete', k);
+//             return data;
+//         } return 'SERVER ERROR';
+//     } catch (error) {
+//         throw (error);
+//     }
+// }
 
 export { City, Community };
