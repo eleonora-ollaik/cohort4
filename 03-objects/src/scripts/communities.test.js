@@ -51,9 +51,10 @@ test('Community class', async () => {
 
     await newCom.createCity('Yeysk', 46.7129, 38.2741, 84259);
     expect(newCom.list.length).toBe(1);
-    // let data = await functions.postData (url + 'delete', {key: 1})
-    expect(newCom.list[0].key).toBe(0);
+    expect(newCom.list[0].key).toBe(1);
     expect(newCom.list[0].name).toBe('Yeysk');
+
+    // let data = await functions.postData (url + 'delete', {key: 1})
     // expect(data.status).toBe(200);
     // console.log(data.status);
     
@@ -72,32 +73,32 @@ test('Getting community from server', async () => {
     expect(newCom.list[0].name).toBe('Yeysk');
 })
 
-// // Getting local account 
+// Getting local account 
 
-// test('Get local community', async () => {
-//     const newCom = new Community;
-//     let data = await newCom.createCity('Yeysk', 46.7129, 38.2741, 84259);
-//     expect(data.status).toBe(200);
+test('Get local community', async () => {
+    const newCom = new Community;
+    let data = await newCom.createCity('Yeysk', 46.7129, 38.2741, 84259);
+    // expect(data.status).toBe(200);
 
-//     data = await newCom.getCommunity();
-//     expect(data[0].name).toBe('Yeysk');
+    data = await newCom.getCommunity();
+    expect(data[0].name).toBe('Yeysk');
 
-//     let city = newCom.getLocal(1);
-//     console.log(city);
-//     expect(city.name).toBe('Yeysk');
+    let city = newCom.getLocal(1);
+    console.log(city);
+    expect(city.name).toBe('Yeysk');
 
-//     //     let data = await functions.postData (url + 'delete', {key: 2})
-//     // expect(data.status).toBe(200);
+    //     let data = await functions.postData (url + 'delete', {key: 2})
+    // expect(data.status).toBe(200);
 
-// })
+})
 
 // Testing which sphere the city is in
 
-test('Which sphere', () => {
+test('Which sphere', async () => {
     const newCom1 = new Community;
-    newCom1.createCity('Santiago', -33.4489, 70.6693, 5614000);
-    newCom1.createCity('Yeysk', 46.7129, 38.2741, 84259);
-    // console.log(newCom1.list);
+    await newCom1.createCity('Santiago', -33.4489, 70.6693, 5614000);
+    await newCom1.createCity('Yeysk', 46.7129, 38.2741, 84259);
+    console.log(newCom1.list);
     
     
 
@@ -111,17 +112,17 @@ test('Which sphere', () => {
 
 
 // Testing Most Northern and Most Southern methods
-test('North or south', () => {
+test('North or south', async () => {
     const newCom = new Community;
 
-   newCom.createCity('Paris', 48.85341, 2.3488, 2148000);
+   await newCom.createCity('Paris', 48.85341, 2.3488, 2148000);
     // expect(data.status).toBe(200);
     // console.log (data)
-   newCom.createCity('Bishkek', 42.8746, 74.5698,  976734);
+   await newCom.createCity('Bishkek', 42.8746, 74.5698,  976734);
     // expect(data.status).toBe(200);
 
     expect(newCom.getMostNorthern()).toBe('Paris is the most Northern city with latitude of 48.85341');
-    expect(newCom.getMostSouthern()).toBe('Bishkek');
+    expect(newCom.getMostSouthern()).toBe('Bishkek is the most Southern city with latitude of 42.8746');
 
     // let data = await functions.postData(url + 'delete', { key: 1 })
     // expect(data.status).toBe(200);
@@ -130,11 +131,11 @@ test('North or south', () => {
 
 // Testing getTotalPopulation method
 
-test('Get population', () => {
+test('Get population', async () => {
     const newCom = new Community;
-    newCom.createCity('Paris', 48.85341, 2.3488, 2148000);
+    await newCom.createCity('Paris', 48.85341, 2.3488, 2148000);
     // expect(data.status).toBe(200);
-    newCom.createCity('Bishkek', 42.8746, 74.5698,  976734);
+    await newCom.createCity('Bishkek', 42.8746, 74.5698,  976734);
     // expect(data.status).toBe(200);
     // console.log (newCom.list)
     expect(newCom.getPopulation()).toBe(3124734);
@@ -144,21 +145,21 @@ test('Get population', () => {
 });
 
 // Removing a city - test
-test('Removing city', () => {
+test('Removing city', async () => {
 
     const newCom = new Community;
-    newCom.createCity('Paris', 48.85341, 2.3488, 2148000);
+    await newCom.createCity('Paris', 48.85341, 2.3488, 2148000);
     // expect(data.status).toBe(200);
     // console.log (data)
-    newCom.createCity('Bishkek', 42.8746, 74.5698,  976734);
+    await newCom.createCity('Bishkek', 42.8746, 74.5698,  976734);
     // expect(data.status).toBe(200);
     // let data = await functions.postData(url + 'delete', { key: 4 })
     // expect(data.status).toBe(200);
 
     // data = await functions.postData(url + 'all');
-    newCom.deleteCity(7);
+    newCom.deleteCity(14);
     // console.log(data);
-    // console.log(newCom.list);
+    console.log(newCom.list);
     
     
     expect(newCom.list.length).toBe(1);
