@@ -83,13 +83,9 @@ class Community {
             let city = new City(key, name, latitude, longtitude, population);
             this.list.push(city);
             console.log(city);
-            // console.log(this.list);
-            // console.log(typeof (city.key));
-
-
 
             data = await functions.postData(this.url + 'add', city);
-            // console.log(data);
+
             if (data.status === 200) {
                 console.log(key);
                 
@@ -121,14 +117,17 @@ class Community {
 
 
     // async getCommunity() {
-    //     let newData = await functions.postData(this.url + 'all')
-    //     console.log(newData);
+    //     let data = await functions.postData(this.url + 'all')
+    //     console.log(data);
+    //     // let newCom = new Community;
+    //     // for (let i = 0; i < data.length; i++) {
+    //     // this.createCity(data[i].name, data[i].latitude, data[i].longtitude,  data[i].population)
+    //     // console.log(this.list);
+    //     // }
 
-    //     this.list = newData.map(city => new City(city.key, city.name, city.longitude, city.latitude, city.population))
-    //     console.log(this.list);
-    //     this.counter = (this.list.length) + 1;
-    //     console.log(this.counter);
-    //     return this;
+    //     // for (let i = 0; i<this.list.length; i++) {
+    //     //     this.buildCard(this.list[i]);
+    //     // }
     // }
 
 
@@ -171,7 +170,6 @@ class Community {
             for (let i = 0; i < this.list.length; i++) {
                 if (key == this.list[i].key) {
                     let result = this.list[i].latitude;
-                    console.log(result);
 
                     // return result;
                     if (result > 0) {
@@ -193,7 +191,6 @@ class Community {
         try {
             let mostNorthern = 0;
             let mostNorthernName;
-            // let data = await functions.postData(this.url + 'all');
             for (let i = 0; i < this.list.length; i++) {
                 if (this.list[i].latitude > mostNorthern) {
                     let currentName = this.list[i].name;
@@ -213,7 +210,6 @@ class Community {
 
     getMostSouthern() {
         try {
-            // let data = await functions.postData(this.url + 'all');
             let mostSouthern = this.list[0];
             this.list.forEach(value => {
                 if (value.latitude < mostSouthern.latitude) {
@@ -228,7 +224,6 @@ class Community {
 
     getPopulation() {
         try {
-            // let data = await functions.postData(this.url + 'all');
             let total = 0;
             this.list.forEach(value => {
                 total += value.population;
@@ -251,55 +246,14 @@ class Community {
                 }
 
             }
-            // let data = await functions.postData(this.url + 'all');
-            // for (let i = 0; i < data.length; i++) {
-            //     if (key == data[i].key) {
-            //         let result = data[i];
             await functions.postData(this.url + 'delete', { key });
-            // }
-            // }
-
-            // let data = await functions.postData(this.url + 'all');
-            // if (data.length > 0) {
-            //     let myCity = data.find(c => c.key === key);
-            //     console.log(myCity)
-            //     let k = { key: myCity};
-            //     data = await functions.postData(this.url + 'delete', k);
-            //     return data;
-            // }
         } catch (error) {
             throw (error);
         }
     }
 
-    //     async deleteFromServer(key) {
-    //         try {
-    //             let data = await functions.postData(this.url + 'all');
-
-    //             let cityToRemove = data.forEach(value => {
-    //                 if (value.key === key) {
-    //                     console.log(cityToRemove);
-    //                 }
-    //                 data = await functions.postData(this.url + 'delete', { key: value.key });
-
-    //                 return data;
-    //             })
-    //         } catch (error) {
-    //             throw (error);
-    //         }
-    //     }
 
     buildCard(city) {
-        // console.log(city.key);
-        // console.log(city.name);
-        // console.log(city.latitude);
-        // console.log(city.longtitude);
-        // console.log(city.population);
-
-
-
-
-
 
         let div1 = document.createElement('div')
         div1.setAttribute('class', 'row');
@@ -372,8 +326,8 @@ class Community {
             console.log(newPop);
             await functions.postData(this.url, 'update', { key: city.key, city: city });
 
-            pop.textContent = 'Population: ' + newPop;
-        })
+            pop.textContent = 'Population: upd';
+        }) 
 
         let br = document.createElement('br');
 
@@ -414,20 +368,5 @@ class Community {
 }
 
 
-
-
-// async deletECity(city) {
-//     try {
-//         let data = await functions.postData(this.url + 'all');
-//         if (data.length > 0) {
-//             let myCity = data.find(c => c.name === city);
-//             let k = { key: myCity.key };
-//             data = await functions.postData(this.url + 'delete', k);
-//             return data;
-//         } return 'SERVER ERROR';
-//     } catch (error) {
-//         throw (error);
-//     }
-// }
 
 export { City, Community };

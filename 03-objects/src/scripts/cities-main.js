@@ -22,35 +22,16 @@ async function myloadScript() {
 
 }
 
-
-// let comm = new Community();
-
 document.body.addEventListener('click', async e => {
 
     const el = e.target;
     const todo = el.getAttribute('todo');
     let city1 = document.getElementById('cityName');
-    console.log(el);
-
-
-
-
-
 
     if (todo === 'addCity') {
-        // let data = functions.postData('http://localhost:5000/all')
         const newKey = await comm.createCity(cityName.value, Number(latitude.value), Number(longtitude.value), Number(population.value));
-        console.log(newKey);
-        // console.log(city.key);
-        // console.log(city.name);
-        // console.log(city.latitude);
-        // console.log(city.longtitude);
-        // console.log(city.population);
-        // let data = await functions.postData('http://127.0.0.1:5000/add', city);
-        // if (data.status === 200) {
         let city = comm.getLocal(newKey);
-        console.log(city);
-        console.log(typeof city);
+        console.log(comm.list);
         
         // console.log(city.key);
         // console.log(city.name);
