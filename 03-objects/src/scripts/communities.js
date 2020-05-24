@@ -116,20 +116,7 @@ class Community {
 
 
 
-    // async getCommunity() {
-    //     let data = await functions.postData(this.url + 'all')
-    //     console.log(data);
-    //     // let newCom = new Community;
-    //     // for (let i = 0; i < data.length; i++) {
-    //     // this.createCity(data[i].name, data[i].latitude, data[i].longtitude,  data[i].population)
-    //     // console.log(this.list);
-    //     // }
-
-    //     // for (let i = 0; i<this.list.length; i++) {
-    //     //     this.buildCard(this.list[i]);
-    //     // }
-    // }
-
+ 
 
 
     async getCommunity() {
@@ -367,6 +354,20 @@ class Community {
 
 }
 
+// export async function getCommunity() {
+//     let data = await functions.postData('http://127.0.0.1:5000/all')
+//     console.log(data);
+//     await functions.postData('http://127.0.0.1:5000/clear')
+//     let newCom = new Community;
+//     for (let i = 0; i < data.length; i++) {
+//     newCom.createCity(data[i].name, data[i].latitude, data[i].longtitude,  data[i].population)
+//     console.log(newCom.list);
+//     }
+
+//     for (let i = 0; i<newCom.list.length; i++) {
+//         newCom.buildCard(newCom.list[i].city);
+//     }
+// }
 
 
 export { City, Community };
