@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import SVG from './components/icons'
 import './App.css';
+import TTT from './components/TTT.js'
 
 class App extends React.Component {
   constructor(props){
@@ -22,7 +23,7 @@ class App extends React.Component {
   return (
     <div className="App">
         <SVG handleClick = {this.handleClick}/>
-        {this.state.logoClick === 0}
+        {this.state.logoClick === 0 && <TTT />}
         {this.state.logoClick === 1}
         {this.state.logoClick === 2}
         {this.state.logoClick === 3}
