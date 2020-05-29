@@ -144,4 +144,4 @@ function calculateWinner(squares) {
     return null;
   }
 
-export default Game;
+export  {Square, Board, Game, calculateWinner};
