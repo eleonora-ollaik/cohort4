@@ -1,6 +1,7 @@
 body {
     font: 14px 'Century Gothic', Futura, sans-serif;
     margin: 20 px;
+   
 }
 
 ol, ul {
@@ -21,15 +22,15 @@ ol, ul {
     background: #fff;
     border: 1px solid #999;
     float: left;
-    font-size: 24px;
+    font-size: 50px;
     font-weight: bold;
     line-height: 34px;
-    height: 34px;
+    height: 85px;
     margin-right: -1px;
     margin-top: -1px;
     padding: 0;
     text-align: center;
-    width: 34px;
+    width: 85px;
   }
 
   .square:focus {
@@ -45,6 +46,10 @@ ol, ul {
     flex-direction: row;
   }
   
+  .game-board {
+    margin-left: 350px;
+  
+  }
   .game-info {
     margin-left: 20px;
   }

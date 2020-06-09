@@ -1,8 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
-import SVG from './components/icons'
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Header from './components/layout/Header.js'
 import './App.css';
-import {Square, Board, Game, calculateWinner} from './components/TTT.js'
+import TicTacToe from './components/pages/tictactoe.js'
+
 
 class App extends React.Component {
   constructor(props){
@@ -14,20 +16,31 @@ class App extends React.Component {
 
   handleClick = (number) => {
     this.setState({
-      logoClick : number
+      logoClick : number,
       
     })
+    console.log(this.state);
+
   }
 
   render() {
   return (
+    <Router>
     <div className="App">
-        <SVG handleClick = {this.handleClick}/>
-        {this.state.logoClick === 0 && <Game />}
+      <div className= 'container'>
+        <Header handleClick = {this.handleClick}/>
+        {/* <SVG handleClick = {this.handleClick}/> */}
+        {this.state.logoClick === 0}
         {this.state.logoClick === 1}
         {this.state.logoClick === 2}
         {this.state.logoClick === 3}
-      <header className="App-header">
+      {/* <header className="App-header"> */}
+      <Route 
+      exact
+      path = '/'
+      render = {(props) => (
+        <React.Fragment>
+      
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -40,8 +53,15 @@ class App extends React.Component {
         >
           Learn React
         </a>
-      </header>
+        </React.Fragment>
+        )}
+        />
+
+        <Route path = '/tictactoe' component = {TicTacToe} />
+      {/* </header> */}
+      </div>
     </div>
+     </Router>
   );
 }
 }
