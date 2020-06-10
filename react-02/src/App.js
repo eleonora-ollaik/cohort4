@@ -3,8 +3,8 @@ import logo from './logo.svg';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from './components/layout/Header.js'
 import './App.css';
-import TicTacToe from './components/pages/tictactoe.js'
-
+import TicTacToe from './components/pages/tic-tac-toe/tictactoe.js'
+import AccountsMain from './components/pages/bank/AccountsMain.js'
 
 class App extends React.Component {
   constructor(props){
@@ -58,6 +58,8 @@ class App extends React.Component {
         />
 
         <Route path = '/tictactoe' component = {TicTacToe} />
+        <Route path = '/bank' component = {AccountsMain} />
+
       {/* </header> */}
       </div>
     </div>

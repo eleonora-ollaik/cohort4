@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import homepage from '../homepage.svg';
-import bank from '../bank.svg';
+import bank from '../pages/bank/bank.svg';
 import cities from '../cities.svg';
-import ticTacToe from '../tic-tac-toe.svg';
+import ticTacToe from '../pages/tic-tac-toe/tic-tac-toe.svg';
 
 
 
