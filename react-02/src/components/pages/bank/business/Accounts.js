@@ -25,42 +25,42 @@ class Account {
 };
 
 
-// Creating a Card for a new Account:
+// // Creating a Card for a new Account:
 
-class Card extends Account {
+// class Card extends Account {
 
-    buildCard() {
-        let card = document.createElement('div');
+//     buildCard() {
+//         let card = document.createElement('div');
 
-        let accName = document.createElement('span');
-        accName.appendChild(document.createTextNode(this.name));
-        accName.setAttribute('id', 'idAccountName');
-        accName.setAttribute('key', this.key);
-        accName.classList.add("divClass");
-        card.appendChild(accName);
+//         let accName = document.createElement('span');
+//         accName.appendChild(document.createTextNode(this.name));
+//         accName.setAttribute('id', 'idAccountName');
+//         accName.setAttribute('key', this.key);
+//         accName.classList.add("divClass");
+//         card.appendChild(accName);
 
-        card.setAttribute('class', 'row');
-        card.setAttribute('id', 'card');
-        card.setAttribute('key', this.key);
+//         card.setAttribute('class', 'row');
+//         card.setAttribute('id', 'card');
+//         card.setAttribute('key', this.key);
 
-        let bal = document.createElement('span');
-        bal.setAttribute('id', `${this.key}`);
-        bal.setAttribute('key', this.key);
-        bal.textContent = this.balance;
-        bal.classList.add("divClass");
-        card.appendChild(bal);
+//         let bal = document.createElement('span');
+//         bal.setAttribute('id', `${this.key}`);
+//         bal.setAttribute('key', this.key);
+//         bal.textContent = this.balance;
+//         bal.classList.add("divClass");
+//         card.appendChild(bal);
 
-        const delBtn = document.createElement('button');
-        const delBtnText = document.createTextNode('Delete');
-        delBtn.appendChild(delBtnText);
-        delBtn.setAttribute("class", "btn btn-outline-secondary");
-        delBtn.setAttribute('todo', 'delete');
-        delBtn.setAttribute('key', this.key);
-        card.appendChild(delBtn);
+//         const delBtn = document.createElement('button');
+//         const delBtnText = document.createTextNode('Delete');
+//         delBtn.appendChild(delBtnText);
+//         delBtn.setAttribute("class", "btn btn-outline-secondary");
+//         delBtn.setAttribute('todo', 'delete');
+//         delBtn.setAttribute('key', this.key);
+//         card.appendChild(delBtn);
 
-        return card;
-    }
-}
+//         return card;
+//     }
+// }
 
 
 // Creating an Account Controller Class to manipulate multiple accounts
@@ -99,7 +99,7 @@ class AccountControl {
 
     getAccount(key) {
         for (let i = 0; i < this.accArr.length; i++) {
-            if (key == this.accArr[i].key) {
+            if (key === this.accArr[i].key) {
                 let result = this.accArr[i];
                 return result;
             }
@@ -112,6 +112,7 @@ class AccountControl {
     deposit(key, amount) {
         let account = this.getAccount(key);
         let balance = account.deposit(amount);
+        console.log(balance)
         return balance;
 
     }
@@ -189,4 +190,4 @@ class AccountControl {
 }
 
 
-export { Account, Card, AccountControl };
+export {Account, AccountControl};

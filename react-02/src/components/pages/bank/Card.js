@@ -1,32 +1,73 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export class NewCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    amount: '',
+    
+    };
+  }
 
+  handleOnChange = (e) => {
+    this.setState({ amount: Number(e.target.value) });
+  };
 
-    render() {
-        const {key, accName, startBal} = this.props.card;
-        return (
-            <div name = 'card' key = {key}>
-                <span 
-                name = 'accName'
-                value = {accName}
-                />
+  onDeposit = () => {
+    this.props.handleDeposit(this.props.card.key, this.state.amount);
+    this.setState({amount: ''})
+  };
 
-                <span 
-                name = 'accBal'
-                value = {startBal}
-                />
+  onWithdraw = (props) => {
+    this.props.handleWithdraw(this.props.card.key, this.state.amount);
+    this.setState({amount: ''})
 
-                <input
-                type = 'button'
-                name = 'deleteBtn'
-                value = 'Delete'
-                />
+  };
 
-                
-            </div>
-        )
-    }
+  onDelete = (e) => {
+    console.log('this.props :>> ', this.props);
+    this.props.handleDelete(this.props.card.key);
+  };
+
+  render() {
+    const { key, name, balance } = this.props.card;
+    return (
+      <div name='card' key={key} className='clAccountCards'>
+        <h2 name='accName'>Account name: {name}</h2>
+
+        <p name='accBal'>Account balance:{balance}</p>
+
+        <input
+          onChange={this.handleOnChange}
+          value={this.state.amount}
+          type='text'
+          name='amount'
+          placeholder='Transaction amount'
+        />
+
+        <input
+          type='button'
+          name='depBtn'
+          value='Deposit'
+          onClick={this.onDeposit}
+        />
+
+        <input
+          type='button'
+          name='withdrBtn'
+          value='Withdraw'
+          onClick={this.onWithdraw}
+        />
+
+        <input
+          type='button'
+          name='deleteBtn'
+          value='Delete'
+          onClick={this.onDelete}
+        />
+      </div>
+    );
+  }
 }
 
-export default NewCard
+export default NewCard;

@@ -1,4 +1,4 @@
-import { Account, Card, AccountControl } from './Accounts.js';
+import { Account, AccountControl } from './Accounts';
 
 // Testing Account Class: adding an account and manipulating balance
 
@@ -14,17 +14,17 @@ test('Class test', () => {
 
 
 
-// Testing a Card class
+// // Testing a Card class
 
-test('Card class', () => {
+// test('Card class', () => {
 
-    const acc2 = new Card('k', 'acc2', 30);
+//     const acc2 = new Card('k', 'acc2', 30);
 
-//Creating card
+// //Creating card
 
-    expect(acc2.buildCard()).toBeTruthy();
+//     expect(acc2.buildCard()).toBeTruthy();
 
-});
+// });
 
 
 

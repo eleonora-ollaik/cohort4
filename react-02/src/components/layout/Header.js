@@ -20,7 +20,7 @@ export default function Header (props) {
             <Link to = '/bank'>
             <img onClick = {() => {props.handleClick(2)}} src={bank} alt='logo' className = 'crab'></img>
             </Link>
-            <Link>
+            <Link to="/cities">
             <img onClick = {() => {props.handleClick(3)}} src={cities} alt='logo' className = 'crab'></img>
             </Link>
         </header>

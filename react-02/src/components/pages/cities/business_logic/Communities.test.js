@@ -105,8 +105,8 @@ test('Which sphere', async () => {
     // expect(data.status).toBe(200);
     // data =  newCom.getCommunity()
     // if (data.status === 200) {
-        expect(newCom1.whichSphere(4)).toBe('Southern Hemisphere');
-        expect(newCom1.whichSphere(5)).toBe('Northern Hemisphere');
+        expect(newCom1.whichSphere(1)).toBe('Southern Hemisphere');
+        expect(newCom1.whichSphere(2)).toBe('Northern Hemisphere');
     // }
 });
 
@@ -157,13 +157,13 @@ test('Removing city', async () => {
     // expect(data.status).toBe(200);
 
     // data = await functions.postData(url + 'all');
-    newCom.deleteCity(11);
+    newCom.deleteCity(14);
     // console.log(data);
     console.log(newCom.list);
     
     
     expect(newCom.list.length).toBe(1);
-    expect(newCom.list[0].name).toBe('Paris');
+    expect(newCom.list[0].name).toBe('Bishkek');
 
 
 }) 

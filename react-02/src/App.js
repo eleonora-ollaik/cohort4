@@ -5,6 +5,7 @@ import Header from './components/layout/Header.js'
 import './App.css';
 import TicTacToe from './components/pages/tic-tac-toe/tictactoe.js'
 import AccountsMain from './components/pages/bank/AccountsMain.js'
+import CityMain from './components/pages/cities/CityMainPage.js'
 
 class App extends React.Component {
   constructor(props){
@@ -59,7 +60,7 @@ class App extends React.Component {
 
         <Route path = '/tictactoe' component = {TicTacToe} />
         <Route path = '/bank' component = {AccountsMain} />
-
+        <Route path = '/cities' component = {CityMain} />
       {/* </header> */}
       </div>
     </div>
