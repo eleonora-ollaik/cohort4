@@ -43,7 +43,7 @@ const functions = {
             const data = await response.json();
             return data;
         } catch (error) {
-            console.error('Error:', error);
+            console.log('Error:', error);
             throw (error);
         }
     },

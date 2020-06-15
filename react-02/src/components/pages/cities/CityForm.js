@@ -5,8 +5,8 @@ class CityForm extends Component {
         super();
         this.state = {
             name: '',
-            latitute: '',
-            longtitute: '',
+            latitude: '',
+            longitude: '',
             population: ''
         };
     };
@@ -18,13 +18,13 @@ class CityForm extends Component {
         e.preventDefault();
         const city = {
             name: this.state.name,
-            latitude: parseInt(this.state.latitute),
-            longtitute: parseInt(this.state.longtitute),
+            latitude: parseInt(this.state.latitude),
+            longitude: parseInt(this.state.longitude),
             population: parseInt(this.state.population)
 
         };
         this.props.handleOnAdd(city);
-        this.setState({ name: '', latitude: '', longtitude: '', population: '' });
+        this.setState({ name: '', latitude: '', longitude: '', population: '' });
 
     }
 
@@ -52,15 +52,15 @@ class CityForm extends Component {
                         type = 'number'
                         name ='latitude'  
                         placeholder = 'Latitude'
-                        value = {this.state.latitute}
+                        value = {this.state.latitude}
                         onChange = {this.onChange}
 
                         />
                         <input 
                         type = 'number'
-                        name ='longtitute'  
+                        name ='longitude'  
                         placeholder = 'Longitude'
-                        value = {this.state.longtitute}
+                        value = {this.state.longitude}
                         onChange = {this.onChange}
 
                         />

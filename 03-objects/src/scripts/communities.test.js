@@ -121,8 +121,8 @@ test('North or south', async () => {
    await newCom.createCity('Bishkek', 42.8746, 74.5698,  976734);
     // expect(data.status).toBe(200);
 
-    expect(newCom.getMostNorthern()).toBe('Paris is the most Northern city with latitude of 48.85341');
-    expect(newCom.getMostSouthern()).toBe('Bishkek is the most Southern city with latitude of 42.8746');
+    expect(newCom.getMostNorthern()).toBe('Paris with latitude of 48.85341');
+    expect(newCom.getMostSouthern()).toBe('Bishkek with latitude of 42.8746');
 
     // let data = await functions.postData(url + 'delete', { key: 1 })
     // expect(data.status).toBe(200);

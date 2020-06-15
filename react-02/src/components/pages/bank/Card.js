@@ -25,7 +25,7 @@ export class NewCard extends Component {
   };
 
   onDelete = (e) => {
-    console.log('this.props :>> ', this.props);
+    // console.log('this.props :>> ', this.props);
     this.props.handleDelete(this.props.card.key);
   };
 

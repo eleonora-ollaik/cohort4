@@ -18,7 +18,7 @@ test('City class', () => {
     expect(city2.key).toBe('k1');
 
     // Testing the show method
-    expect(city1.show()).toBe('Paris has a latitude of 48.85341 and a longtitude of 2.3488 and a population of 2148000')
+    expect(city1.show()).toBe('Paris has a latitude of 48.85341 and a longitude of 2.3488 and a population of 2148000')
 
     // Testing the movedIn method
     expect(city1.movedIn(150)).toBe(2148150);

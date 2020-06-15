@@ -27,7 +27,7 @@ class CityMainPage extends Component {
   
     onAdd = (city) =>{
     city = this.state.comm.createCity(
-        city.name, Number(city.latitude), Number(city.longtitute), Number(city.population)
+        city.name, Number(city.latitude), Number(city.longitude), Number(city.population)
     );
     this.setState({ list: this.state.comm.list})
     };

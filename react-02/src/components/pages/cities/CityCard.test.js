@@ -9,13 +9,13 @@ const mockDelete = jest.fn();
 test ('the card renders', () => {
 
     const card1 = 
-    {key:'k1', name:'Paris', latitude: 48.85341, longtitude: 2.3488, population: 2148000};
+    {key:'k1', name:'Paris', latitude: 48.85341, longitude: 2.3488, population: 2148000};
 
     const {getByText} =
-    render(<CityCard card ={card1} onMoveIn = {mockPopIncrease} onMoveOut = {mockPopDecrease} onDelete = {mockDelete} />);
+    render(<CityCard city ={card1} onMoveIn={mockPopIncrease} onMoveOut={mockPopDecrease} onDelete={mockDelete} />);
 
     expect(getByText(/City name/i)).toHaveTextContent('Paris');
-    expect(getByText(/City latitudee/i)).toHaveTextContent('48.85341');
+    expect(getByText(/City latitude/i)).toHaveTextContent('48.85341');
     expect(getByText(/City longitude/i)).toHaveTextContent('2.3488');
     expect(getByText(/City populatiom/i)).toHaveTextContent('2148000');
 

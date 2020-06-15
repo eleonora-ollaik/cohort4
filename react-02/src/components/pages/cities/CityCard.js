@@ -33,10 +33,10 @@ export class CityCard extends Component {
 
     render() {
         return (
-            <div className = 'card' key = {this.props.city.key}>
+            <div className = 'card' >
                 <span>City Name: {this.props.city.name}</span><br />
                 <span>City latitude: {this.props.city.latitude} </span><br />
-                <span>City longitude: {this.props.city.longtitude} </span><br />
+                <span>City longitude: {this.props.city.longitude} </span><br />
                 <span>City population: {this.props.city.population} </span><br />
 
                 <input 

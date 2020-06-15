@@ -34,7 +34,7 @@ test('test the basic CityForm', async () => {
         screen.getByText(/add new city/i);
         screen.getByText(/generate random city/i);
 
-        // expect(getValue('name')).toBe('Bishkek');
+        expect(getValue('name')).toBe('Bishkek');
         expect(mockAddCallback.mock.calls.length).toBe(0)
         click('Add new city');
 

@@ -3,17 +3,17 @@ import randomData from './RandomCities';
 
 
 class City {
-    constructor(key, name, latitude, longtitude, population) {
+    constructor(key, name, latitude, longitude, population) {
         this.key = key;
         this.name = name;
         this.latitude = latitude;
-        this.longtitude = longtitude;
+        this.longitude = longitude;
         this.population = population;
     }
 
     show() {
         try {
-            return `${this.name} has a latitude of ${this.latitude} and a longtitude of ${this.longtitude} and a population of ${this.population}`
+            return `${this.name} has a latitude of ${this.latitude} and a longitude of ${this.longitude} and a population of ${this.population}`
         } catch (error) {
             throw (error);
         }
@@ -79,9 +79,9 @@ class Community {
     }
 
 
-    async createCity(name, latitude, longtitude, population) {
+    async createCity(name, latitude, longitude, population) {
         let key = this.nextKey()
-        let city = new City(key, name, latitude, longtitude, population);
+        let city = new City(key, name, latitude, longitude, population);
         this.list.push(city);
         // k++;
         // console.log(this.list);
@@ -102,7 +102,7 @@ class Community {
         let randomC = cities.splice(Number(city), 1);
         await randomC.forEach(value => { 
         let key = this.finalKey();
-        let cityR = new City(key, value.name, Number(value.latitude), Number(value.longtitude), Number(value.population));
+        let cityR = new City(key, value.name, Number(value.latitude), Number(value.longitude), Number(value.population));
         this.list.push(cityR)
         let data = functions.postData(this.url + 'add', cityR);
             console.log(data);
@@ -119,7 +119,7 @@ async getCommunity() {
         console.log('Got the community')
         data.forEach(value => {
             if(this.list.findIndex(element => element.key === value.city.key) === -1) {
-                this.list.push(new City(value.city.key, value.city.name, value.city.latitude, value.city.longtitude, value.city.population))
+                this.list.push(new City(value.city.key, value.city.name, value.city.latitude, value.city.longitude, value.city.population))
             if(value.city.key >= this.counter) this.counter = value.city.key +1;
             }
         })
@@ -170,7 +170,7 @@ async getCommunity() {
     async updateComm () {
         let data = await functions.postData(this.url + 'all');
         data.forEach(value => {
-            this.list.push(new City(value.key, value.name, Number(value.latitude), Number(value.longtitude), Number(value.population)));
+            this.list.push(new City(value.key, value.name, Number(value.latitude), Number(value.longitude), Number(value.population)));
 
         });
         this.counter = this.finalKey();
