@@ -1,37 +1,25 @@
 import React, { Component } from "react";
+import CityCard from './CityCard';
 
 class CityList extends Component {
 
-    // let listOfCities;
-    // if (props.list) {
-    //     listOfCities = Object.keys(props.list).map(k => {
-    //         const c = props.list[k];
-    //         return (
-    //             <li key = {c.key}>{c.name}</li>
-    //         )
-    //     })
-    // }
-    // function onClick(e) {
-    //     props.showOne(e.target.getAttribute('key'))
-    // }
+    render(){ 
 
-    // const onAdd = () => {
-    //     props.onAdd();
-    // }
-    render(){
-        console.log(this.props.cities);
-        const cityList= this.props.cities.map((city, i) => {
-
-    return (
+    return this.props.comm.list.map((city) => (
         <div>
-            <h1>List of Cities</h1>
-            <ul className = 'cityList'>
-                {city}
-            </ul>
+            <h1>{city.name}</h1>
+
+            <CityCard
+            key = {city.key}
+            city ={city}
+            onChange = {this.props.onChange}
+            handleMoveIn = {this.props.handleMoveIn}
+            handleMoveOut = {this.props.handleMoveOut}
+            handleDelete = {this.props.handleDelete}
+            />
         </div>
-    )
-})
-return <div>{cityList}</div>
+    ))
+// return <div>{cityList}</div>
     }
 }
 

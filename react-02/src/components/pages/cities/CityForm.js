@@ -27,6 +27,12 @@ class CityForm extends Component {
         this.setState({ name: '', latitude: '', longtitude: '', population: '' });
 
     }
+
+    onRandom = (e) => {
+        e.preventDefault();
+        this.props.handleRandom();
+    }
+
     render(){
         return (
             <div>
@@ -69,6 +75,7 @@ class CityForm extends Component {
                     </div>
 
                     <button type = 'submit' >Add new city</button>
+                    <button onClick = {this.onRandom}> Generate Random City</button>
                 </form>
             </div>
         )
