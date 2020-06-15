@@ -175,37 +175,29 @@ class Community {
     }
 
     getMostNorthern() {
-        try {
-            let mostNorthern = 0;
-            let mostNorthernName;
-            for (let i = 0; i < this.list.length; i++) {
-                if (this.list[i].latitude > mostNorthern) {
-                    let currentName = this.list[i].name;
-                    mostNorthern = Number(this.list[i].latitude);
-                    mostNorthernName = currentName
-                }
-            } if (mostNorthern > 0) {
-                return `${mostNorthernName} is the most Northern city with latitude of ${mostNorthern}`;
-            } else {
-                return 'Seems like all the cities you added are in Southern Hemisphere';
+        if (this.list.length > 0) { 
+        let mostNorthern = this.list[0];
+        this.list.forEach(value => {
+            if (value.latitude > mostNorthern.latitude) {
+            mostNorthern = value;
             }
-        } catch (error) {
-            throw (error);
-        }
+        })
+        let result = `${mostNorthern.name} with latitude of ${mostNorthern.latitude}`
+        return result;
+    }
     }
 
 
     getMostSouthern() {
-        try {
+        if (this.list.length > 0) {
             let mostSouthern = this.list[0];
             this.list.forEach(value => {
                 if (value.latitude < mostSouthern.latitude) {
                     mostSouthern = value;
                 }
             })
-            return `${mostSouthern.name} is the most Southern city with latitude of ${mostSouthern.latitude}`;
-        } catch (error) {
-            throw (error);
+            let result = `${mostSouthern.name} with latitude of ${mostSouthern.latitude}`;
+            return result;
         }
     }
 
