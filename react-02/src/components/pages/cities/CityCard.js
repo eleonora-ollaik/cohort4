@@ -13,10 +13,10 @@ export class CityCard extends Component {
     onChange = (e) => this.setState({ people: parseInt(e.target.value) });
 
     onMoveIn = (e) => {
+        e.preventDefault();
         this.props.handleMoveIn(this.props.city.key, this.state.people);
         console.log(this.props.city.key)
         this.setState({people:''})
-        e.preventDefault();
     }
 
     onMoveOut = (e) => {

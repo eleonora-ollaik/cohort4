@@ -4,6 +4,7 @@ import homepage from '../homepage.svg';
 import bank from '../pages/bank/bank.svg';
 import cities from '../cities.svg';
 import ticTacToe from '../pages/tic-tac-toe/tic-tac-toe.svg';
+import linkedList from '../pages/linked_list/sort.svg';
 
 
 
@@ -23,6 +24,10 @@ export default function Header (props) {
             <Link to="/cities">
             <img onClick = {() => {props.handleClick(3)}} src={cities} alt='logo' className = 'crab'></img>
             </Link>
+            <Link to="/linked_list">
+            <img onClick = {() => {props.handleClick(4)}} src={linkedList} alt='logo' className = 'crab'></img>
+            </Link>
+
         </header>
     )
 }

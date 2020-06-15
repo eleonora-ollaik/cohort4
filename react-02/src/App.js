@@ -35,6 +35,9 @@ class App extends React.Component {
         {this.state.logoClick === 1}
         {this.state.logoClick === 2}
         {this.state.logoClick === 3}
+        {this.state.logoClick === 4}
+
+
       {/* <header className="App-header"> */}
       <Route 
       exact
@@ -61,6 +64,7 @@ class App extends React.Component {
         <Route path = '/tictactoe' component = {TicTacToe} />
         <Route path = '/bank' component = {AccountsMain} />
         <Route path = '/cities' component = {CityMain} />
+        <Route path = './linked_list' />
       {/* </header> */}
       </div>
     </div>
