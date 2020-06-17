@@ -10,10 +10,13 @@ test('testing LinkedList class', () => {
 
 let linkedList = new LinkedList;
 linkedList.insertNode('first thingy', 8);
-linkedList.insertNode('second thingy', 12);
+linkedList.insertLast('second thingy', 12);
 
 expect(linkedList.size).toBe(2);
-expect(linkedList.first().forwardNode.show()).toBe('second thingy: 12');
+console.log(linkedList.first())
+console.log(linkedList)
+
+expect(linkedList.first().next.show()).toBe('second thingy: 12');
 linkedList.last();
 expect(linkedList.currentNode.show()).toBe('second thingy: 12');
 

@@ -17,7 +17,7 @@ test ('the card renders', () => {
     expect(getByText(/City name/i)).toHaveTextContent('Paris');
     expect(getByText(/City latitude/i)).toHaveTextContent('48.85341');
     expect(getByText(/City longitude/i)).toHaveTextContent('2.3488');
-    expect(getByText(/City populatiom/i)).toHaveTextContent('2148000');
+    expect(getByText(/City population/i)).toHaveTextContent('2148000');
 
     screen.getByText(/move in/i)
     screen.getByText(/move out/i)
