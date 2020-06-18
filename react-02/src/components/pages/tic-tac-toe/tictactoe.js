@@ -4,7 +4,7 @@ import { Game} from './TTT.js'
 export default function TicTacToe () {
     return (
         <React.Fragment>
-            <h1> Come on and Play Tic Tac Toe!</h1>
+            <h1> Welcome to Tic Tac Toe page!</h1>
             <Game  />
         </React.Fragment>
     )
