@@ -1,8 +1,9 @@
 class Node {
-    constructor (subject, amount, next = null) {
+    constructor (subject, amount, next = null, previous = null) {
         this.subject = subject;
         this.amount = Number(amount);
         this.next = next;
+        this.previous = previous;
     }
 
     show(){
@@ -12,132 +13,11 @@ class Node {
 
 class LinkedList {
     constructor() {
-        this.currentNode = null ;
         this.headNode =  null;
-        // this.lastNode =  null;
+        this.currentNode = null ;
+        this.lastNode =  null;
         this.size =  0;
         }
-
-        insertFirst(subject, amount) {
-            this.headNode = new Node (subject, amount, this.headNode)
-            this.size++
-        }
-
-        insertLast(subject, amount) {
-            let node = new Node(subject, amount);
-            let current;
-
-            //If empty, make it a head
-
-            if(!this.headNode) {
-                this.headNode = node;
-            } else {
-                current = this.headNode;
-
-                while(current.next){
-                    current = current.next;
-                }
-                current.next = node;
-            }
-                this.size++
-
-        }
-
-        insertAtIndex(subject, amount, index) {
-            //if index is out of range
-            if(index > 0 && index > this.size++) {
-                return 'No such index';
-            }
-
-            //if first index
-            if (index === 0) {
-            this.insertFirst(subject, amount);
-            return;
-            }
-
-            const node = new Node(subject, amount);
-            let current, previous;
-
-            //set current to first
-            current = this.headNode;
-            let count = 0;
-
-
-            while(count < index) {
-                previous = current; // node before index
-                count++;
-                current = current.next; // node after index
-            }
-
-            node.next = current;
-
-            previous.next = node;
-
-            this.size++
-
-        }
-
-        //Get at index
-        getAt(index) {
-            let current = this.headNode;
-            let count = 0;
-
-            while(current) {
-                if(count == index) {
-                    console.log(current.subject);
-                }
-                count++;
-                current = current.next;
-            }
-            return null;
-        }
-
-        //Remove at index
-        removeAt(index) {
-            if (index >0 && index > this.size) {
-                return;
-            }
-            let current = this.headNode;
-            let previous;
-            let count = 0;
-
-            //Remove first
-            if(index === 0) {
-                this.headNode = current.next;
-
-            }else {
-                while ( count < index) {
-                    count++;
-                    previous = current;
-                    current = current.next;
-
-                }
-                previous.next = current.next;
-            }
-
-            this.size--;
-            // return;
-
-        }
-
-
-        clearList () {
-            this.headNode = null;
-            this.size = 0;
-        }
-
-        printListData() {
-            let current = this.headNode;
-
-            while(current) {
-                console.log(current.subject);
-                current = current.next;
-                
-            }
-        }
-
-
-
 
         insertNode (subject, amount) {
             let newNode = new Node(subject, amount);
@@ -159,31 +39,31 @@ class LinkedList {
                 this.currentNode.next = newNext;
                 newNode.next = this.headNode;
                 newNode.previous = this.currentNode;
-                // newNode.previous = this.currentNode;
                 this.headNode.previous = this.currentNode;
-                // this.size++;
-                // return this.currentNode;
             }
 
             //if putting in the end
 
             else if (!this.currentNode.next) {
-                newNode = this.currentNode;
-
-                while(this.currentNode.next) {
-                    this.currentNode = this.currentNode.next;
-                }
-                this.currentNode.next = newNode
-                // this.lastNode = newNode;
-                // newNode = this.lastNode.next;
-                // this.currentNode.previous = this.lastNode;
-                // this.nex = this.currentNode;
+                current = this.currentNode;
+                this.lastNode = newNode;
+                this.currentNode = newNode;
+                this.currentNode.previous = current;
+                current.next = this.currentNode;
             }
-
+            else {
+                current = this.currentNode;
+                let oldNext = current.next;
+                this.currentNode = newNode;
+                this.currentNode.previous = current;
+                current.next = this.currentNode;
+                this.currentNode.next = oldNext;
+                oldNext.previous = this.currentNode;
+            }
             
 
             this.size++;
-            return this.currentNode
+            return;
 
         }
 
@@ -196,6 +76,90 @@ class LinkedList {
             this.currentNode = this.lastNode;
             return this.currentNode 
         }
+
+
+        get() {
+            return this.currentNode;
+        }
+
+        next() {
+            if (this.currentNode.next !== null) {
+                this.currentNode = this.currentNode.next;
+                return this.currentNode;
+            }
+            return;
+        }
+
+        previous() {
+            
+            if (this.currentNode.previous !==  null) {
+                this.currentNode =  this.currentNode.previous;
+                return this.currentNode;
+            }
+            return;
+        }
+
+        removeNode() {
+        let nodeToRemove = this.currentNode;
+        if (!this.headNode) {
+            return;
+        }  
+        else if (this.headNode === this.lastNode) {
+            this.clearList();
+
+        }   
+        
+        else if (nodeToRemove === this.headNode) {
+            this.headNode = this.headNode.next;
+            this.headNode.previous = null;
+            this.currentNode = this.headNode;
+         }
+
+         else if (nodeToRemove === this.lastNode) {
+             this.lastNode = this.lastNode.previous;
+             this.lastNode.next = null;
+             this.currentNode = this.lastNode;
+         }
+
+         else {
+            let tempStart = nodeToRemove.previous;
+            let tempEnd = nodeToRemove.next;
+             this.currentNode = tempStart;
+             this.currentNode.next = tempEnd;
+             tempEnd.previous = this.currentNode;
+
+         }
+         this.size--;
+         
+        }
+
+        clearList () {
+            this.headNode = null;
+            this.size = 0;
+        }
+
+        printListData() {
+            // let current = this.headNode;
+
+            while(this.currentNode) {
+                console.log(this.currentNode.subject);
+                this.currentNode = this.currentNode.next;
+                
+            }
+        }
+
+
+
+        total() {
+            let total = 0;
+            let startNode = this.headNode;
+            while (startNode) {
+                total +=startNode.amount;
+                startNode = startNode.next;
+            }
+            return total;
+        }
+
 }
 
 export {Node, LinkedList};
