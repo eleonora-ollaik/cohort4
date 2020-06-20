@@ -22,7 +22,6 @@ class LinkedList {
         insertNode (subject, amount) {
             let newNode = new Node(subject, amount);
             let current;
-            let previous;
             // if there is no other nodes
 
             if(!this.headNode) {
@@ -162,4 +161,4 @@ class LinkedList {
 
 }
 
-export {Node, LinkedList};
+export default {Node, LinkedList};

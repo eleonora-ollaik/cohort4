@@ -25,6 +25,8 @@ class App extends React.Component {
 
   }
 
+  
+
   render() {
   return (
     <Router>
@@ -65,7 +67,7 @@ class App extends React.Component {
         <Route path = '/tictactoe' component = {TicTacToe} />
         <Route path = '/bank' component = {AccountsMain} />
         <Route path = '/cities' component = {CityMain} />
-        <Route path = './linked_list' component = {LlMain}/>
+        <Route path = '/linked_list' component = {LlMain}/>
       {/* </header> */}
       </div>
     </div>
