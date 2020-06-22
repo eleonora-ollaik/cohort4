@@ -7,6 +7,7 @@ import TicTacToe from './components/pages/tic-tac-toe/tictactoe.js'
 import AccountsMain from './components/pages/bank/AccountsMain.js'
 import CityMain from './components/pages/cities/CityMainPage.js'
 import LlMain from './components/pages/linked_list/LlMain.js';
+import FifolifoMain from './components/pages/fifo-lifo/FifolifoMain.js'
 
 class App extends React.Component {
   constructor(props){
@@ -39,6 +40,7 @@ class App extends React.Component {
         {this.state.logoClick === 2}
         {this.state.logoClick === 3}
         {this.state.logoClick === 4}
+        {this.state.logoClick === 5}
 
 
       {/* <header className="App-header"> */}
@@ -68,6 +70,8 @@ class App extends React.Component {
         <Route path = '/bank' component = {AccountsMain} />
         <Route path = '/cities' component = {CityMain} />
         <Route path = '/linked_list' component = {LlMain}/>
+        <Route path = '/fifo_lifo' component = {FifolifoMain}/>
+
       {/* </header> */}
       </div>
     </div>
