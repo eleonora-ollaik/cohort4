@@ -24,16 +24,16 @@ test ('Lifo Stack', () => {
 
     lifo.putIn('apples');
     expect(lifo.first.value).toBe('apples');
-    // expect(lifo.last.value).toBe('apples');
+    expect(lifo.last.value).toBe('apples');
 
     lifo.putIn('pears');
-    console.log(lifo)
+    // console.log(lifo)
     expect(lifo.first.value).toBe('pears');
     expect(lifo.first.next.value).toBe('apples');
-    // expect(lifo.last.value).toBe('pears');
+    expect(lifo.last.value).toBe('apples');
 
-    // lifo.putOut();
-    expect(lifo.first.value).toBe('pears');
-    // expect(lifo.lt.value).toBe('pears');
+    lifo.putOut();
+    expect(lifo.first.value).toBe('apples');
+    expect(lifo.last.value).toBe('apples');
 
 } )

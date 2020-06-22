@@ -45,11 +45,13 @@ class LifoStack  {
     putIn(value) {
         let node = new Node(value);
         if (!this.first) {
-            this.first = node;
+            this.first = this.last = node;
         }
         else {
-        this.first = this.first.next;
+        let oldFirst = this.first;
         this.first = node;
+        this.first.next = oldFirst;
+
         }
     }
 
