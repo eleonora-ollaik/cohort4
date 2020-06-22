@@ -44,7 +44,25 @@ class LifoStack  {
 
     putIn(value) {
         let node = new Node(value);
-        this.first = node
+        if (!this.first) {
+            this.first = node;
+        }
+        else {
+        this.first = this.first.next;
+        this.first = node;
+        }
     }
+
+    putOut() {
+        let value = null;
+
+        if (this.first) {
+            value = this.first.value;
+            let oldNext = this.first.next;
+            this.first = this.first.next;
+        }
+        return value;
+    }
+
 }
-export default {Node, FifoQueue};
+export default {Node, FifoQueue, LifoStack};

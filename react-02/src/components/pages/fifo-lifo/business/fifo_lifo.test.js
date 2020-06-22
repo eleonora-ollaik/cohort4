@@ -17,3 +17,23 @@ test ('Fifo Queue', () => {
     expect(fifo.last.value).toBe('pears');
 
 } )
+
+
+test ('Lifo Stack', () => {
+    let lifo = new functions.LifoStack();
+
+    lifo.putIn('apples');
+    expect(lifo.first.value).toBe('apples');
+    // expect(lifo.last.value).toBe('apples');
+
+    lifo.putIn('pears');
+    console.log(lifo)
+    expect(lifo.first.value).toBe('pears');
+    expect(lifo.first.next.value).toBe('apples');
+    // expect(lifo.last.value).toBe('pears');
+
+    // lifo.putOut();
+    expect(lifo.first.value).toBe('pears');
+    // expect(lifo.lt.value).toBe('pears');
+
+} )
