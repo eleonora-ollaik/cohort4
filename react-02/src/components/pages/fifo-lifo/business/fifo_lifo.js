@@ -34,6 +34,21 @@ class FifoQueue {
         }
         return node;
     }
+
+    collection() {
+        if (!this.first) {
+            return 'No nodes'
+        }
+        else {
+            let array = [];
+            let node = this.first;
+            while (node) {
+                array.push(node.value);
+                node = node.next;
+            }
+            return array.join(',')
+        }
+    }
 }
 
 class LifoStack  {
@@ -60,7 +75,7 @@ class LifoStack  {
 
         if (this.first) {
             value = this.first.value;
-            let oldNext = this.first.next;
+            // let oldNext = this.first.next;
             this.first = this.first.next;
         }
         return value;

@@ -24,6 +24,17 @@
   }
 }
 
+.fifoSide{
+  float: left;
+  width: 50%
+}
+
+.lifoSide{
+  float: right;
+  width: 50%
+}
+
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
