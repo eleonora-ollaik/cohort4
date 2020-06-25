@@ -7,18 +7,20 @@ export default function LL_List({linkedList, node, setCurrent}) {
 
     // const [list, setList] = useState(linkedList);
     // const [size, setSize] = useState(0);
-    let counter = 0;
-    let currentN = linkedList.headNode
+    // let counter = 0;
+    // let currentN = linkedList.headNode
     const list = [];
-    while (currentN) {
-        counter++;
+    // while (currentN) {
+    //     counter++;
+
+    for (let i = 0; i < linkedList.size; i++){
         list.push(
             <Card 
-            node = {linkedList.currentNode}
-            key = {counter}
+            node = {node}
+            // key = {counter}
             />
         );
-        currentN = linkedList.currentNode.next;
+        // currentN = linkedList.currentNode.next;
     }
 
 

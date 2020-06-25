@@ -1,14 +1,14 @@
-import {Node, LinkedList} from './LinkedList.js'
+import func from './LinkedList.js'
 
 test('show function from Node class', () => {
-const newNode = new Node('Apples', 5)
+const newNode = new func.Node('Apples', 5)
 expect(newNode.show()).toBe('Apples: 5')
 })
 
 test('testing LinkedList class', () => {
 //testing insert
 
-let linkedList = new LinkedList;
+let linkedList = new func.LinkedList();
 linkedList.insertNode('first thingy', 8);
 linkedList.insertNode('second thingy', 12);
 
@@ -25,7 +25,7 @@ expect(linkedList.currentNode.show()).toBe('third thingy: 26');
 })
 
 test ('does first and last functions work', () => {
-    let linkedList = new LinkedList();
+    let linkedList = new func.LinkedList();
 
     linkedList.insertNode('node 1', 1);
     linkedList.insertNode('node 2', 2);
@@ -44,7 +44,7 @@ test ('does first and last functions work', () => {
 })
 
 test ('does get work', () => {
-    const linkedList = new LinkedList();
+    const linkedList = new func.LinkedList();
     linkedList.insertNode('node 1', 1);
     linkedList.insertNode('node 2', 2);
 
@@ -52,7 +52,7 @@ test ('does get work', () => {
 })
 
 test ('does navigation work', () => {
-    const linkedList = new LinkedList();
+    const linkedList = new func.LinkedList();
     linkedList.insertNode('node 1', 1);
     linkedList.insertNode('node 2', 2);
     linkedList.insertNode('node 3', 3);
@@ -72,7 +72,7 @@ test ('does navigation work', () => {
 })
 
 test('does the delete function  work', () => {
-    let linkedList = new LinkedList();
+    let linkedList = new func.LinkedList();
 
     linkedList.insertNode('node 1', 1);
     linkedList.insertNode('node 2', 2);
@@ -103,7 +103,7 @@ test('does the delete function  work', () => {
 })
 
 test ('does clear function work', () => {
-    const linkedList = new LinkedList();
+    const linkedList = new func.LinkedList();
     linkedList.insertNode('node 1', 1);
     linkedList.insertNode('node 2', 2);
 
@@ -113,7 +113,7 @@ test ('does clear function work', () => {
 
 
 test ('does total work', () => {
-    const linkedList = new LinkedList();
+    const linkedList = new func.LinkedList();
 
     linkedList.insertNode('node 1', 1);
     linkedList.insertNode('node 2', 2);

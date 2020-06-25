@@ -27,6 +27,7 @@ class LinkedList {
             if(!this.headNode) {
                 this.headNode =  newNode;
                 this.currentNode = newNode;
+                this.lastNode = newNode;
                 // this.size++;
                 // return this.currentNode;
             }
@@ -62,7 +63,7 @@ class LinkedList {
             
 
             this.size++;
-            return;
+            return this.currentNode;
 
         }
 
@@ -82,11 +83,15 @@ class LinkedList {
         }
 
         next() {
+        
             if (this.currentNode.next !== null) {
                 this.currentNode = this.currentNode.next;
                 return this.currentNode;
+            } 
+            else {
+                return 'There is no next item in the list'
             }
-            return;
+            // return;
         }
 
         previous() {

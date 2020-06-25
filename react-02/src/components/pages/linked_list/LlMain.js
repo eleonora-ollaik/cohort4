@@ -30,27 +30,32 @@ export default function LlMain() {
 
      const onClick = (e) => {
          let todo = e.target.getAttribute('todo');
-         console.log(todo)
+        //  console.log('Hello', todo)
          if (todo) {
-             setTodo(todo)
+             setTodo({todo})
+            //  console.log('hi from todo')
          }
         
         if (todo === 'head'){
             linkedList.first();
-            setCurrent(linkedList.currentNode);
+            // setCurrent(linkedList.currentNode);
         }
         else if (todo === 'tail'){
             linkedList.last();
-            setCurrent(linkedList.currentNode);
+            // setCurrent(linkedList.currentNode);
         }
         else if (todo === 'next'){
             linkedList.next();
-            setCurrent(linkedList.currentNode);
+            // setCurrent(linkedList.currentNode);
         }
-        else if (todo === 'previous') {
-            linkedList.previous();
+        else if (todo === 'prev') {
+            // console.log('hi from prev')
+
+            let prev = linkedList.previous();
+            // console.log(linkedList.currentNode)
             setCurrent(linkedList.currentNode);
-        
+            // console.log(linkedList.currentNode)
+            return prev;
     }
     }
     
@@ -61,9 +66,9 @@ export default function LlMain() {
             <LlInput
             insertN={insertNew} node={setCurrent}/>
 
-            <div className = 'navBar'>
+            <div className = 'navBar' onClick = {onClick}>
                 <NavBar 
-                onNav={onClick}
+                // onNav={onClick}
                 node = {linkedList}
                 total = {total}
                 />
