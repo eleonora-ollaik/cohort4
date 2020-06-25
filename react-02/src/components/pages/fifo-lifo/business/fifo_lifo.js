@@ -9,6 +9,7 @@ class FifoQueue {
     constructor() {
         this.first  = null;
         this.last = null;
+        // let array = []
     }
 
     putIn (value) {
@@ -20,6 +21,8 @@ class FifoQueue {
              this.last.next = node;
              this.last = node;
          }
+        //  this.array.push(node)
+
     }
 
     putOut() {
@@ -31,7 +34,9 @@ class FifoQueue {
         }
         else if (!this.first) {
             this.last = null
+            
         }
+
         return node;
     }
 
@@ -46,7 +51,8 @@ class FifoQueue {
                 array.push(node.value);
                 node = node.next;
             }
-            return array.join(',')
+            // return array.join(',')
+            return array
         }
     }
 }

@@ -25,7 +25,16 @@ export default function FifolifoMain() {
     function onSave() {
         setFifoNode(fifoNode);
         fifoCtrl.putIn(fifoNode);
-        setFifoList(fifoCtrl.collection())
+
+        for (let i=0; i < functions.array.length; i++) {
+            return(
+        <h2>{functions.array[i]}</h2>)
+        }
+        // let array = fifoCtrl.collection()
+        functions.array.map((fifoNode) => (
+            <h2>{fifoNode.value}</h2>
+        ))
+
         // fifoList.push(fifoNode);
         // console.log(fifoList)
 
@@ -33,12 +42,23 @@ export default function FifolifoMain() {
         lifoCtrl.putIn(lifoNode);
     }
 
+    function listEl () {
+        let array = fifoCtrl.collection()
+         array.map((fifoNode) => (
+            <h2>{fifoNode}</h2>
+        )
+    
+    )
+    console.log(fifoNode)
+         }
+
     return (
         <div>
             <FifoLifoDisplay
             fifo = {fifoList}
             lifo = {lifoList}
             onSave = {onSave}
+            list = {listEl}
             onFifoChange = {onFifoChange}
             onLifoChange = {onLifoChange} />
         </div>

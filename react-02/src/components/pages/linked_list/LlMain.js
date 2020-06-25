@@ -10,42 +10,49 @@ export default function LlMain() {
 
     let [current, setCurrent] = useState('');
     let [total, setTotal] = useState('')
+    let [todo, setTodo] = useState('')
     // let cards = [];
-
+// console.log(todo)
     // useEffect(() => {
     //     // This effect will run any time a state variable changes
     //     console.log('----useEffect: general');
     //   });
     
 
-    function insertNew (subject, amount) {
+    const insertNew = (subject, amount) => {
         let node = linkedList.insertNode(subject, amount);
         setCurrent(node);
         setTotal(linkedList.total())
         console.log(linkedList)
+        // setTodo(null)
+        // console.log(todo)
     }
 
-    function handleNav (nav) {
+     const onClick = (e) => {
+         let todo = e.target.getAttribute('todo');
+         console.log(todo)
+         if (todo) {
+             setTodo(todo)
+         }
         
-        if (nav === 'head'){
+        if (todo === 'head'){
             linkedList.first();
             setCurrent(linkedList.currentNode);
         }
-        else if (nav === 'tail'){
+        else if (todo === 'tail'){
             linkedList.last();
             setCurrent(linkedList.currentNode);
         }
-        else if (nav === 'next'){
+        else if (todo === 'next'){
             linkedList.next();
             setCurrent(linkedList.currentNode);
         }
-        else if (nav === 'previous') {
+        else if (todo === 'previous') {
             linkedList.previous();
             setCurrent(linkedList.currentNode);
         
     }
     }
-
     
 
     return (
@@ -56,7 +63,7 @@ export default function LlMain() {
 
             <div className = 'navBar'>
                 <NavBar 
-                onNav={handleNav}
+                onNav={onClick}
                 node = {linkedList}
                 total = {total}
                 />

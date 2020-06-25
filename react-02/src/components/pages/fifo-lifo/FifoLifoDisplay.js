@@ -11,8 +11,17 @@ export default function FifoLifoDisplay(props) {
 //     fifo = 
 // }
 // const fifoList = [];
+// console.log(props.fifo)
 
+// function listEl () {
+//     this.props.fifo.map ((props) => (
+//         <h2>{props.fifoNode.value}</h2>
+//     )
 
+// )
+// console.log(props.fifoNode.value)
+
+// }
     return (
         <div>
             <h1>Welcome to Fifo Lifo page</h1>
@@ -27,11 +36,12 @@ export default function FifoLifoDisplay(props) {
             <div className='row'>
             <div className='fifoSide'>
                 <h2> Queue </h2>
-                <span>{props.fifo} </span>
+                {props.fifo} 
             </div>
 
             <div className='lifoSide' >
                 <h2> Stack </h2>
+                
             </div>
             </div>
         </div>

@@ -1,47 +1,47 @@
 import React from 'react'
 
-export default function NavBar({onNav, node, total}) {
+export default function NavBar(props) {
+    console.log(props)
+    // // console.log(node.currentNode)
+    // function handleHeadNav() {
+    //     onNav('head');
+    // }
 
-    // console.log(node.currentNode)
-    function handleHeadNav() {
-        onNav('head');
-    }
+    // function handleTailNav() {
+    //     onNav('tail');
+    // }
 
-    function handleTailNav() {
-        onNav('tail');
-    }
+    // function handleNext() {
+    //     onNav('next');
+    // }
 
-    function handleNext() {
-        onNav('next');
-    }
-
-    function handlePrevious() {
-        onNav('previous');
-    }
+    // function handlePrevious() {
+    //     onNav('previous');
+    // }
 
     function checkCurrent() {
-        if (!node.currentNode) {
+        if (!props.node.currentNode) {
             return 'No items in the list'
         } 
-        while (node.currentNode){
-            console.log(node.currentNode.subject)
-            return `${node.currentNode.subject}: ${node.currentNode.amount}`
+        while (props.node.currentNode){
+            console.log(props.node.currentNode.subject)
+            return `${props.node.currentNode.subject}: ${props.node.currentNode.amount}`
         }
     }
 
     return (
         <div>
-            <div className = 'row'>
-                <button onClick = {handleHeadNav}>Head</button>
-                <button onClick = {handleTailNav}>Tail</button>
-                <button onClick = {handleNext}>Next</button>
-                <button onClick = {handlePrevious}>Previous</button>
+            <div>
+                <button todo='head'>Head</button>
+                <button todo='tail'>Tail</button>
+                <button todo='next'>Next</button>
+                <button todo='prev'>Previous</button>
 
             </div>
 
             <div className = 'summary'>
                 <h2>Current item: {checkCurrent()}  </h2> <br />
-                <h2>Current total of all accounts: ${total}</h2>
+                <h2>Current total of all accounts: {props.total}</h2>
             </div>
             
         </div>
