@@ -1,12 +1,17 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-export default function LL_NodeCard(props) {
-    // const [subject, amount] = node.show()
-
+ function Card(props) {
+    console.log(props.node)
+    // const [subject, amount] = props.linkedList.show()
+    console.log('hello from card')
     return (
         <div className = 'container'>
-            <div> {props.node.subject}: {props.node.amount} </div>
+            <div> {props.node} </div>
             
         </div>
     )
 }
+ 
+
+
+export default Card;

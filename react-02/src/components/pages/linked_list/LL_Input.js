@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 
 export default function LL_Input(props) {
-    // const data = props.data;
 
     const [subject, setSubject] = useState('');
     const [amount, setAmount] = useState('');
@@ -14,19 +13,23 @@ export default function LL_Input(props) {
         setAmount(e.target.value);
     }
 
+
     function insertNew  (e)  {
         e.preventDefault() 
-        props.insertN(subject, amount);
+        let node = props.insertN(subject, amount);
+        console.log(node.subject)
         if (subject && amount) {
             setSubject('');
             setAmount('');
         }
     }
 
+
+
     return (
         <div>
+            <div>
             <h2> You can add an item to your Linked List right here:</h2>
-            {/* <form className = 'listInput'> */}
                 <input
                 type = 'text'
                 placeholder = 'Subject'
@@ -40,7 +43,8 @@ export default function LL_Input(props) {
                 />
 
                 <button onClick = {insertNew}>Save</button>
-            {/* </form> */}
+        </div>
+    
         </div>
     )
 }

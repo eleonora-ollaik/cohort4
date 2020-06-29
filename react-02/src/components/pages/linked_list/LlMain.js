@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import LlInput from './LL_Input';
 import ll from './business_logic/LinkedList.js';
 import List from './LL_List';
 import NavBar from './LL_NavBar'
+// import Card from './LL_NodeCard'
 
 let linkedList = new ll.LinkedList();
 
@@ -11,6 +12,8 @@ export default function LlMain() {
     let [current, setCurrent] = useState('');
     let [total, setTotal] = useState('')
     let [todo, setTodo] = useState('')
+    // const list = [];
+
     // let cards = [];
 // console.log(todo)
     // useEffect(() => {
@@ -24,6 +27,18 @@ export default function LlMain() {
         setCurrent(node);
         setTotal(linkedList.total())
         console.log(linkedList)
+        console.log(node)
+        // for (let i = 0; i < linkedList.size; i++){
+        //     list.push(
+        //         <Card 
+        //         node = {node}
+        //         // key = {counter}
+        //         />
+        //     );
+        //     // currentN = linkedList.currentNode.next;
+        // }
+        return node;
+
         // setTodo(null)
         // console.log(todo)
     }
@@ -64,7 +79,7 @@ export default function LlMain() {
         <React.Fragment>
             <h1>Welcome to Linked List Page</h1>
             <LlInput
-            insertN={insertNew} node={setCurrent}/>
+            insertN={insertNew} node={setCurrent} linkedList = {linkedList}/>
 
             <div className = 'navBar' onClick = {onClick}>
                 <NavBar 
@@ -75,9 +90,11 @@ export default function LlMain() {
             </div>
 
             <List
+
+
             linkedList = {linkedList}
-            node = {current}
-            setCurrent = {setCurrent}
+            // node = {current}
+            // setCurrent = {setCurrent}
             />
         </React.Fragment>
     )

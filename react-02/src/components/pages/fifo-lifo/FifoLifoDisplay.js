@@ -22,6 +22,15 @@ export default function FifoLifoDisplay(props) {
 // console.log(props.fifoNode.value)
 
 // }
+// const fifoList = [];
+
+// for (let i = 0; i < props.fifoCtrl.size; i++) {
+//     console.log(props.fifo)
+//     fifoList.push(
+//     <li>{props.fifo}</li>
+//     )
+// }
+
     return (
         <div>
             <h1>Welcome to Fifo Lifo page</h1>
@@ -36,7 +45,7 @@ export default function FifoLifoDisplay(props) {
             <div className='row'>
             <div className='fifoSide'>
                 <h2> Queue </h2>
-                {props.fifo} 
+                {props.list} 
             </div>
 
             <div className='lifoSide' >

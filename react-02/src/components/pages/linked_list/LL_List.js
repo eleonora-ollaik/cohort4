@@ -1,26 +1,18 @@
-import React, {useState} from 'react';
-import LinkedList from './business_logic/LinkedList';
-// import NavBar from './LL_NavBar';
+import React from 'react';
 import Card from './LL_NodeCard';
 
-export default function LL_List({linkedList, node, setCurrent}) {
+export default function LL_List({linkedList}) {
 
-    // const [list, setList] = useState(linkedList);
-    // const [size, setSize] = useState(0);
-    // let counter = 0;
-    // let currentN = linkedList.headNode
     const list = [];
-    // while (currentN) {
-    //     counter++;
 
     for (let i = 0; i < linkedList.size; i++){
+        console.log(linkedList.currentNode)
+
         list.push(
             <Card 
-            node = {node}
-            // key = {counter}
+            node = {linkedList[i]}
             />
         );
-        // currentN = linkedList.currentNode.next;
     }
 
 

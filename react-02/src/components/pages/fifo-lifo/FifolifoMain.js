@@ -6,8 +6,8 @@ export default function FifolifoMain() {
 
     const [fifoCtrl] = useState(new functions.FifoQueue())
     const [lifoCtrl] = useState(new functions.LifoStack())
-    const [fifoList, setFifoList] = useState();
-    const [lifoList, setLifoList] = useState();
+    // const [fifoList, setFifoList] = useState();
+    // const [lifoList, setLifoList] = useState();
     const [fifoNode, setFifoNode] = useState();
     const [lifoNode, setLifoNode] = useState();
 
@@ -20,45 +20,59 @@ export default function FifolifoMain() {
         setLifoNode(e.target.value);
     }
 // setFifoList([]);
+const fifoList = [];
 
 
     function onSave() {
-        setFifoNode(fifoNode);
-        fifoCtrl.putIn(fifoNode);
 
-        for (let i=0; i < functions.array.length; i++) {
-            return(
-        <h2>{functions.array[i]}</h2>)
+        // setFifoNode(fifoNode);
+        fifoCtrl.putIn(fifoNode);
+        console.log(fifoNode)
+        if (fifoNode) {
+            setFifoNode('')
         }
-        // let array = fifoCtrl.collection()
-        functions.array.map((fifoNode) => (
-            <h2>{fifoNode.value}</h2>
-        ))
+
+
+    for (let i = 0; i < fifoCtrl.size; i++) {
+    fifoList.push(
+    <li>{fifoNode}</li>
+    )
+}
+
+        // for (let i=0; i < functions.array.length; i++) {
+        //     return(
+        // <h2>{functions.array[i]}</h2>)
+        // }
+        // // let array = fifoCtrl.collection()
+        // functions.array.map((fifoNode) => (
+        //     <h2>{fifoNode.value}</h2>
+        // ))
 
         // fifoList.push(fifoNode);
         // console.log(fifoList)
 
-        setLifoNode(lifoNode);
+        // setLifoNode(lifoNode);
         lifoCtrl.putIn(lifoNode);
     }
 
-    function listEl () {
-        let array = fifoCtrl.collection()
-         array.map((fifoNode) => (
-            <h2>{fifoNode}</h2>
-        )
+    // function listEl () {
+    //     let array = fifoCtrl.collection()
+    //      array.map((fifoNode) => (
+    //         <h2>{fifoNode}</h2>
+    //     )
     
-    )
-    console.log(fifoNode)
-         }
+    // )
+    // console.log(fifoNode)
+    //      }
 
     return (
         <div>
             <FifoLifoDisplay
-            fifo = {fifoList}
-            lifo = {lifoList}
+            fifo = {fifoNode}
+            lifo = {lifoNode}
             onSave = {onSave}
-            list = {listEl}
+            list = {fifoList}
+            fifoCtrl = {fifoCtrl}
             onFifoChange = {onFifoChange}
             onLifoChange = {onLifoChange} />
         </div>
