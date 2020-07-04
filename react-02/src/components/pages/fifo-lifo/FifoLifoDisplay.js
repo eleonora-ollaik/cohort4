@@ -1,7 +1,20 @@
 import React from 'react'
 import './../../../App.css'
+import FifoList from './FifoList'
+import LifoList from './LifoList'
 
 export default function FifoLifoDisplay(props) {
+
+    // let listOfFifo;
+    // if (props.list) {
+    //     console.log(props.list)
+    //     for (let i = 0; i < props.list.length; i++) {
+    //         console.log(props.list[i])
+    //         return (
+    //             <li> {props.list[i]} </li>
+    //         )
+    //     } 
+    // }
 
 //    function onChange (e) {
 //         this.setState({ [e.target.name]: e.target.value });
@@ -30,32 +43,40 @@ export default function FifoLifoDisplay(props) {
 //     <li>{props.fifo}</li>
 //     )
 // }
+// const addCard = () => {
+// }
 
     return (
         <div>
             <h1>Welcome to Fifo Lifo page</h1>
 
             <div>
-                <input type='text' placeholder='Queue item' onChange={props.onFifoChange} value ={props.fifoNode}></input>
-                <button onClick={props.onSave}>Queue</button>
-                <input type='text' placeholder='Stack item'></input>
-                <button>Stack</button>
+                <input type='text' placeholder='Queue item' id = 'idFifoName' onChange={props.onFifoChange} ></input>
+                <button todo = 'queue' onClick={props.onSave}>Queue</button>
+                <input type='text' placeholder='Stack item' id='idLifoName' onChange={props.onLifoChange}></input>
+                <button todo = 'stack' onClick={props.onSave}>Stack</button>
 
             </div>
             <div className='row'>
             <div className='fifoSide'>
-                <h2> Queue </h2>
-                {props.list} 
+                <FifoList 
+                 fList = {props.fifoList}
+                 onDelete = {props.onDelete}
+                 />
             </div>
 
             <div className='lifoSide' >
-                <h2> Stack </h2>
-                
+                <LifoList
+                lList = {props.lifoList}
+                onDelete = {props.onDelete}
+
+                />
             </div>
             </div>
         </div>
     )
 
+     
 }
 
 // const queueStyle = {

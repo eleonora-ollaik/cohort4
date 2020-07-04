@@ -1,23 +1,6 @@
 import React from 'react'
 
 export default function NavBar(props) {
-    // console.log(props)
-    // // console.log(node.currentNode)
-    // function handleHeadNav() {
-    //     onNav('head');
-    // }
-
-    // function handleTailNav() {
-    //     onNav('tail');
-    // }
-
-    // function handleNext() {
-    //     onNav('next');
-    // }
-
-    // function handlePrevious() {
-    //     onNav('previous');
-    // }
 
     function checkCurrent() {
         if (!props.node.currentNode) {
@@ -40,8 +23,13 @@ export default function NavBar(props) {
 
             <div className = 'summary'>
                 <h2>Current item: {checkCurrent()}  </h2> <br />
+                <button onClick={props.onDelete}>Delete Current</button> 
+                <button onClick={props.onClear}>Clear List</button> 
+
+                <br />
                 <h2>Current total of all accounts: {props.total}</h2>
             </div>
+            
             
         </div>
     )

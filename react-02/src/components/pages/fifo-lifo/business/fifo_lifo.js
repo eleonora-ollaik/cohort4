@@ -91,5 +91,21 @@ class LifoStack  {
         return value;
     }
 
+    collection() {
+        if (!this.first) {
+            return 'No nodes'
+        }
+        else {
+            let array = [];
+            let node = this.first;
+            while (node) {
+                array.push(node.value);
+                node = node.next;
+            }
+            // return array.join(',')
+            return array
+        }
+    }
+
 }
 export default {Node, FifoQueue, LifoStack};

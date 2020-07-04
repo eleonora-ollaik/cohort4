@@ -12,7 +12,7 @@ export default function LlMain() {
     let [current, setCurrent] = useState('');
     let [total, setTotal] = useState('')
     let [todo, setTodo] = useState('')
-    // const list = [];
+    let [list, setList] = useState([]);
 
     // let cards = [];
 // console.log(todo)
@@ -28,52 +28,58 @@ export default function LlMain() {
         setTotal(linkedList.total())
         console.log(linkedList)
         console.log(node)
-        // for (let i = 0; i < linkedList.size; i++){
-        //     list.push(
-        //         <Card 
-        //         node = {node}
-        //         // key = {counter}
-        //         />
-        //     );
-        //     // currentN = linkedList.currentNode.next;
-        // }
+        list.push(node);
+        console.log('this is list', list)
+        clearFields()
         return node;
 
-        // setTodo(null)
-        // console.log(todo)
     }
 
+    const onDelete = () => {
+        linkedList.removeNode();
+        console.log(linkedList) 
+        setCurrent(linkedList.get())
+        setTotal(linkedList.total())
+        setList(list)
+        console.log(list)
+        console.log(current)
+
+    }
+
+    const onClear = () => {
+        linkedList.clearList();
+        setCurrent(linkedList.get())
+
+        // setCurrent('null')
+        console.log(linkedList)
+    }
      const onClick = (e) => {
          let todo = e.target.getAttribute('todo');
-        //  console.log('Hello', todo)
          if (todo) {
              setTodo({todo})
-            //  console.log('hi from todo')
          }
         
         if (todo === 'head'){
             linkedList.first();
-            // setCurrent(linkedList.currentNode);
         }
         else if (todo === 'tail'){
             linkedList.last();
-            // setCurrent(linkedList.currentNode);
         }
         else if (todo === 'next'){
             linkedList.next();
-            // setCurrent(linkedList.currentNode);
         }
         else if (todo === 'prev') {
-            // console.log('hi from prev')
 
             let prev = linkedList.previous();
-            // console.log(linkedList.currentNode)
             setCurrent(linkedList.currentNode);
-            // console.log(linkedList.currentNode)
             return prev;
     }
     }
     
+    const clearFields = () => {
+        document.getElementById('idSubject').value = ''
+        document.getElementById('idAmount').value = ''
+    }
 
     return (
         <React.Fragment>
@@ -86,12 +92,14 @@ export default function LlMain() {
                 // onNav={onClick}
                 node = {linkedList}
                 total = {total}
+                onDelete ={onDelete}
+                onClear = {onClear}
                 />
             </div>
 
             <List
 
-
+            list = {list}
             linkedList = {linkedList}
             // node = {current}
             // setCurrent = {setCurrent}

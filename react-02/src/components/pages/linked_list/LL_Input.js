@@ -31,11 +31,13 @@ export default function LL_Input(props) {
             <div>
             <h2> You can add an item to your Linked List right here:</h2>
                 <input
+                id = 'idSubject'
                 type = 'text'
                 placeholder = 'Subject'
                 onChange = {onSubChange} 
                 />
                 <input
+                id = 'idAmount'
                 type = 'number'
                 placeholder = 'Amount'
                 
