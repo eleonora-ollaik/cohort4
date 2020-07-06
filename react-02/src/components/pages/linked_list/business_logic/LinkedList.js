@@ -139,6 +139,7 @@ class LinkedList {
 
         clearList () {
             this.headNode = null;
+            this.currentNode = null;
             this.size = 0;
         }
 

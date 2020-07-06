@@ -8,11 +8,24 @@ import AccountsMain from './components/pages/bank/AccountsMain.js'
 import CityMain from './components/pages/cities/CityMainPage.js'
 import LlMain from './components/pages/linked_list/LlMain.js';
 import FifolifoMain from './components/pages/fifo-lifo/FifolifoMain.js'
+import {ThemeContext, Themes} from './components/pages/settings/ThemeContext';
+import Settings from './components/pages/settings/Settings.js';
 
 class App extends React.Component {
   constructor(props){
     super (props);
+
+    this.toggleTheme = () => {
+      if (this.state.theme === Themes.light) {
+        this.setState({theme: Themes.darkMode })
+      } else {
+      this.setState({ theme: Themes.lightMode })
+      };
+    }
+    
     this.state = {
+      theme: Themes.lightMode,
+      toggleTheme: this.toggleTheme,
       logoClick : 0
     };
   }
@@ -26,10 +39,12 @@ class App extends React.Component {
 
   }
 
-  
+ 
 
   render() {
+
   return (
+    <ThemeContext.Provider value = {this.state}>
     <Router>
     <div className="App">
       <div className= 'container'>
@@ -41,6 +56,7 @@ class App extends React.Component {
         {this.state.logoClick === 3}
         {this.state.logoClick === 4}
         {this.state.logoClick === 5}
+        {this.state.logoClick === 6}
 
 
       {/* <header className="App-header"> */}
@@ -71,11 +87,13 @@ class App extends React.Component {
         <Route path = '/cities' component = {CityMain} />
         <Route path = '/linked_list' component = {LlMain}/>
         <Route path = '/fifo_lifo' component = {FifolifoMain}/>
+        <Route path = '/settings' component = {Settings} />
 
       {/* </header> */}
       </div>
     </div>
      </Router>
+     </ThemeContext.Provider>
   );
 } 
 }

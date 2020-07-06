@@ -14,6 +14,8 @@ export default function FifoList(props) {
                 <li key = {i}> {value} </li>
             )
     })
+        } else {
+            return 'No items'
         } 
 
     return (

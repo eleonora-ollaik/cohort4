@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import LlInput from './LL_Input';
 import ll from './business_logic/LinkedList.js';
 import List from './LL_List';
 import NavBar from './LL_NavBar'
+import {ThemeContext} from '../settings/ThemeContext'
 // import Card from './LL_NodeCard'
 
 let linkedList = new ll.LinkedList();
@@ -13,6 +14,7 @@ export default function LlMain() {
     let [total, setTotal] = useState('')
     let [todo, setTodo] = useState('')
     let [list, setList] = useState([]);
+     const context = useContext(ThemeContext)
 
     // let cards = [];
 // console.log(todo)
@@ -26,14 +28,33 @@ export default function LlMain() {
         let node = linkedList.insertNode(subject, amount);
         setCurrent(node);
         setTotal(linkedList.total())
-        console.log(linkedList)
-        console.log(node)
+        // console.log(linkedList)
+        // console.log(node)
+        // let array = [];
+        // let node = this.first;
+        // while (node) {
+        //     list.push(node);
+        //     node = node.next;
+        // }
+
         list.push(node);
         console.log('this is list', list)
+        console.log(linkedList)
         clearFields()
         return node;
 
     }
+
+    function checkCurrent() {
+        if (!linkedList.currentNode) {
+            return 'No items in the list'
+        } 
+        while (linkedList.currentNode){
+            // console.log(props.node.currentNode.subject)
+            return `${linkedList.currentNode.subject}: ${linkedList.currentNode.amount}`
+        }
+    }
+
 
     const onDelete = () => {
         linkedList.removeNode();
@@ -43,15 +64,18 @@ export default function LlMain() {
         setList(list)
         console.log(list)
         console.log(current)
+        // checkCurrent()
 
     }
 
     const onClear = () => {
         linkedList.clearList();
-        setCurrent(linkedList.get())
+        setCurrent('No items')
+        setTotal(linkedList.total())
 
         // setCurrent('null')
         console.log(linkedList)
+        checkCurrent()
     }
      const onClick = (e) => {
          let todo = e.target.getAttribute('todo');
@@ -90,6 +114,7 @@ export default function LlMain() {
             <div className = 'navBar' onClick = {onClick}>
                 <NavBar 
                 // onNav={onClick}
+                checkCurrent = {checkCurrent}
                 node = {linkedList}
                 total = {total}
                 onDelete ={onDelete}
@@ -97,13 +122,13 @@ export default function LlMain() {
                 />
             </div>
 
-            <List
+            {/* <List
 
             list = {list}
             linkedList = {linkedList}
             // node = {current}
             // setCurrent = {setCurrent}
-            />
+            /> */}
         </React.Fragment>
     )
 }

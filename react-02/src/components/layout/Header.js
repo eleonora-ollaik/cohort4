@@ -6,7 +6,7 @@ import cities from '../cities.svg';
 import ticTacToe from '../pages/tic-tac-toe/tic-tac-toe.svg';
 import linkedList from '../pages/linked_list/sort.svg';
 import fifolifo from '../pages/fifo-lifo/fifo-lifo.svg';
-
+import settings from '../pages/settings/settings.svg'
 
 
 export default function Header (props) {
@@ -29,6 +29,10 @@ export default function Header (props) {
             </Link>
             <Link to="/fifo_lifo">
             <img onClick = {() => {props.handleClick(5)}} src={fifolifo} alt='logo' className = 'crab'></img>
+            </Link>
+
+            <Link to="/settings">
+            <img onClick = {() => {props.handleClick(6)}} src={settings} alt='logo' className = 'crab'></img>
             </Link>
 
         </header>
