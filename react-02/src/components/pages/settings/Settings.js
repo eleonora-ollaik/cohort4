@@ -15,7 +15,6 @@ class Settings extends Component {
         <h2> Change theme </h2>
         <button
           onClick={toggleTheme}
-          // style ={{background: theme.background}, {margin: 5}}
         >
           Light/Dark
         </button>

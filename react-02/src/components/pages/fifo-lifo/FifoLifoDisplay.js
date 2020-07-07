@@ -52,7 +52,7 @@ export default function FifoLifoDisplay(props) {
         const theme = isLightTheme ? light : dark;
 
         return (
-          <div>
+          <div style={{ color: theme.syntax, background: theme.bg }}>
             <h1>Welcome to Fifo Lifo page</h1>
 
             <div>
@@ -76,11 +76,17 @@ export default function FifoLifoDisplay(props) {
               </button>
             </div>
             <div className='row'>
-              <div className='fifoSide'>
+              <div
+                className='fifoSide'
+                style={{ color: theme.syntax, background: theme.bg }}
+              >
                 <FifoList fList={props.fifoList} onDelete={props.onDelete} />
               </div>
 
-              <div className='lifoSide'>
+              <div
+                className='lifoSide'
+                style={{ color: theme.syntax, background: theme.bg }}
+              >
                 <LifoList lList={props.lifoList} onDelete={props.onDelete} />
               </div>
             </div>

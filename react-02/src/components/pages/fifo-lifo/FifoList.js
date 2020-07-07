@@ -19,7 +19,7 @@ export default function FifoList(props) {
         } 
 
     return (
-        <div>
+        <div >
            <h2> Queue </h2>
             {fifoItem} 
         <button todo='deleteQueue' onClick={props.onDelete}>Remove Item</button>
