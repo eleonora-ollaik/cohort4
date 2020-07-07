@@ -42,8 +42,11 @@ document.body.addEventListener('click', e => {
 
 // Depositing into selected account
     if (todo === 'deposit') {
+
         let result = accountManager.deposit(selectedKey, depAmount);
+
         depositAmount.value = '';
+
         let card = document.getElementById(`${selectedKey}`)
         card.textContent = result;
         updateAccounts();

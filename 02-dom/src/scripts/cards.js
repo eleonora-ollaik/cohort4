@@ -6,7 +6,9 @@ const functions = {
 		div.appendChild(document.createTextNode(card));
 
 		div.classList.add("card");
-		
+		const br = document.createElement('br')
+		div.appendChild(br)
+
 		const addBeforeBtn = document.createElement('button');
 		const addBeforeBtnText = document.createTextNode('Add Before');
 		addBeforeBtn.appendChild(addBeforeBtnText);

@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import functions from './business/fifo_lifo.js'
 import FifoLifoDisplay from './FifoLifoDisplay'
+import {ThemeContext} from '../settings/ThemeContext'
+
 
 export default function FifolifoMain() {
 
@@ -65,9 +67,13 @@ export default function FifolifoMain() {
         document.getElementById('idLifoName').value = ''
     }
 
+    return(
+    <ThemeContext.Consumer>{(context) => {
+        const { isLightTheme, light, dark} = context;
+        const theme = isLightTheme ? light : dark;
 
     return (
-        <div>
+        <div style={{color: theme.syntax, background: theme.bg}}>
             <FifoLifoDisplay
             onSave = {onSave}
             onDelete = {onDelete}
@@ -77,5 +83,9 @@ export default function FifolifoMain() {
             onFifoChange = {onFifoChange}
             onLifoChange = {onLifoChange} />
         </div>
+    )
+        
+    }}
+    </ThemeContext.Consumer>    
     )
 }

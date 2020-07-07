@@ -79,13 +79,10 @@ class Community {
                 k = k[0].key;
             }
             let key = k + 1
-
             let city = new City(key, name, latitude, longtitude, population);
             this.list.push(city);
             console.log(city);
-
             data = await functions.postData(this.url + 'add', city);
-
             if (data.status === 200) {
                 console.log(key);
                 

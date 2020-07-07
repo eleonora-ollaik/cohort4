@@ -1,29 +1,31 @@
-import React, {useContext} from 'react'
-import {ThemeContext, Themes} from './ThemeContext.js';
+import React, { Component } from 'react';
+import { ThemeContext } from './ThemeContext.js';
 
-class Settings extends React.Component  {
-    static contextType = ThemeContext;
-render () {
-const {theme , toggleTheme} = this.context;
+class Settings extends Component {
+  static contextType = ThemeContext;
+  render() {
+    console.log(this.context);
+    const {toggleTheme} = this.context;
+    const { isLightTheme, light, dark } = this.context;
+    const theme = isLightTheme ? light : dark;
+    // const {theme , toggleTheme} = this.context;
     return (
-        // <ThemeContext.Consumer>
-        //      {({ toggleTheme }) => (
-                <div>
-                    <h1>Settings</h1>
-                    <h2> Change theme </h2>
-                    <button
-                    onClick = {toggleTheme}
-                    style ={{background: theme.background}}
-                    >
-                        Light/Dark
-                    </button>
-                    <h2>Current theme: {theme.name} </h2>
-                </div>
-        //      )} 
+      <div style={{ background: theme.ui, color: theme.syntax }}>
+        <h1>Settings</h1>
+        <h2> Change theme </h2>
+        <button
+          onClick={toggleTheme}
+          // style ={{background: theme.background}, {margin: 5}}
+        >
+          Light/Dark
+        </button>
+        <h2>Current theme: </h2>
+      </div>
+      //      )}
 
-        // </ThemeContext.Consumer>
-    )
-    }
+      // </ThemeContext.Consumer>
+    );
+  }
 }
 
 export default Settings;

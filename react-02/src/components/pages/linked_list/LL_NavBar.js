@@ -2,18 +2,10 @@ import React from 'react'
 
 export default function NavBar(props) {
 
-    // function checkCurrent() {
-    //     if (!props.node.currentNode) {
-    //         return 'No items in the list'
-    //     } 
-    //     while (props.node.currentNode){
-    //         // console.log(props.node.currentNode.subject)
-    //         return `${props.node.currentNode.subject}: ${props.node.currentNode.amount}`
-    //     }
-    // }
 
     function checkPrevious() {
-        let node = props.node.get()
+        console.log(props.ll)
+        let node = props.ll.get()
         if (node === null || node.previous === null) {
             return;
         }
@@ -21,8 +13,9 @@ export default function NavBar(props) {
             return node.previous.subject
         }
     }
+    
     function checkNext() {
-        let node = props.node.get()
+        let node = props.ll.get()
         if (node === null || node.next === null) {
             return;
         }
@@ -30,6 +23,7 @@ export default function NavBar(props) {
             return node.next.subject;
         }
     }
+
     return (
         <div>
             <div>
@@ -42,11 +36,11 @@ export default function NavBar(props) {
             <div className = 'summary'>
                 <h2>Current item: {props.checkCurrent()}  </h2> 
                 
-                <br />
+                <br/>
                 <button onClick={props.onDelete}>Delete Current</button> 
                 <button onClick={props.onClear}>Clear List</button> 
 
-                <br />
+                <br/>
                 <h2>Current total of all accounts: {props.total}</h2>
             </div>
             

@@ -89,11 +89,14 @@ class AccountControl {
 
     addAccount(accountName, startingBalance) {
         const key = this.nextKey();
+        if (isNaN(startingBalance)) {
+            alert('Balance should be a number')
+        } else {
         let account = new Card(key, accountName, startingBalance);
         let card = account.buildCard();
         this.accArr.push(account);
         return [this.accArr, card];
-    }
+    }}
 
     // Getting account data by key
 
@@ -110,18 +113,25 @@ class AccountControl {
     // Depositing to specific account in the array knowing it's key number
 
     deposit(key, amount) {
+        if (amount>=0) {
         let account = this.getAccount(key);
         let balance = account.deposit(amount);
         return balance;
-
+        } else {
+            alert('Please try to withdraw this amount')
+        }
     }
 
     // --//-- Withdrawal
 
     withdraw(key, amount) {
+        if(amount>=0) {
         let account = this.getAccount(key);
         let balance = account.withdraw(amount);
         return balance;
+        } else {
+            alert('Please try to deposit this amount')
+        }
 
     }
 
