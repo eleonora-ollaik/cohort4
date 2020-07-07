@@ -10,20 +10,22 @@ let button = document.getElementsByClassName('button')
 let buttonC = document.getElementById('buttonC');
 let num1 =0;
 let num2 =0;
-
+let idNumber = document.getElementById('idNumber');
+let idNumberSize = document.getElementById('idNumberSize')
 
 
 
 // **********
 //
-// Add the event listeners
+// Defining number size from input 
 // 
 
 idNumber.addEventListener('change', (() => {
     idNumberSize.textContent = functions.size(idNumber.value);
 }));
 
-// calculator input values event listeners
+
+// Basic calculator inputs 
 
 if (num1Input) {
     num1Input.addEventListener('input', updateNum1);
@@ -39,7 +41,7 @@ if (num2Input) {
     }
 }
 
-// calculator operations
+// Basic calculator operations
 
 const operation = (clickObj) => {
     let operator =clickObj.target.value;
@@ -64,13 +66,13 @@ const operation = (clickObj) => {
     }
 };
 
-// loop through operations
+// Looping through buttons and operations
 
 for (let i = 0; i <button.length; i++) {
     button[i].addEventListener('click', operation, false);
 };
 
-// clear calculator button
+// Calculator clear button
 
 if (buttonC) {
     buttonC.addEventListener('click', function () {

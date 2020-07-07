@@ -3,8 +3,8 @@ const functions = {
     
     size: (num) => {
         if (num < 10) return "small";
-        if (num < 20) return "medium";
-        return "large";
+        else if (num < 20) return "medium";
+        else return "large";
     },
 
     add: (num1, num2) => {
