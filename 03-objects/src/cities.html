@@ -1,116 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Google fonts -->
-    <link rel="stylesheet" href="https://fonts.google.com/specimen/Montserrat?selection.family=Montserrat:wght@200">
+    <link
+      rel="stylesheet"
+      href="https://fonts.google.com/specimen/Montserrat?selection.family=Montserrat:wght@200"
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
 
     <!-- My CSS -->
-    <link rel="stylesheet" type="text/css" href="./cities.css">
+    <link rel="stylesheet" type="text/css" href="./cities.css" />
 
     <title>Cities and communitites</title>
-</head>
+  </head>
 
-<body>
-    <div class='container'>
-        <div class="column">
-            <h1> Cities and communities </h1>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">
-                        <ion-icon name="business-outline"></ion-icon>
-                    </span>
-                </div>
-                <input type="text" id = "cityName" class="form-control" placeholder="City name" aria-label="Username"
-                    aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">
-                        <ion-icon name="globe-outline"></ion-icon>
-                    </span>
-                </div>
-                <input type="text" id = "latitude" class="form-control" placeholder="Latitude" aria-label="Username"
-                    aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">
-                        <ion-icon name="globe-outline"></ion-icon>
-                    </span>
-                </div>
-                <input type="text" id = "longtitude" class="form-control" placeholder="Longtitude" aria-label="Username"
-                    aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">
-                        <ion-icon name="people-outline"></ion-icon>
-                    </span>
-                </div>
-                <input type="text" id = "population" class="form-control" placeholder="Population" aria-label="Username"
-                    aria-describedby="basic-addon1">
-            </div>
-
-            <button type="button" class="btn btn-info" todo = "addCity">Add new city</button>
+  <body>
+    <div class="container">
+      <div class="column">
+        <h1>Cities and communities</h1>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">
+              <ion-icon name="business-outline"></ion-icon>
+            </span>
+          </div>
+          <input
+            type="text"
+            id="cityName"
+            class="form-control"
+            placeholder="City name"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">
+              <ion-icon name="globe-outline"></ion-icon>
+            </span>
+          </div>
+          <input
+            type="text"
+            id="latitude"
+            class="form-control"
+            placeholder="Latitude"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">
+              <ion-icon name="globe-outline"></ion-icon>
+            </span>
+          </div>
+          <input
+            type="text"
+            id="longtitude"
+            class="form-control"
+            placeholder="Longtitude"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">
+              <ion-icon name="people-outline"></ion-icon>
+            </span>
+          </div>
+          <input
+            type="text"
+            id="population"
+            class="form-control"
+            placeholder="Population"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
         </div>
 
-<br>
+        <button type="button" class="btn btn-info" todo="addCity">
+          Add new city
+        </button>
+      </div>
 
-        <div class="row">
-            <div class="card border-success mb-3" style="width: 13rem;">
-              <span class="card-header">Most Northern</span>
-              <div class="card-body text-success">
-                <p class="card-text" id='northern'>Message</p>
-              </div>
-            </div>
-            <div class="card border-success mb-3" style="width: 13rem;">
-              <div class="card-header">Most Southern</div>
-              <div class="card-body text-success">
-                <p class="card-text" id='southern'>Message</p>
-              </div>
-            </div>
-            <div class="card border-success mb-3" style="width: 13rem;">
-              <div class="card-header">Total population</div>
-              <div class="card-body text-success">
-                <p class="card-text" id='total'>Message</p>
-              </div>
-            </div>
-          </div> <br><br>
+      <br />
 
-    <div>
+      <div class="row">
+        <div class="card border-success mb-3" style="width: 13rem;">
+          <span class="card-header">Most Northern</span>
+          <div class="card-body text-success">
+            <p class="card-text" id="northern">Message</p>
+          </div>
+        </div>
+        <div class="card border-success mb-3" style="width: 13rem;">
+          <div class="card-header">Most Southern</div>
+          <div class="card-body text-success">
+            <p class="card-text" id="southern">Message</p>
+          </div>
+        </div>
+        <div class="card border-success mb-3" style="width: 13rem;">
+          <div class="card-header">Total population</div>
+          <div class="card-body text-success">
+            <p class="card-text" id="total">Message</p>
+          </div>
+        </div>
+      </div>
+      <br /><br />
+
+      <div>
         <h1>List of Cities</h1>
-        <div id = 'citiesList' class>
-
-        </div>
-
-    </div>
+        <div id="citiesList" class></div>
+      </div>
     </div>
     <!-- Bootstrap JS Installation -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Icons installation -->
 
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 
-
     <script type="module" src="./scripts/cities-main.js"></script>
-
-</body>
-
+  </body>
 </html>
