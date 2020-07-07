@@ -5,46 +5,6 @@ import LifoList from './LifoList';
 import { ThemeContext } from '../settings/ThemeContext';
 
 export default function FifoLifoDisplay(props) {
-  // let listOfFifo;
-  // if (props.list) {
-  //     console.log(props.list)
-  //     for (let i = 0; i < props.list.length; i++) {
-  //         console.log(props.list[i])
-  //         return (
-  //             <li> {props.list[i]} </li>
-  //         )
-  //     }
-  // }
-
-  //    function onChange (e) {
-  //         this.setState({ [e.target.name]: e.target.value });
-  //    }
-  // let fifo;
-  // if (props.fifo) {
-  //     fifo =
-  // }
-  // const fifoList = [];
-  // console.log(props.fifo)
-
-  // function listEl () {
-  //     this.props.fifo.map ((props) => (
-  //         <h2>{props.fifoNode.value}</h2>
-  //     )
-
-  // )
-  // console.log(props.fifoNode.value)
-
-  // }
-  // const fifoList = [];
-
-  // for (let i = 0; i < props.fifoCtrl.size; i++) {
-  //     console.log(props.fifo)
-  //     fifoList.push(
-  //     <li>{props.fifo}</li>
-  //     )
-  // }
-  // const addCard = () => {
-  // }
   return (
     <ThemeContext.Consumer>
       {(context) => {
@@ -96,13 +56,3 @@ export default function FifoLifoDisplay(props) {
     </ThemeContext.Consumer>
   );
 }
-
-// const queueStyle = {
-//     float: 'left',
-//     width: '50%'
-// };
-
-// const stackStyle = {
-//     float: 'right',
-//     width: '50%'
-// };

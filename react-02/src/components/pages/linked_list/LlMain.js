@@ -13,27 +13,11 @@ export default function LlMain() {
   let [total, setTotal] = useState('');
   let [todo, setTodo] = useState('');
   let [list, setList] = useState([]);
-  //  const context = useContext(ThemeContext)
-
-  // let cards = [];
-  // console.log(todo)
-  // useEffect(() => {
-  //     // This effect will run any time a state variable changes
-  //     console.log('----useEffect: general');
-  //   });
 
   const insertNew = (subject, amount) => {
     let node = linkedList.insertNode(subject, amount);
     setCurrent(node);
     setTotal(linkedList.total());
-    // console.log(linkedList)
-    // console.log(node)
-    // let array = [];
-    // let node = this.first;
-    // while (node) {
-    //     list.push(node);
-    //     node = node.next;
-    // }
 
     list.push(node);
     console.log('this is list', list);
@@ -47,7 +31,6 @@ export default function LlMain() {
       return 'No items in the list';
     }
     while (linkedList.currentNode) {
-      // console.log(props.node.currentNode.subject)
       return `${linkedList.currentNode.subject}: ${linkedList.currentNode.amount}`;
     }
   }
@@ -60,7 +43,6 @@ export default function LlMain() {
     setList(list);
     console.log(list);
     console.log(current);
-    // checkCurrent()
   };
 
   const onClear = () => {
@@ -68,7 +50,6 @@ export default function LlMain() {
     setCurrent('No items');
     setTotal(linkedList.total());
 
-    // setCurrent('null')
     console.log(linkedList);
     checkCurrent();
   };
@@ -121,14 +102,6 @@ export default function LlMain() {
                 onClear={onClear}
               />
             </div>
-
-            {/* <List
-    
-                list = {list}
-                linkedList = {linkedList}
-                // node = {current}
-                // setCurrent = {setCurrent}
-                /> */}
           </div>
         );
       }}

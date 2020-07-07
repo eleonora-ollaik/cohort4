@@ -1,8 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './components/layout/Header.js';
 import './App.css';
+import HomePage from './components/pages/homepage/Homepage.js'
 import TicTacToe from './components/pages/tic-tac-toe/tictactoe.js';
 import AccountsMain from './components/pages/bank/AccountsMain.js';
 import CityMain from './components/pages/cities/CityMainPage.js';
@@ -10,17 +9,13 @@ import LlMain from './components/pages/linked_list/LlMain.js';
 import FifolifoMain from './components/pages/fifo-lifo/FifolifoMain.js';
 import ThemeContextProvider from './components/pages/settings/ThemeContext';
 import Settings from './components/pages/settings/Settings.js';
-// import { ThemeContext } from './components/pages/settings/ThemeContext';
 
 class App extends React.Component {
-  // static contextType = ThemeContext;
 
   constructor(props) {
     super(props);
 
     this.state = {
-      // theme: Themes.lightMode,
-      // toggleTheme: this.toggleTheme,
       logoClick: 0,
     };
   }
@@ -29,61 +24,25 @@ class App extends React.Component {
     this.setState({
       logoClick: number,
     });
-    console.log(this.state);
+    // console.log(this.state);
   };
 
   render() {
-    // const { isLightTheme, light, dark } = this.context;
-    // const theme = isLightTheme ? light : dark;
 
     return (
       <ThemeContextProvider>
-        <Router>
           <div className='App'>
             <div className='container'>
               <Header handleClick={this.handleClick} />
-              {/* <SVG handleClick = {this.handleClick}/> */}
-              {this.state.logoClick === 0}
-              {this.state.logoClick === 1}
-              {this.state.logoClick === 2}
-              {this.state.logoClick === 3}
-              {this.state.logoClick === 4}
-              {this.state.logoClick === 5}
-              {this.state.logoClick === 6}
-
-              {/* <header className="App-header"> */}
-              <Route
-                exact
-                path='/'
-                render={(props) => (
-                  <div>
-                    <img src={logo} className='App-logo' alt='logo' />
-                    <p>
-                      Edit <code>src/App.js</code> and save to reload.
-                    </p>
-                    <a
-                      className='App-link'
-                      href='https://reactjs.org'
-                      target='_blank'
-                      rel='noopener noreferrer'
-                    >
-                      Learn React
-                    </a>
-                  </div>
-                )}
-              />
-
-              <Route path='/tictactoe' component={TicTacToe} />
-              <Route path='/bank' component={AccountsMain} />
-              <Route path='/cities' component={CityMain} />
-              <Route path='/linked_list' component={LlMain} />
-              <Route path='/fifo_lifo' component={FifolifoMain} />
-              <Route path='/settings' component={Settings} />
-
-              {/* </header> */}
+              {this.state.logoClick === 0 && <HomePage />}
+              {this.state.logoClick === 1 && <TicTacToe/>}
+              {this.state.logoClick === 2 && <AccountsMain/>}
+              {this.state.logoClick === 3 && <CityMain/>}
+              {this.state.logoClick === 4 && <LlMain/>}
+              {this.state.logoClick === 5 && <FifolifoMain/>}
+              {this.state.logoClick === 6 && <Settings/>}
             </div>
           </div>
-        </Router>
       </ThemeContextProvider>
     );
   }
