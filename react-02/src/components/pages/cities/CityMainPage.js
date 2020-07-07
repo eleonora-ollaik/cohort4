@@ -67,7 +67,7 @@ class CityMainPage extends Component {
 
     return (
       <div style={{ color: theme.syntax, background: theme.bg }}>
-        <header> Welcome to Cities and Communities Page</header>
+        <h1> Welcome to Cities and Communities Page</h1>
         <CityForm handleOnAdd={this.onAdd} handleRandom={this.randomCity} />
 
         <div id='idCityInfo'>
