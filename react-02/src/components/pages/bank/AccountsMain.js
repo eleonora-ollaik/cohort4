@@ -65,7 +65,7 @@ handleWithdraw = (key, transAmount) => {
             />
             <div className ='row'>
             <div className='largest'>
-            <div> Largest account: </div>
+            <span> Largest account: </span>
             <span>{largest}</span>
             {/* <span>{this.state.largest.balance}</span> */}
 

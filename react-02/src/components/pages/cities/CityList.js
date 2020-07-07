@@ -12,6 +12,7 @@ class CityList extends Component {
             <CityCard
             key = {city.key}
             city ={city}
+            comm = {this.props.comm}
             onChange = {this.props.onChange}
             handleMoveIn = {this.props.handleMoveIn}
             handleMoveOut = {this.props.handleMoveOut}

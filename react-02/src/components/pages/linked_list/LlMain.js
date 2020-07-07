@@ -1,7 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState} from 'react';
 import LlInput from './LL_Input';
 import ll from './business_logic/LinkedList.js';
-import List from './LL_List';
+// import List from './LL_List';
 import NavBar from './LL_NavBar';
 import { ThemeContext } from '../settings/ThemeContext';
 // import Card from './LL_NodeCard'

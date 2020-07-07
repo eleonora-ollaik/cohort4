@@ -15,7 +15,7 @@ export default function LL_Input(props) {
   function insertNew(e) {
     e.preventDefault();
     let node = props.insertN(subject, amount);
-    // console.log(node.subject)
+    console.log(node.subject)
     if (subject && amount) {
       setSubject('');
       setAmount('');

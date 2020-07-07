@@ -6,7 +6,7 @@ class Settings extends Component {
 
 
   render() {
-    console.log(this.context);
+    // console.log(this.context);
     const { toggleTheme } = this.context;
     const { isLightTheme, light, dark } = this.context;
     const theme = isLightTheme ? light : dark;

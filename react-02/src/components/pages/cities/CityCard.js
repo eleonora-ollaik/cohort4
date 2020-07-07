@@ -35,6 +35,7 @@ export class CityCard extends Component {
         return (
             <div className = 'card' >
                 <span>City Name: {this.props.city.name}</span><br />
+                <span> Hemisphere: {this.props.comm.whichSphere(this.props.city.key)} </span> <br/>
                 <span>City latitude: {this.props.city.latitude} </span><br />
                 <span>City longitude: {this.props.city.longitude} </span><br />
                 <span>City population: {this.props.city.population} </span><br />

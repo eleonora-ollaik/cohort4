@@ -2,7 +2,10 @@ import functions from './cards.js';
 
 let counter = 4;
 
+
 document.body.addEventListener('click', e => {
+
+
 
     // console.log('You clicked');
     // console.log(e.target.textContent);

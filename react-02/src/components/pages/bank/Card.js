@@ -4,24 +4,28 @@ export class NewCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    amount: '',
-    
+      amount: '',
     };
   }
 
   handleOnChange = (e) => {
-    this.setState({ amount: Number(e.target.value) });
+    this.setState({ amount: e.target.value });
   };
 
   onDeposit = () => {
-    this.props.handleDeposit(this.props.card.key, this.state.amount);
-    this.setState({amount: ''})
+    const amount = Number(this.state.amount);
+    if (!isNaN(amount) && amount > 0) {
+      this.props.handleDeposit(this.props.card.key, amount);
+      this.setState({ amount: '' });
+    }
   };
 
   onWithdraw = (props) => {
-    this.props.handleWithdraw(this.props.card.key, this.state.amount);
-    this.setState({amount: ''})
-
+    const amount = Number(this.state.amount);
+    if (!isNaN(amount) && amount > 0) {
+      this.props.handleWithdraw(this.props.card.key, amount);
+      this.setState({ amount: '' });
+    }
   };
 
   onDelete = (e) => {
