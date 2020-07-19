@@ -6,25 +6,29 @@ taxInfo = [
     {'lowest': 214368, 'highest': 1000000000, 'rate': 0.33}
 ]
 
-class CanTax:
-    def taxRateCalc(self, income):
-        index = 0
-        tax = 0.0
-        remainder = 0
 
-        for i in taxInfo:
-            if i['lowest'] < income and i['highest'] >= income:
-                index = taxInfo.index(i)
-                print(index)
-                remainder = income = i['lowest']
 
-        tax = round(taxInfo[index]['rate']* remainder, 2)
-        for i in range(0, index, 1):
-                tax += round((taxInfo[i]['rate'] * (taxInfo[i]['highest'] -taxInfo[i]['lowest'] )), 2)
-                print(tax)
-        return tax
+def CanTax(income):
+    remainder = 0
+    tax = 0.0
+    index = 0
 
-income = 45000
+    for i in taxInfo:
 
-income = CanTax()
-print(income)
+        if i['lowest'] < income <= i['highest']:
+            index = taxInfo.index(i)
+            remainder = income - i['lowest']
+    tax = round(taxInfo[index]['rate'] * remainder, 2)
+    for i in range(0, index, 1):
+        tax += round(taxInfo[i]['rate'] * (taxInfo[i]['highest'] - taxInfo[i]['lowest']), 2)
+
+    return round(tax, 2)
+
+        
+taxCalc1 = CanTax(100000)
+
+ 
+
+
+
+print(f"Cantax {taxCalc1}")
