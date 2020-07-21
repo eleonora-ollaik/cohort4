@@ -36,18 +36,16 @@ class FifoQueue {
   }
 
   collection() {
-    if (!this.first) {
-      return 'No nodes';
-    } else {
-      let array = [];
-      let node = this.first;
-      while (node) {
-        array.push(node.value);
-        node = node.next;
-      }
-      return array;
+    let result = [];
+    let node = this.first;
+
+    while (node) {
+      result.push(node.value);
+      node = node.next;
     }
+    return result;
   }
+
 }
 
 class LifoStack {
@@ -81,17 +79,14 @@ class LifoStack {
   }
 
   collection() {
-    if (!this.first) {
-      return 'No nodes';
-    } else {
-      let array = [];
-      let node = this.first;
-      while (node) {
-        array.push(node.value);
-        node = node.next;
-      }
-      return array;
+    let result = [];
+    let node = this.first;
+
+    while (node) {
+      result.push(node.value);
+      node = node.next;
     }
+    return result;
   }
 }
 export default { Node, FifoQueue, LifoStack };

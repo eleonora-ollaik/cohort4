@@ -66,5 +66,15 @@ print(s)
 
 s.add("Bob")
 print(s)
+
+# undefined - there is None in python
+
+x= None
+print(x)
+
+# if/else
+
+
+
  
 

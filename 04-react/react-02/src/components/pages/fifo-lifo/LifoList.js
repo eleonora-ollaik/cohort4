@@ -1,9 +1,9 @@
 import React from 'react'
 
 export default function LifoList(props) {
-
-    let lifoItem =
-            props.lList.map((value, i) => {
+    console.log(props.lList)
+    
+    let lifoItem = props.lList.map((value, i) => {
             return (
                 <li key = {i}> {value} </li>
             )

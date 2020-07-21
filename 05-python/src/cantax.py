@@ -1,9 +1,11 @@
+import math
+
 taxInfo = [
     {'lowest': 0, 'highest': 48535, 'rate': 0.15},
     {'lowest': 48535, 'highest': 97069, 'rate': 0.205},
     {'lowest': 97069, 'highest': 150473, 'rate': 0.26},
     {'lowest': 150473, 'highest': 214368, 'rate': 0.29},
-    {'lowest': 214368, 'highest': 1000000000, 'rate': 0.33}
+    {'lowest': 214368, 'highest': math.inf, 'rate': 0.33}
 ]
 
 
@@ -25,7 +27,7 @@ def CanTax(income):
     return round(tax, 2)
 
         
-taxCalc1 = CanTax(100000)
+taxCalc1 = CanTax(10000000)
 
  
 
