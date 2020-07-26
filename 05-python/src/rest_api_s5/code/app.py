@@ -28,4 +28,5 @@ api.add_resource(Item, '/item/<string:name>')
 api.add_resource(ItemList, '/items')
 api.add_resource(UserRegister, '/register')
 
-app.run(port=2000, debug=True)
+if __name__ == '__main__': #in case we're importing smth from app.py to prevent it from running the flask we need this line
+    app.run(port=2000, debug=True)
