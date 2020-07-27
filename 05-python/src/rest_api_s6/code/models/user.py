@@ -1,4 +1,3 @@
-import sqlite3
 from db import db
 
 class UserModel(db.Model):
@@ -41,7 +40,7 @@ class UserModel(db.Model):
 
     @classmethod #internal class method, uses cls intead of self and User
     def find_by_id(cls, _id):
-        return cls.query.filter_by(id=id).first() #can be added after first filter: .first() ;  .filter_by(id=1) etc #select * from items where name=name
+        return cls.query.filter_by(id=_id).first() #can be added after first filter: .first() ;  .filter_by(id=1) etc #select * from items where name=name
 
         # connection = sqlite3.connect('data.db') #initializing connection
         # cursor = connection.cursor() #initializing cursor

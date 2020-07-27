@@ -10,6 +10,13 @@ class Item(Resource):
         help="This field cannot be left blank!"
     )
 
+    parser.add_argument('store_id', 
+        type=int,
+        required=True,
+        help="Every item needs a store!"
+    )
+
+
     @jwt_required()
     def get(self, name):
         item = ItemModel.find_by_name(name)#returns an object
@@ -25,7 +32,7 @@ class Item(Resource):
         
         data = Item.parser.parse_args()
 
-        item = ItemModel(name,  data['price'])
+        item = ItemModel(name, **data)
         #to deal with exceptions and failing:
         try:
             item.save_to_db()
@@ -38,8 +45,9 @@ class Item(Resource):
         item = ItemModel.find_by_name(name)
         if item:
             item.delete_from_db()
+            return {'message': 'Item deleted'}
+        return {'message': 'Item not found'}, 404
 
-        return {'message': 'Item deleted'}
 
         # connection = sqlite3.connect('data.db')
         # cursor = connection.cursor()
@@ -58,14 +66,15 @@ class Item(Resource):
         item = ItemModel.find_by_name(name)
         # updated_item = ItemModel(name,  data['price'])
 
-        if item is None:
-            item = ItemModel(name,  **data)
+        if item:
+            item.price = data['price']
+
             # try:
             #     updated_item.insert()
             # except:
             #     return {'message': "An error occured inserting the item"}, 500
         else :
-            item.price = data['price']
+            item = ItemModel(name, **data)
             # try:
             #     updated_item.update()
             #     # ItemModel.update(updated_item)
