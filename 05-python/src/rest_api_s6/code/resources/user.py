@@ -17,18 +17,20 @@ class UserRegister(Resource):
 
 
     def post(self):
-        data = UserRegister.parser.parse_args()
+        data = UserRegister.parser.parse_args() #part of flask restful
 
         if UserModel.find_by_username(data['username']):
             return {'message': 'Username exists'}, 400
 
-        connection = sqlite3.connect('data.db')
-        cursor = connection.cursor()
+        user = UserModel(**data)
+        user.save_to_db()
+        # connection = sqlite3.connect('data.db')
+        # cursor = connection.cursor()
 
 
-        query = "INSERT INTO users VALUES (NULL,?,?)"
-        cursor.execute(query, (data['username'], data['password']))
+        # query = "INSERT INTO users VALUES (NULL,?,?)"
+        # cursor.execute(query, (data['username'], data['password']))
 
-        connection.commit()
-        connection.close ()
+        # connection.commit()
+        # connection.close ()
         return {"message": "User created successfully"}, 201
