@@ -25,7 +25,7 @@ export default function Header (props) {
 }
 
 const headerStyle = {
-    background: '#333',
+    background: '#2d767f',
     color: '#fff',
     textAlign: 'center',
     padding: '10px',

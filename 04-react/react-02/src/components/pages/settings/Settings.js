@@ -13,12 +13,14 @@ class Settings extends Component {
 
     
     return (
-      <div style={{ background: theme.ui, color: theme.syntax }}>
+      <React.Fragment>
+      <div className = 'box'  style={{ background: theme.ui, color: theme.syntax }}>
         <h1>Settings</h1>
         <h2> Change theme </h2>
         <button onClick={toggleTheme}>Light/Dark</button>
         <h2>Current theme: </h2>
       </div>
+      </React.Fragment>
     );
   }
 }
